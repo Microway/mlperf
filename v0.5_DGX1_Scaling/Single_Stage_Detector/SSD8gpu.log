@@ -1,0 +1,1372 @@
+Clearing caches
+
+:::MLPv0.5.0 ssd 1554227168.395259142 (<string>:1) run_clear_caches
+Launching on node dgx1
++ pids+=($!)
++ set +x
+++ eval echo
++++ echo
++ docker exec -e DGXSYSTEM=DGX1 -e MULTI_NODE= -e SLURM_JOB_ID=190402131728 -e SLURM_NTASKS_PER_NODE= cont_190402131728 ./run_and_time.sh
+Run vars: id 190402131728 gpus 8 mparams 
++ echo 'running benchmark'
++ export DATASET_DIR=/data/coco2017
++ DATASET_DIR=/data/coco2017
++ export TORCH_MODEL_ZOO=/data/torchvision
++ TORCH_MODEL_ZOO=/data/torchvision
+STARTING TIMING RUN AT 2019-04-02 05:46:08 PM
+running benchmark
++ python -m bind_launch --nsockets_per_node 2 --ncores_per_socket 20 --nproc_per_node 8 train.py --use-fp16 --jit --delay-allreduce --epochs 70 --warmup-factor 0 --lr 2.5e-3 --eval-batch-size 216 --no-save --threshold=0.212 --data /data/coco2017 --batch-size 152 --warmup 300 --nhwc --pad-input
+1 Using seed = 1008909686
+3 Using seed = 1008909688
+2 Using seed = 1008909687
+0 Using seed = 1008909685
+5 Using seed = 1008909690
+6 Using seed = 1008909691
+4 Using seed = 1008909689
+7 Using seed = 1008909692
+
+:::MLPv0.5.0 ssd 1554227180.025459528 (train.py:371) run_start
+
+:::MLPv0.5.0 ssd 1554227180.026284456 (train.py:178) feature_sizes: [38, 19, 10, 5, 3, 1]
+
+:::MLPv0.5.0 ssd 1554227180.027028799 (train.py:180) steps: [8, 16, 32, 64, 100, 300]
+
+:::MLPv0.5.0 ssd 1554227180.027768612 (train.py:183) scales: [21, 45, 99, 153, 207, 261, 315]
+
+:::MLPv0.5.0 ssd 1554227180.028475046 (train.py:185) aspect_ratios: [[2], [2, 3], [2, 3], [2, 3], [2], [2]]
+
+:::MLPv0.5.0 ssd 1554227180.064447165 (train.py:188) num_default_boxes: 8732
+
+:::MLPv0.5.0 ssd 1554227180.065599918 (/workspace/single_stage_detector/utils.py:391) num_cropping_iterations: 1
+
+:::MLPv0.5.0 ssd 1554227180.066656828 (/workspace/single_stage_detector/utils.py:510) random_flip_probability: 0.5
+
+:::MLPv0.5.0 ssd 1554227180.067681313 (/workspace/single_stage_detector/utils.py:553) data_normalization_mean: [0.485, 0.456, 0.406]
+
+:::MLPv0.5.0 ssd 1554227180.068630695 (/workspace/single_stage_detector/utils.py:554) data_normalization_std: [0.229, 0.224, 0.225]
+loading annotations into memory...
+loading annotations into memory...
+loading annotations into memory...
+loading annotations into memory...
+loading annotations into memory...
+loading annotations into memory...
+loading annotations into memory...
+
+:::MLPv0.5.0 ssd 1554227180.069840193 (train.py:382) input_size: 300
+loading annotations into memory...
+Done (t=0.56s)
+creating index...
+Done (t=0.56s)
+creating index...
+Done (t=0.56s)
+creating index...
+Done (t=0.57s)
+creating index...
+Done (t=0.57s)
+creating index...
+Done (t=0.57s)
+creating index...
+Done (t=0.57s)
+creating index...
+Done (t=0.57s)
+creating index...
+index created!
+index created!
+index created!
+index created!
+index created!
+index created!
+index created!
+index created!
+time_check a: 1554227181.137999058
+time_check b: 1554227205.040664673
+
+:::MLPv0.5.0 ssd 1554227207.407265902 (train.py:413) input_order
+
+:::MLPv0.5.0 ssd 1554227207.412626982 (train.py:414) input_batch_size: 152
+
+:::MLPv0.5.0 ssd 1554227209.035795450 (/workspace/single_stage_detector/ssd300.py:47) backbone: "resnet34"
+
+:::MLPv0.5.0 ssd 1554227209.036577225 (/workspace/single_stage_detector/ssd300.py:52) loc_conf_out_channels: [256, 512, 512, 256, 256, 256]
+
+:::MLPv0.5.0 ssd 1554227209.095781565 (/workspace/single_stage_detector/ssd300.py:69) num_defaults_per_cell: [4, 6, 6, 6, 4, 4]
+/opt/conda/lib/python3.6/site-packages/torch/nn/functional.py:54: UserWarning: size_average and reduce args will be deprecated, please use reduction='none' instead.
+  warnings.warn(warning.format(ret))
+/opt/conda/lib/python3.6/site-packages/torch/nn/functional.py:54: UserWarning: size_average and reduce args will be deprecated, please use reduction='none' instead.
+  warnings.warn(warning.format(ret))
+/opt/conda/lib/python3.6/site-packages/torch/nn/functional.py:54: UserWarning: size_average and reduce args will be deprecated, please use reduction='none' instead.
+  warnings.warn(warning.format(ret))
+/opt/conda/lib/python3.6/site-packages/torch/nn/functional.py:54: UserWarning: size_average and reduce args will be deprecated, please use reduction='none' instead.
+  warnings.warn(warning.format(ret))
+/opt/conda/lib/python3.6/site-packages/torch/nn/functional.py:54: UserWarning: size_average and reduce args will be deprecated, please use reduction='none' instead.
+  warnings.warn(warning.format(ret))
+/opt/conda/lib/python3.6/site-packages/torch/nn/functional.py:54: UserWarning: size_average and reduce args will be deprecated, please use reduction='none' instead.
+  warnings.warn(warning.format(ret))
+/opt/conda/lib/python3.6/site-packages/torch/nn/functional.py:54: UserWarning: size_average and reduce args will be deprecated, please use reduction='none' instead.
+  warnings.warn(warning.format(ret))
+Delaying allreduces to the end of backward()
+/opt/conda/lib/python3.6/site-packages/torch/nn/functional.py:54: UserWarning: size_average and reduce args will be deprecated, please use reduction='none' instead.
+  warnings.warn(warning.format(ret))
+
+:::MLPv0.5.0 ssd 1554227209.533305645 (train.py:476) opt_name: "SGD"
+
+:::MLPv0.5.0 ssd 1554227209.534184456 (train.py:477) opt_learning_rate: 0.095
+
+:::MLPv0.5.0 ssd 1554227209.534982920 (train.py:478) opt_momentum: 0.9
+
+:::MLPv0.5.0 ssd 1554227209.535789490 (train.py:480) opt_weight_decay: 0.0005
+
+:::MLPv0.5.0 ssd 1554227209.536582232 (train.py:483) opt_learning_rate_warmup_steps: 300
+
+:::MLPv0.5.0 ssd 1554227211.357065916 (/workspace/single_stage_detector/ssd300.py:47) backbone: "resnet34"
+
+:::MLPv0.5.0 ssd 1554227211.358032942 (/workspace/single_stage_detector/ssd300.py:52) loc_conf_out_channels: [256, 512, 512, 256, 256, 256]
+
+:::MLPv0.5.0 ssd 1554227211.414518595 (/workspace/single_stage_detector/ssd300.py:69) num_defaults_per_cell: [4, 6, 6, 6, 4, 4]
+epoch nbatch loss
+
+:::MLPv0.5.0 ssd 1554227215.689371347 (train.py:551) train_loop
+
+:::MLPv0.5.0 ssd 1554227215.689935207 (train.py:553) train_epoch: 0
+
+:::MLPv0.5.0 ssd 1554227215.693496943 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 0, "value": 0.0}
+Iteration:      0, Loss function: 22.779, Average Loss: 0.023, avg. samples / sec: 9814.14
+
+:::MLPv0.5.0 ssd 1554227218.530130148 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 1, "value": 0.0003166666666666734}
+
+:::MLPv0.5.0 ssd 1554227219.366672277 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 2, "value": 0.0006333333333333468}
+
+:::MLPv0.5.0 ssd 1554227219.850223541 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 3, "value": 0.0009500000000000064}
+
+:::MLPv0.5.0 ssd 1554227220.374355316 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 4, "value": 0.0012666666666666798}
+
+:::MLPv0.5.0 ssd 1554227220.885642052 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 5, "value": 0.0015833333333333394}
+
+:::MLPv0.5.0 ssd 1554227221.401732206 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 6, "value": 0.0019000000000000128}
+
+:::MLPv0.5.0 ssd 1554227221.930721521 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 7, "value": 0.0022166666666666723}
+
+:::MLPv0.5.0 ssd 1554227222.434513092 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 8, "value": 0.0025333333333333458}
+
+:::MLPv0.5.0 ssd 1554227222.923659563 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 9, "value": 0.0028500000000000053}
+
+:::MLPv0.5.0 ssd 1554227223.423620701 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 10, "value": 0.0031666666666666787}
+
+:::MLPv0.5.0 ssd 1554227223.904091120 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 11, "value": 0.0034833333333333383}
+
+:::MLPv0.5.0 ssd 1554227224.374116182 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 12, "value": 0.0038000000000000117}
+
+:::MLPv0.5.0 ssd 1554227224.863407135 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 13, "value": 0.004116666666666671}
+
+:::MLPv0.5.0 ssd 1554227225.322985649 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 14, "value": 0.004433333333333345}
+
+:::MLPv0.5.0 ssd 1554227225.805512667 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 15, "value": 0.004750000000000004}
+
+:::MLPv0.5.0 ssd 1554227226.292107344 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 16, "value": 0.005066666666666678}
+
+:::MLPv0.5.0 ssd 1554227226.782273531 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 17, "value": 0.005383333333333337}
+
+:::MLPv0.5.0 ssd 1554227227.261057854 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 18, "value": 0.005700000000000011}
+
+:::MLPv0.5.0 ssd 1554227227.743785143 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 19, "value": 0.00601666666666667}
+
+:::MLPv0.5.0 ssd 1554227228.241890192 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 20, "value": 0.006333333333333344}
+Iteration:     20, Loss function: 20.230, Average Loss: 0.439, avg. samples / sec: 1939.02
+
+:::MLPv0.5.0 ssd 1554227228.725658894 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 21, "value": 0.006650000000000003}
+
+:::MLPv0.5.0 ssd 1554227229.228392363 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 22, "value": 0.0069666666666666766}
+
+:::MLPv0.5.0 ssd 1554227229.726631165 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 23, "value": 0.007283333333333336}
+
+:::MLPv0.5.0 ssd 1554227230.190030813 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 24, "value": 0.0076000000000000095}
+
+:::MLPv0.5.0 ssd 1554227230.691318750 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 25, "value": 0.007916666666666669}
+
+:::MLPv0.5.0 ssd 1554227231.138061285 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 26, "value": 0.008233333333333342}
+
+:::MLPv0.5.0 ssd 1554227231.593616724 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 27, "value": 0.008550000000000002}
+
+:::MLPv0.5.0 ssd 1554227232.068605185 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 28, "value": 0.008866666666666675}
+
+:::MLPv0.5.0 ssd 1554227232.524489403 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 29, "value": 0.009183333333333335}
+
+:::MLPv0.5.0 ssd 1554227232.981840849 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 30, "value": 0.009500000000000008}
+
+:::MLPv0.5.0 ssd 1554227233.455026388 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 31, "value": 0.009816666666666668}
+
+:::MLPv0.5.0 ssd 1554227233.908399582 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 32, "value": 0.010133333333333341}
+
+:::MLPv0.5.0 ssd 1554227234.389013529 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 33, "value": 0.010450000000000001}
+
+:::MLPv0.5.0 ssd 1554227234.836136818 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 34, "value": 0.010766666666666674}
+
+:::MLPv0.5.0 ssd 1554227235.302651405 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 35, "value": 0.011083333333333334}
+
+:::MLPv0.5.0 ssd 1554227235.790220261 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 36, "value": 0.011400000000000007}
+
+:::MLPv0.5.0 ssd 1554227236.211673021 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 37, "value": 0.011716666666666667}
+
+:::MLPv0.5.0 ssd 1554227236.650880814 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 38, "value": 0.01203333333333334}
+
+:::MLPv0.5.0 ssd 1554227237.100128651 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 39, "value": 0.01235}
+
+:::MLPv0.5.0 ssd 1554227237.567316294 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 40, "value": 0.012666666666666673}
+Iteration:     40, Loss function: 12.841, Average Loss: 0.787, avg. samples / sec: 2608.29
+
+:::MLPv0.5.0 ssd 1554227238.032469749 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 41, "value": 0.012983333333333333}
+
+:::MLPv0.5.0 ssd 1554227238.467347145 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 42, "value": 0.013300000000000006}
+
+:::MLPv0.5.0 ssd 1554227238.920833349 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 43, "value": 0.013616666666666666}
+
+:::MLPv0.5.0 ssd 1554227239.375550747 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 44, "value": 0.01393333333333334}
+
+:::MLPv0.5.0 ssd 1554227239.849396706 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 45, "value": 0.014250000000000013}
+
+:::MLPv0.5.0 ssd 1554227240.296478033 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 46, "value": 0.014566666666666672}
+
+:::MLPv0.5.0 ssd 1554227240.769847393 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 47, "value": 0.014883333333333346}
+
+:::MLPv0.5.0 ssd 1554227241.264075041 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 48, "value": 0.015200000000000005}
+
+:::MLPv0.5.0 ssd 1554227241.751773119 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 49, "value": 0.015516666666666679}
+
+:::MLPv0.5.0 ssd 1554227242.197209835 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 50, "value": 0.015833333333333338}
+
+:::MLPv0.5.0 ssd 1554227242.636709690 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 51, "value": 0.01615000000000001}
+
+:::MLPv0.5.0 ssd 1554227243.098956108 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 52, "value": 0.01646666666666667}
+
+:::MLPv0.5.0 ssd 1554227243.547731638 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 53, "value": 0.016783333333333345}
+
+:::MLPv0.5.0 ssd 1554227244.005632401 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 54, "value": 0.017100000000000004}
+
+:::MLPv0.5.0 ssd 1554227244.431728363 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 55, "value": 0.017416666666666678}
+
+:::MLPv0.5.0 ssd 1554227244.882867098 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 56, "value": 0.017733333333333337}
+
+:::MLPv0.5.0 ssd 1554227245.337177515 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 57, "value": 0.01805000000000001}
+
+:::MLPv0.5.0 ssd 1554227245.779296160 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 58, "value": 0.01836666666666667}
+
+:::MLPv0.5.0 ssd 1554227246.189795494 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 59, "value": 0.018683333333333343}
+
+:::MLPv0.5.0 ssd 1554227246.662394285 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 60, "value": 0.019000000000000003}
+Iteration:     60, Loss function: 12.718, Average Loss: 1.035, avg. samples / sec: 2673.88
+
+:::MLPv0.5.0 ssd 1554227247.149538040 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 61, "value": 0.019316666666666676}
+
+:::MLPv0.5.0 ssd 1554227247.539822102 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 62, "value": 0.019633333333333336}
+
+:::MLPv0.5.0 ssd 1554227247.975831270 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 63, "value": 0.01995000000000001}
+
+:::MLPv0.5.0 ssd 1554227248.441006660 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 64, "value": 0.02026666666666667}
+
+:::MLPv0.5.0 ssd 1554227248.921080589 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 65, "value": 0.020583333333333342}
+
+:::MLPv0.5.0 ssd 1554227249.395054340 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 66, "value": 0.020900000000000002}
+
+:::MLPv0.5.0 ssd 1554227249.820069075 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 67, "value": 0.021216666666666675}
+
+:::MLPv0.5.0 ssd 1554227250.223110199 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 68, "value": 0.021533333333333335}
+
+:::MLPv0.5.0 ssd 1554227250.663393736 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 69, "value": 0.02185000000000001}
+
+:::MLPv0.5.0 ssd 1554227251.109176636 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 70, "value": 0.022166666666666668}
+
+:::MLPv0.5.0 ssd 1554227251.570914984 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 71, "value": 0.02248333333333334}
+
+:::MLPv0.5.0 ssd 1554227251.985479832 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 72, "value": 0.0228}
+
+:::MLPv0.5.0 ssd 1554227252.428055048 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 73, "value": 0.023116666666666674}
+
+:::MLPv0.5.0 ssd 1554227252.818434477 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 74, "value": 0.023433333333333334}
+
+:::MLPv0.5.0 ssd 1554227253.270702124 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 75, "value": 0.023750000000000007}
+
+:::MLPv0.5.0 ssd 1554227253.685667276 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 76, "value": 0.024066666666666667}
+
+:::MLPv0.5.0 ssd 1554227254.102399588 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 77, "value": 0.02438333333333334}
+
+:::MLPv0.5.0 ssd 1554227254.514903545 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 78, "value": 0.0247}
+
+:::MLPv0.5.0 ssd 1554227254.947482824 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 79, "value": 0.025016666666666673}
+
+:::MLPv0.5.0 ssd 1554227255.368136644 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 80, "value": 0.025333333333333333}
+Iteration:     80, Loss function: 9.741, Average Loss: 1.226, avg. samples / sec: 2793.83
+
+:::MLPv0.5.0 ssd 1554227255.798217297 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 81, "value": 0.025650000000000006}
+
+:::MLPv0.5.0 ssd 1554227256.281773329 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 82, "value": 0.025966666666666666}
+
+:::MLPv0.5.0 ssd 1554227256.648729801 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 83, "value": 0.02628333333333334}
+
+:::MLPv0.5.0 ssd 1554227257.073851824 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 84, "value": 0.0266}
+
+:::MLPv0.5.0 ssd 1554227257.488839626 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 85, "value": 0.026916666666666672}
+
+:::MLPv0.5.0 ssd 1554227257.901352644 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 86, "value": 0.02723333333333333}
+
+:::MLPv0.5.0 ssd 1554227258.323277712 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 87, "value": 0.027550000000000005}
+
+:::MLPv0.5.0 ssd 1554227258.775106668 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 88, "value": 0.02786666666666668}
+
+:::MLPv0.5.0 ssd 1554227259.138762236 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 89, "value": 0.028183333333333338}
+
+:::MLPv0.5.0 ssd 1554227259.458924770 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 90, "value": 0.02850000000000001}
+
+:::MLPv0.5.0 ssd 1554227259.812590837 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 91, "value": 0.02881666666666667}
+
+:::MLPv0.5.0 ssd 1554227260.151165485 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 92, "value": 0.029133333333333344}
+
+:::MLPv0.5.0 ssd 1554227260.484307289 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 93, "value": 0.029450000000000004}
+
+:::MLPv0.5.0 ssd 1554227260.816994190 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 94, "value": 0.029766666666666677}
+
+:::MLPv0.5.0 ssd 1554227261.159299850 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 95, "value": 0.030083333333333337}
+
+:::MLPv0.5.0 ssd 1554227261.490352631 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 96, "value": 0.03040000000000001}
+
+:::MLPv0.5.0 ssd 1554227261.852728128 (train.py:349) opt_learning_rate: {"epoch": 0, "iteration": 97, "value": 0.03071666666666667}
+
+:::MLPv0.5.0 ssd 1554227262.159159660 (train.py:553) train_epoch: 1
+
+:::MLPv0.5.0 ssd 1554227262.189997673 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 98, "value": 0.031033333333333343}
+
+:::MLPv0.5.0 ssd 1554227262.512115717 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 99, "value": 0.03135}
+
+:::MLPv0.5.0 ssd 1554227262.850528717 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 100, "value": 0.031666666666666676}
+Iteration:    100, Loss function: 9.275, Average Loss: 1.393, avg. samples / sec: 3249.89
+
+:::MLPv0.5.0 ssd 1554227263.191253662 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 101, "value": 0.031983333333333336}
+
+:::MLPv0.5.0 ssd 1554227263.524233103 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 102, "value": 0.03230000000000001}
+
+:::MLPv0.5.0 ssd 1554227263.862777233 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 103, "value": 0.03261666666666667}
+
+:::MLPv0.5.0 ssd 1554227264.201890230 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 104, "value": 0.032933333333333335}
+
+:::MLPv0.5.0 ssd 1554227264.531791925 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 105, "value": 0.03325}
+
+:::MLPv0.5.0 ssd 1554227264.858169317 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 106, "value": 0.03356666666666667}
+
+:::MLPv0.5.0 ssd 1554227265.186312199 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 107, "value": 0.033883333333333335}
+
+:::MLPv0.5.0 ssd 1554227265.549891949 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 108, "value": 0.03420000000000001}
+
+:::MLPv0.5.0 ssd 1554227265.876829624 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 109, "value": 0.034516666666666675}
+
+:::MLPv0.5.0 ssd 1554227266.213360071 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 110, "value": 0.03483333333333334}
+
+:::MLPv0.5.0 ssd 1554227266.544106007 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 111, "value": 0.03515000000000001}
+
+:::MLPv0.5.0 ssd 1554227266.903897762 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 112, "value": 0.035466666666666674}
+
+:::MLPv0.5.0 ssd 1554227267.232200146 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 113, "value": 0.03578333333333334}
+
+:::MLPv0.5.0 ssd 1554227267.567337990 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 114, "value": 0.03610000000000001}
+
+:::MLPv0.5.0 ssd 1554227267.913928032 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 115, "value": 0.036416666666666674}
+
+:::MLPv0.5.0 ssd 1554227268.265044212 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 116, "value": 0.03673333333333334}
+
+:::MLPv0.5.0 ssd 1554227268.604823828 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 117, "value": 0.03705000000000001}
+
+:::MLPv0.5.0 ssd 1554227268.931122541 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 118, "value": 0.03736666666666667}
+
+:::MLPv0.5.0 ssd 1554227269.262246132 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 119, "value": 0.03768333333333334}
+
+:::MLPv0.5.0 ssd 1554227269.604774714 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 120, "value": 0.038000000000000006}
+Iteration:    120, Loss function: 8.924, Average Loss: 1.543, avg. samples / sec: 3601.07
+
+:::MLPv0.5.0 ssd 1554227269.925544500 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 121, "value": 0.03831666666666667}
+
+:::MLPv0.5.0 ssd 1554227270.270008564 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 122, "value": 0.03863333333333334}
+
+:::MLPv0.5.0 ssd 1554227270.609292030 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 123, "value": 0.038950000000000005}
+
+:::MLPv0.5.0 ssd 1554227270.962159872 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 124, "value": 0.03926666666666667}
+
+:::MLPv0.5.0 ssd 1554227271.292487860 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 125, "value": 0.03958333333333334}
+
+:::MLPv0.5.0 ssd 1554227271.627719879 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 126, "value": 0.039900000000000005}
+
+:::MLPv0.5.0 ssd 1554227271.965035200 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 127, "value": 0.04021666666666667}
+
+:::MLPv0.5.0 ssd 1554227272.305399895 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 128, "value": 0.04053333333333334}
+
+:::MLPv0.5.0 ssd 1554227272.644518614 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 129, "value": 0.040850000000000004}
+
+:::MLPv0.5.0 ssd 1554227272.975018501 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 130, "value": 0.04116666666666667}
+
+:::MLPv0.5.0 ssd 1554227273.304182768 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 131, "value": 0.04148333333333334}
+
+:::MLPv0.5.0 ssd 1554227273.634135485 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 132, "value": 0.041800000000000004}
+
+:::MLPv0.5.0 ssd 1554227273.970503092 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 133, "value": 0.04211666666666667}
+
+:::MLPv0.5.0 ssd 1554227274.329524279 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 134, "value": 0.04243333333333334}
+
+:::MLPv0.5.0 ssd 1554227274.673019409 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 135, "value": 0.04275}
+
+:::MLPv0.5.0 ssd 1554227274.996331215 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 136, "value": 0.04306666666666667}
+
+:::MLPv0.5.0 ssd 1554227275.339810610 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 137, "value": 0.043383333333333336}
+
+:::MLPv0.5.0 ssd 1554227275.664675474 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 138, "value": 0.0437}
+
+:::MLPv0.5.0 ssd 1554227276.007614374 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 139, "value": 0.04401666666666667}
+
+:::MLPv0.5.0 ssd 1554227276.334089041 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 140, "value": 0.044333333333333336}
+Iteration:    140, Loss function: 8.872, Average Loss: 1.690, avg. samples / sec: 3613.60
+
+:::MLPv0.5.0 ssd 1554227276.670958281 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 141, "value": 0.04465}
+
+:::MLPv0.5.0 ssd 1554227276.997442007 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 142, "value": 0.04496666666666667}
+
+:::MLPv0.5.0 ssd 1554227277.325211048 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 143, "value": 0.045283333333333335}
+
+:::MLPv0.5.0 ssd 1554227277.647260666 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 144, "value": 0.0456}
+
+:::MLPv0.5.0 ssd 1554227277.980175972 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 145, "value": 0.04591666666666667}
+
+:::MLPv0.5.0 ssd 1554227278.306469917 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 146, "value": 0.046233333333333335}
+
+:::MLPv0.5.0 ssd 1554227278.636622429 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 147, "value": 0.04655}
+
+:::MLPv0.5.0 ssd 1554227278.969980955 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 148, "value": 0.04686666666666667}
+
+:::MLPv0.5.0 ssd 1554227279.302278996 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 149, "value": 0.047183333333333334}
+
+:::MLPv0.5.0 ssd 1554227279.636033297 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 150, "value": 0.0475}
+
+:::MLPv0.5.0 ssd 1554227279.963795424 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 151, "value": 0.047816666666666674}
+
+:::MLPv0.5.0 ssd 1554227280.293131113 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 152, "value": 0.04813333333333334}
+
+:::MLPv0.5.0 ssd 1554227280.625053406 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 153, "value": 0.04845000000000001}
+
+:::MLPv0.5.0 ssd 1554227280.954573870 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 154, "value": 0.04876666666666667}
+
+:::MLPv0.5.0 ssd 1554227281.278029919 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 155, "value": 0.04908333333333334}
+
+:::MLPv0.5.0 ssd 1554227281.605167389 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 156, "value": 0.049400000000000006}
+
+:::MLPv0.5.0 ssd 1554227281.945538282 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 157, "value": 0.04971666666666667}
+
+:::MLPv0.5.0 ssd 1554227282.276361465 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 158, "value": 0.05003333333333334}
+
+:::MLPv0.5.0 ssd 1554227282.599274397 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 159, "value": 0.050350000000000006}
+
+:::MLPv0.5.0 ssd 1554227282.928028584 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 160, "value": 0.05066666666666667}
+Iteration:    160, Loss function: 8.356, Average Loss: 1.826, avg. samples / sec: 3688.23
+
+:::MLPv0.5.0 ssd 1554227283.262607574 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 161, "value": 0.05098333333333334}
+
+:::MLPv0.5.0 ssd 1554227283.589426279 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 162, "value": 0.051300000000000005}
+
+:::MLPv0.5.0 ssd 1554227283.930587053 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 163, "value": 0.05161666666666667}
+
+:::MLPv0.5.0 ssd 1554227284.253367662 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 164, "value": 0.05193333333333334}
+
+:::MLPv0.5.0 ssd 1554227284.589657068 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 165, "value": 0.052250000000000005}
+
+:::MLPv0.5.0 ssd 1554227284.928239584 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 166, "value": 0.05256666666666667}
+
+:::MLPv0.5.0 ssd 1554227285.259854317 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 167, "value": 0.05288333333333334}
+
+:::MLPv0.5.0 ssd 1554227285.581292629 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 168, "value": 0.053200000000000004}
+
+:::MLPv0.5.0 ssd 1554227285.917333364 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 169, "value": 0.05351666666666667}
+
+:::MLPv0.5.0 ssd 1554227286.238469124 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 170, "value": 0.05383333333333334}
+
+:::MLPv0.5.0 ssd 1554227286.577032804 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 171, "value": 0.054150000000000004}
+
+:::MLPv0.5.0 ssd 1554227286.911769152 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 172, "value": 0.05446666666666667}
+
+:::MLPv0.5.0 ssd 1554227287.230319023 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 173, "value": 0.05478333333333334}
+
+:::MLPv0.5.0 ssd 1554227287.550952435 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 174, "value": 0.0551}
+
+:::MLPv0.5.0 ssd 1554227287.880934477 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 175, "value": 0.05541666666666667}
+
+:::MLPv0.5.0 ssd 1554227288.203656435 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 176, "value": 0.055733333333333336}
+
+:::MLPv0.5.0 ssd 1554227288.508642912 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 177, "value": 0.05605}
+
+:::MLPv0.5.0 ssd 1554227288.836198092 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 178, "value": 0.05636666666666667}
+
+:::MLPv0.5.0 ssd 1554227289.157552481 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 179, "value": 0.056683333333333336}
+
+:::MLPv0.5.0 ssd 1554227289.489517212 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 180, "value": 0.057}
+Iteration:    180, Loss function: 8.173, Average Loss: 1.953, avg. samples / sec: 3706.32
+
+:::MLPv0.5.0 ssd 1554227289.818838596 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 181, "value": 0.05731666666666667}
+
+:::MLPv0.5.0 ssd 1554227290.146938801 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 182, "value": 0.057633333333333335}
+
+:::MLPv0.5.0 ssd 1554227290.456042528 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 183, "value": 0.05795}
+
+:::MLPv0.5.0 ssd 1554227290.797609568 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 184, "value": 0.05826666666666667}
+
+:::MLPv0.5.0 ssd 1554227291.127460241 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 185, "value": 0.058583333333333334}
+
+:::MLPv0.5.0 ssd 1554227291.448410273 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 186, "value": 0.0589}
+
+:::MLPv0.5.0 ssd 1554227291.765941620 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 187, "value": 0.05921666666666667}
+
+:::MLPv0.5.0 ssd 1554227292.094144583 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 188, "value": 0.059533333333333334}
+
+:::MLPv0.5.0 ssd 1554227292.414707184 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 189, "value": 0.05985}
+
+:::MLPv0.5.0 ssd 1554227292.747793913 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 190, "value": 0.06016666666666667}
+
+:::MLPv0.5.0 ssd 1554227293.078511477 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 191, "value": 0.06048333333333333}
+
+:::MLPv0.5.0 ssd 1554227293.420755386 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 192, "value": 0.0608}
+
+:::MLPv0.5.0 ssd 1554227293.749306679 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 193, "value": 0.061116666666666666}
+
+:::MLPv0.5.0 ssd 1554227294.074043989 (train.py:349) opt_learning_rate: {"epoch": 1, "iteration": 194, "value": 0.06143333333333334}
+
+:::MLPv0.5.0 ssd 1554227294.370356321 (train.py:553) train_epoch: 2
+
+:::MLPv0.5.0 ssd 1554227294.399238348 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 195, "value": 0.061750000000000006}
+
+:::MLPv0.5.0 ssd 1554227294.708849907 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 196, "value": 0.06206666666666667}
+
+:::MLPv0.5.0 ssd 1554227295.037358284 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 197, "value": 0.06238333333333334}
+
+:::MLPv0.5.0 ssd 1554227295.362369776 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 198, "value": 0.0627}
+
+:::MLPv0.5.0 ssd 1554227295.682933807 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 199, "value": 0.06301666666666667}
+
+:::MLPv0.5.0 ssd 1554227296.017187595 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 200, "value": 0.06333333333333334}
+Iteration:    200, Loss function: 7.911, Average Loss: 2.076, avg. samples / sec: 3725.71
+
+:::MLPv0.5.0 ssd 1554227296.345949411 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 201, "value": 0.06365000000000001}
+
+:::MLPv0.5.0 ssd 1554227296.680807590 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 202, "value": 0.06396666666666667}
+
+:::MLPv0.5.0 ssd 1554227297.008320332 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 203, "value": 0.06428333333333333}
+
+:::MLPv0.5.0 ssd 1554227297.337428808 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 204, "value": 0.0646}
+
+:::MLPv0.5.0 ssd 1554227297.659341097 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 205, "value": 0.06491666666666668}
+
+:::MLPv0.5.0 ssd 1554227297.987553835 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 206, "value": 0.06523333333333334}
+
+:::MLPv0.5.0 ssd 1554227298.313202381 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 207, "value": 0.06555}
+
+:::MLPv0.5.0 ssd 1554227298.640861988 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 208, "value": 0.06586666666666667}
+
+:::MLPv0.5.0 ssd 1554227298.964698792 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 209, "value": 0.06618333333333334}
+
+:::MLPv0.5.0 ssd 1554227299.290046930 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 210, "value": 0.0665}
+
+:::MLPv0.5.0 ssd 1554227299.613254070 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 211, "value": 0.06681666666666666}
+
+:::MLPv0.5.0 ssd 1554227299.944963694 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 212, "value": 0.06713333333333334}
+
+:::MLPv0.5.0 ssd 1554227300.267405748 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 213, "value": 0.06745000000000001}
+
+:::MLPv0.5.0 ssd 1554227300.592983961 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 214, "value": 0.06776666666666667}
+
+:::MLPv0.5.0 ssd 1554227300.927190065 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 215, "value": 0.06808333333333333}
+
+:::MLPv0.5.0 ssd 1554227301.254046440 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 216, "value": 0.0684}
+
+:::MLPv0.5.0 ssd 1554227301.579575539 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 217, "value": 0.06871666666666668}
+
+:::MLPv0.5.0 ssd 1554227301.911709070 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 218, "value": 0.06903333333333334}
+
+:::MLPv0.5.0 ssd 1554227302.244023323 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 219, "value": 0.06935}
+
+:::MLPv0.5.0 ssd 1554227302.568356037 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 220, "value": 0.06966666666666667}
+Iteration:    220, Loss function: 7.554, Average Loss: 2.191, avg. samples / sec: 3711.71
+
+:::MLPv0.5.0 ssd 1554227302.900449991 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 221, "value": 0.06998333333333334}
+
+:::MLPv0.5.0 ssd 1554227303.231790066 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 222, "value": 0.0703}
+
+:::MLPv0.5.0 ssd 1554227303.560941458 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 223, "value": 0.07061666666666666}
+
+:::MLPv0.5.0 ssd 1554227303.882393360 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 224, "value": 0.07093333333333333}
+
+:::MLPv0.5.0 ssd 1554227304.207438231 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 225, "value": 0.07125000000000001}
+
+:::MLPv0.5.0 ssd 1554227304.523766756 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 226, "value": 0.07156666666666667}
+
+:::MLPv0.5.0 ssd 1554227304.844693422 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 227, "value": 0.07188333333333334}
+
+:::MLPv0.5.0 ssd 1554227305.163534164 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 228, "value": 0.0722}
+
+:::MLPv0.5.0 ssd 1554227305.501323938 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 229, "value": 0.07251666666666667}
+
+:::MLPv0.5.0 ssd 1554227305.833921194 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 230, "value": 0.07283333333333333}
+
+:::MLPv0.5.0 ssd 1554227306.166849136 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 231, "value": 0.07315}
+
+:::MLPv0.5.0 ssd 1554227306.474104643 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 232, "value": 0.07346666666666667}
+
+:::MLPv0.5.0 ssd 1554227306.797816992 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 233, "value": 0.07378333333333334}
+
+:::MLPv0.5.0 ssd 1554227307.120627403 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 234, "value": 0.0741}
+
+:::MLPv0.5.0 ssd 1554227307.450416803 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 235, "value": 0.07441666666666667}
+
+:::MLPv0.5.0 ssd 1554227307.781229734 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 236, "value": 0.07473333333333333}
+
+:::MLPv0.5.0 ssd 1554227308.108809233 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 237, "value": 0.07505}
+
+:::MLPv0.5.0 ssd 1554227308.432282209 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 238, "value": 0.07536666666666667}
+
+:::MLPv0.5.0 ssd 1554227308.760326862 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 239, "value": 0.07568333333333334}
+
+:::MLPv0.5.0 ssd 1554227309.081573486 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 240, "value": 0.076}
+Iteration:    240, Loss function: 8.218, Average Loss: 2.303, avg. samples / sec: 3734.95
+
+:::MLPv0.5.0 ssd 1554227309.406342030 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 241, "value": 0.07631666666666667}
+
+:::MLPv0.5.0 ssd 1554227309.731392145 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 242, "value": 0.07663333333333333}
+
+:::MLPv0.5.0 ssd 1554227310.054676056 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 243, "value": 0.07695}
+
+:::MLPv0.5.0 ssd 1554227310.380799770 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 244, "value": 0.07726666666666666}
+
+:::MLPv0.5.0 ssd 1554227310.714265347 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 245, "value": 0.07758333333333334}
+
+:::MLPv0.5.0 ssd 1554227311.047327280 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 246, "value": 0.0779}
+
+:::MLPv0.5.0 ssd 1554227311.353001118 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 247, "value": 0.07821666666666667}
+
+:::MLPv0.5.0 ssd 1554227311.686375856 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 248, "value": 0.07853333333333334}
+
+:::MLPv0.5.0 ssd 1554227312.022761822 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 249, "value": 0.07885}
+
+:::MLPv0.5.0 ssd 1554227312.343427896 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 250, "value": 0.07916666666666666}
+
+:::MLPv0.5.0 ssd 1554227312.671109200 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 251, "value": 0.07948333333333334}
+
+:::MLPv0.5.0 ssd 1554227312.990708113 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 252, "value": 0.07980000000000001}
+
+:::MLPv0.5.0 ssd 1554227313.321289778 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 253, "value": 0.08011666666666667}
+
+:::MLPv0.5.0 ssd 1554227313.646775246 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 254, "value": 0.08043333333333333}
+
+:::MLPv0.5.0 ssd 1554227313.962200403 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 255, "value": 0.08075}
+
+:::MLPv0.5.0 ssd 1554227314.286394596 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 256, "value": 0.08106666666666668}
+
+:::MLPv0.5.0 ssd 1554227314.597286701 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 257, "value": 0.08138333333333334}
+
+:::MLPv0.5.0 ssd 1554227314.922622919 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 258, "value": 0.0817}
+
+:::MLPv0.5.0 ssd 1554227315.241906643 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 259, "value": 0.08201666666666667}
+
+:::MLPv0.5.0 ssd 1554227315.568142414 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 260, "value": 0.08233333333333334}
+Iteration:    260, Loss function: 7.602, Average Loss: 2.412, avg. samples / sec: 3749.15
+
+:::MLPv0.5.0 ssd 1554227315.899000406 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 261, "value": 0.08265}
+
+:::MLPv0.5.0 ssd 1554227316.218803883 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 262, "value": 0.08296666666666666}
+
+:::MLPv0.5.0 ssd 1554227316.545022964 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 263, "value": 0.08328333333333333}
+
+:::MLPv0.5.0 ssd 1554227316.872411251 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 264, "value": 0.08360000000000001}
+
+:::MLPv0.5.0 ssd 1554227317.205602407 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 265, "value": 0.08391666666666667}
+
+:::MLPv0.5.0 ssd 1554227317.535555124 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 266, "value": 0.08423333333333334}
+
+:::MLPv0.5.0 ssd 1554227317.857298851 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 267, "value": 0.08455}
+
+:::MLPv0.5.0 ssd 1554227318.178920507 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 268, "value": 0.08486666666666667}
+
+:::MLPv0.5.0 ssd 1554227318.487587929 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 269, "value": 0.08518333333333333}
+
+:::MLPv0.5.0 ssd 1554227318.836283445 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 270, "value": 0.0855}
+
+:::MLPv0.5.0 ssd 1554227319.145487309 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 271, "value": 0.08581666666666667}
+
+:::MLPv0.5.0 ssd 1554227319.475414753 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 272, "value": 0.08613333333333334}
+
+:::MLPv0.5.0 ssd 1554227319.807451725 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 273, "value": 0.08645}
+
+:::MLPv0.5.0 ssd 1554227320.131850243 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 274, "value": 0.08676666666666667}
+
+:::MLPv0.5.0 ssd 1554227320.456629515 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 275, "value": 0.08708333333333333}
+
+:::MLPv0.5.0 ssd 1554227320.782639265 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 276, "value": 0.0874}
+
+:::MLPv0.5.0 ssd 1554227321.107227087 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 277, "value": 0.08771666666666667}
+
+:::MLPv0.5.0 ssd 1554227321.424302578 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 278, "value": 0.08803333333333334}
+
+:::MLPv0.5.0 ssd 1554227321.753730297 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 279, "value": 0.08835}
+
+:::MLPv0.5.0 ssd 1554227322.083387375 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 280, "value": 0.08866666666666667}
+Iteration:    280, Loss function: 7.768, Average Loss: 2.512, avg. samples / sec: 3733.38
+
+:::MLPv0.5.0 ssd 1554227322.387308121 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 281, "value": 0.08898333333333333}
+
+:::MLPv0.5.0 ssd 1554227322.716782331 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 282, "value": 0.0893}
+
+:::MLPv0.5.0 ssd 1554227323.038774490 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 283, "value": 0.08961666666666666}
+
+:::MLPv0.5.0 ssd 1554227323.363981485 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 284, "value": 0.08993333333333334}
+
+:::MLPv0.5.0 ssd 1554227323.673565149 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 285, "value": 0.09025}
+
+:::MLPv0.5.0 ssd 1554227323.992653370 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 286, "value": 0.09056666666666667}
+
+:::MLPv0.5.0 ssd 1554227324.327698469 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 287, "value": 0.09088333333333333}
+
+:::MLPv0.5.0 ssd 1554227324.655834198 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 288, "value": 0.0912}
+
+:::MLPv0.5.0 ssd 1554227324.986686230 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 289, "value": 0.09151666666666666}
+
+:::MLPv0.5.0 ssd 1554227325.307980776 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 290, "value": 0.09183333333333334}
+
+:::MLPv0.5.0 ssd 1554227325.626263857 (train.py:349) opt_learning_rate: {"epoch": 2, "iteration": 291, "value": 0.09215}
+
+:::MLPv0.5.0 ssd 1554227325.915666342 (train.py:553) train_epoch: 3
+
+:::MLPv0.5.0 ssd 1554227325.931336164 (train.py:349) opt_learning_rate: {"epoch": 3, "iteration": 292, "value": 0.09246666666666667}
+
+:::MLPv0.5.0 ssd 1554227326.260716200 (train.py:349) opt_learning_rate: {"epoch": 3, "iteration": 293, "value": 0.09278333333333333}
+
+:::MLPv0.5.0 ssd 1554227326.583878994 (train.py:349) opt_learning_rate: {"epoch": 3, "iteration": 294, "value": 0.0931}
+
+:::MLPv0.5.0 ssd 1554227326.915958166 (train.py:349) opt_learning_rate: {"epoch": 3, "iteration": 295, "value": 0.09341666666666666}
+
+:::MLPv0.5.0 ssd 1554227327.237833738 (train.py:349) opt_learning_rate: {"epoch": 3, "iteration": 296, "value": 0.09373333333333334}
+
+:::MLPv0.5.0 ssd 1554227327.547760010 (train.py:349) opt_learning_rate: {"epoch": 3, "iteration": 297, "value": 0.09405}
+
+:::MLPv0.5.0 ssd 1554227327.864583731 (train.py:349) opt_learning_rate: {"epoch": 3, "iteration": 298, "value": 0.09436666666666667}
+
+:::MLPv0.5.0 ssd 1554227328.182027102 (train.py:349) opt_learning_rate: {"epoch": 3, "iteration": 299, "value": 0.09468333333333333}
+Iteration:    300, Loss function: 7.220, Average Loss: 2.609, avg. samples / sec: 3796.72
+Iteration:    320, Loss function: 7.084, Average Loss: 2.699, avg. samples / sec: 3809.20
+Iteration:    340, Loss function: 6.903, Average Loss: 2.782, avg. samples / sec: 3836.20
+Iteration:    360, Loss function: 6.610, Average Loss: 2.861, avg. samples / sec: 3845.36
+Iteration:    380, Loss function: 6.652, Average Loss: 2.936, avg. samples / sec: 3872.41
+
+:::MLPv0.5.0 ssd 1554227356.956598997 (train.py:553) train_epoch: 4
+Iteration:    400, Loss function: 6.669, Average Loss: 3.009, avg. samples / sec: 3860.35
+Iteration:    420, Loss function: 6.239, Average Loss: 3.077, avg. samples / sec: 3841.57
+Iteration:    440, Loss function: 6.582, Average Loss: 3.143, avg. samples / sec: 3838.51
+Iteration:    460, Loss function: 6.091, Average Loss: 3.205, avg. samples / sec: 3892.98
+Iteration:    480, Loss function: 5.701, Average Loss: 3.261, avg. samples / sec: 3883.71
+
+:::MLPv0.5.0 ssd 1554227387.501729250 (train.py:553) train_epoch: 5
+Iteration:    500, Loss function: 6.307, Average Loss: 3.321, avg. samples / sec: 3871.07
+Iteration:    520, Loss function: 5.873, Average Loss: 3.374, avg. samples / sec: 3899.48
+Iteration:    540, Loss function: 5.738, Average Loss: 3.422, avg. samples / sec: 3864.18
+Iteration:    560, Loss function: 5.728, Average Loss: 3.467, avg. samples / sec: 3906.29
+Iteration:    580, Loss function: 5.752, Average Loss: 3.514, avg. samples / sec: 3864.76
+
+:::MLPv0.5.0 ssd 1554227417.856821299 (train.py:553) train_epoch: 6
+Iteration:    600, Loss function: 5.938, Average Loss: 3.556, avg. samples / sec: 3895.89
+Iteration:    620, Loss function: 5.554, Average Loss: 3.594, avg. samples / sec: 3921.19
+Iteration:    640, Loss function: 5.449, Average Loss: 3.632, avg. samples / sec: 3859.95
+Iteration:    660, Loss function: 5.415, Average Loss: 3.669, avg. samples / sec: 3893.86
+Iteration:    680, Loss function: 5.267, Average Loss: 3.703, avg. samples / sec: 3899.31
+
+:::MLPv0.5.0 ssd 1554227448.146775246 (train.py:553) train_epoch: 7
+Iteration:    700, Loss function: 5.446, Average Loss: 3.735, avg. samples / sec: 3914.88
+Iteration:    720, Loss function: 5.001, Average Loss: 3.765, avg. samples / sec: 3944.99
+Iteration:    740, Loss function: 5.256, Average Loss: 3.794, avg. samples / sec: 3915.44
+Iteration:    760, Loss function: 5.056, Average Loss: 3.821, avg. samples / sec: 3893.71
+
+:::MLPv0.5.0 ssd 1554227478.573735952 (train.py:553) train_epoch: 8
+Iteration:    780, Loss function: 5.179, Average Loss: 3.847, avg. samples / sec: 3919.43
+Iteration:    800, Loss function: 5.447, Average Loss: 3.875, avg. samples / sec: 3871.81
+Iteration:    820, Loss function: 5.160, Average Loss: 3.898, avg. samples / sec: 3932.05
+Iteration:    840, Loss function: 4.947, Average Loss: 3.919, avg. samples / sec: 3930.66
+Iteration:    860, Loss function: 5.510, Average Loss: 3.941, avg. samples / sec: 3955.53
+
+:::MLPv0.5.0 ssd 1554227508.678626060 (train.py:553) train_epoch: 9
+Iteration:    880, Loss function: 5.055, Average Loss: 3.965, avg. samples / sec: 3896.42
+Iteration:    900, Loss function: 4.779, Average Loss: 3.983, avg. samples / sec: 3884.96
+Iteration:    920, Loss function: 5.022, Average Loss: 4.001, avg. samples / sec: 3935.17
+Iteration:    940, Loss function: 4.791, Average Loss: 4.021, avg. samples / sec: 3912.96
+Iteration:    960, Loss function: 4.760, Average Loss: 4.038, avg. samples / sec: 3920.71
+
+:::MLPv0.5.0 ssd 1554227538.850611687 (train.py:553) train_epoch: 10
+Iteration:    980, Loss function: 4.887, Average Loss: 4.053, avg. samples / sec: 3900.17
+Iteration:   1000, Loss function: 4.789, Average Loss: 4.068, avg. samples / sec: 3917.70
+Iteration:   1020, Loss function: 4.772, Average Loss: 4.082, avg. samples / sec: 3921.91
+Iteration:   1040, Loss function: 4.955, Average Loss: 4.096, avg. samples / sec: 3937.93
+Iteration:   1060, Loss function: 4.601, Average Loss: 4.108, avg. samples / sec: 3922.99
+
+:::MLPv0.5.0 ssd 1554227569.199487209 (train.py:553) train_epoch: 11
+Iteration:   1080, Loss function: 4.483, Average Loss: 4.119, avg. samples / sec: 3947.67
+Iteration:   1100, Loss function: 4.841, Average Loss: 4.131, avg. samples / sec: 3930.59
+Iteration:   1120, Loss function: 4.726, Average Loss: 4.143, avg. samples / sec: 3946.20
+Iteration:   1140, Loss function: 4.584, Average Loss: 4.154, avg. samples / sec: 3918.76
+Iteration:   1160, Loss function: 4.439, Average Loss: 4.162, avg. samples / sec: 3906.83
+
+:::MLPv0.5.0 ssd 1554227599.219398737 (train.py:553) train_epoch: 12
+Iteration:   1180, Loss function: 4.670, Average Loss: 4.172, avg. samples / sec: 3934.94
+Iteration:   1200, Loss function: 4.782, Average Loss: 4.181, avg. samples / sec: 3941.31
+Iteration:   1220, Loss function: 4.660, Average Loss: 4.189, avg. samples / sec: 3941.97
+Iteration:   1240, Loss function: 4.629, Average Loss: 4.196, avg. samples / sec: 3920.67
+Iteration:   1260, Loss function: 4.467, Average Loss: 4.204, avg. samples / sec: 3923.73
+
+:::MLPv0.5.0 ssd 1554227629.198788643 (train.py:553) train_epoch: 13
+Iteration:   1280, Loss function: 4.638, Average Loss: 4.213, avg. samples / sec: 3925.70
+Iteration:   1300, Loss function: 4.460, Average Loss: 4.221, avg. samples / sec: 3935.43
+Iteration:   1320, Loss function: 4.389, Average Loss: 4.226, avg. samples / sec: 3921.26
+Iteration:   1340, Loss function: 4.588, Average Loss: 4.230, avg. samples / sec: 3918.21
+Iteration:   1360, Loss function: 4.424, Average Loss: 4.237, avg. samples / sec: 3912.77
+
+:::MLPv0.5.0 ssd 1554227659.283908367 (train.py:553) train_epoch: 14
+Iteration:   1380, Loss function: 4.653, Average Loss: 4.242, avg. samples / sec: 3966.32
+Iteration:   1400, Loss function: 4.213, Average Loss: 4.246, avg. samples / sec: 3953.25
+Iteration:   1420, Loss function: 4.358, Average Loss: 4.250, avg. samples / sec: 3953.55
+Iteration:   1440, Loss function: 4.315, Average Loss: 4.255, avg. samples / sec: 3915.22
+
+:::MLPv0.5.0 ssd 1554227689.477438927 (train.py:553) train_epoch: 15
+Iteration:   1460, Loss function: 4.387, Average Loss: 4.258, avg. samples / sec: 3945.38
+Iteration:   1480, Loss function: 4.519, Average Loss: 4.262, avg. samples / sec: 3964.01
+Iteration:   1500, Loss function: 4.431, Average Loss: 4.264, avg. samples / sec: 3923.75
+Iteration:   1520, Loss function: 4.761, Average Loss: 4.266, avg. samples / sec: 3929.17
+Iteration:   1540, Loss function: 4.462, Average Loss: 4.268, avg. samples / sec: 3933.13
+
+:::MLPv0.5.0 ssd 1554227719.481605291 (train.py:553) train_epoch: 16
+Iteration:   1560, Loss function: 4.299, Average Loss: 4.270, avg. samples / sec: 3892.77
+Iteration:   1580, Loss function: 4.297, Average Loss: 4.271, avg. samples / sec: 3948.81
+Iteration:   1600, Loss function: 4.702, Average Loss: 4.273, avg. samples / sec: 3944.45
+Iteration:   1620, Loss function: 4.116, Average Loss: 4.273, avg. samples / sec: 3933.89
+Iteration:   1640, Loss function: 4.559, Average Loss: 4.276, avg. samples / sec: 3959.36
+
+:::MLPv0.5.0 ssd 1554227749.391472578 (train.py:553) train_epoch: 17
+Iteration:   1660, Loss function: 4.302, Average Loss: 4.279, avg. samples / sec: 3934.93
+Iteration:   1680, Loss function: 4.242, Average Loss: 4.280, avg. samples / sec: 3941.38
+Iteration:   1700, Loss function: 4.405, Average Loss: 4.279, avg. samples / sec: 3955.49
+Iteration:   1720, Loss function: 4.080, Average Loss: 4.279, avg. samples / sec: 3929.88
+Iteration:   1740, Loss function: 4.135, Average Loss: 4.280, avg. samples / sec: 3962.17
+
+:::MLPv0.5.0 ssd 1554227779.311388016 (train.py:553) train_epoch: 18
+Iteration:   1760, Loss function: 4.362, Average Loss: 4.280, avg. samples / sec: 3945.52
+Iteration:   1780, Loss function: 4.268, Average Loss: 4.279, avg. samples / sec: 3924.07
+Iteration:   1800, Loss function: 4.102, Average Loss: 4.279, avg. samples / sec: 3929.50
+Iteration:   1820, Loss function: 4.480, Average Loss: 4.280, avg. samples / sec: 3951.09
+Iteration:   1840, Loss function: 4.306, Average Loss: 4.279, avg. samples / sec: 3922.00
+
+:::MLPv0.5.0 ssd 1554227809.586589813 (train.py:553) train_epoch: 19
+Iteration:   1860, Loss function: 4.272, Average Loss: 4.278, avg. samples / sec: 3945.48
+Iteration:   1880, Loss function: 4.262, Average Loss: 4.277, avg. samples / sec: 3962.10
+Iteration:   1900, Loss function: 4.311, Average Loss: 4.276, avg. samples / sec: 3937.26
+Iteration:   1920, Loss function: 4.197, Average Loss: 4.275, avg. samples / sec: 3908.51
+Iteration:   1940, Loss function: 4.336, Average Loss: 4.274, avg. samples / sec: 3943.59
+
+:::MLPv0.5.0 ssd 1554227839.527736902 (train.py:553) train_epoch: 20
+Iteration:   1960, Loss function: 4.053, Average Loss: 4.273, avg. samples / sec: 3970.33
+Iteration:   1980, Loss function: 4.079, Average Loss: 4.273, avg. samples / sec: 3935.60
+Iteration:   2000, Loss function: 4.496, Average Loss: 4.273, avg. samples / sec: 3946.72
+Iteration:   2020, Loss function: 4.056, Average Loss: 4.271, avg. samples / sec: 3938.05
+Iteration:   2040, Loss function: 4.269, Average Loss: 4.269, avg. samples / sec: 3952.12
+
+:::MLPv0.5.0 ssd 1554227869.401465416 (train.py:553) train_epoch: 21
+Iteration:   2060, Loss function: 4.216, Average Loss: 4.267, avg. samples / sec: 3938.32
+Iteration:   2080, Loss function: 4.163, Average Loss: 4.266, avg. samples / sec: 3971.41
+Iteration:   2100, Loss function: 4.197, Average Loss: 4.264, avg. samples / sec: 3963.62
+Iteration:   2120, Loss function: 4.095, Average Loss: 4.262, avg. samples / sec: 3942.93
+Iteration:   2140, Loss function: 4.052, Average Loss: 4.259, avg. samples / sec: 3950.10
+
+:::MLPv0.5.0 ssd 1554227899.548751593 (train.py:553) train_epoch: 22
+Iteration:   2160, Loss function: 4.149, Average Loss: 4.258, avg. samples / sec: 3936.40
+Iteration:   2180, Loss function: 4.029, Average Loss: 4.255, avg. samples / sec: 3945.30
+Iteration:   2200, Loss function: 4.130, Average Loss: 4.252, avg. samples / sec: 3959.26
+Iteration:   2220, Loss function: 4.258, Average Loss: 4.251, avg. samples / sec: 3957.10
+
+:::MLPv0.5.0 ssd 1554227929.404687166 (train.py:553) train_epoch: 23
+Iteration:   2240, Loss function: 4.156, Average Loss: 4.249, avg. samples / sec: 3956.20
+Iteration:   2260, Loss function: 4.173, Average Loss: 4.247, avg. samples / sec: 3950.76
+Iteration:   2280, Loss function: 3.993, Average Loss: 4.243, avg. samples / sec: 3940.45
+Iteration:   2300, Loss function: 4.038, Average Loss: 4.239, avg. samples / sec: 3947.99
+Iteration:   2320, Loss function: 4.039, Average Loss: 4.235, avg. samples / sec: 3926.47
+
+:::MLPv0.5.0 ssd 1554227959.347440481 (train.py:553) train_epoch: 24
+Iteration:   2340, Loss function: 4.138, Average Loss: 4.234, avg. samples / sec: 3936.80
+Iteration:   2360, Loss function: 4.135, Average Loss: 4.230, avg. samples / sec: 3973.76
+Iteration:   2380, Loss function: 4.248, Average Loss: 4.226, avg. samples / sec: 3967.05
+Iteration:   2400, Loss function: 4.266, Average Loss: 4.223, avg. samples / sec: 3938.86
+Iteration:   2420, Loss function: 4.173, Average Loss: 4.220, avg. samples / sec: 3945.36
+
+:::MLPv0.5.0 ssd 1554227989.184845686 (train.py:553) train_epoch: 25
+Iteration:   2440, Loss function: 3.913, Average Loss: 4.219, avg. samples / sec: 3940.78
+Iteration:   2460, Loss function: 3.844, Average Loss: 4.215, avg. samples / sec: 3937.73
+Iteration:   2480, Loss function: 4.233, Average Loss: 4.214, avg. samples / sec: 3955.83
+Iteration:   2500, Loss function: 4.302, Average Loss: 4.212, avg. samples / sec: 3929.88
+Iteration:   2520, Loss function: 4.083, Average Loss: 4.209, avg. samples / sec: 3949.83
+
+:::MLPv0.5.0 ssd 1554228019.380967617 (train.py:553) train_epoch: 26
+Iteration:   2540, Loss function: 3.919, Average Loss: 4.206, avg. samples / sec: 3955.12
+Iteration:   2560, Loss function: 4.068, Average Loss: 4.202, avg. samples / sec: 3968.61
+Iteration:   2580, Loss function: 4.095, Average Loss: 4.197, avg. samples / sec: 3957.71
+Iteration:   2600, Loss function: 3.931, Average Loss: 4.192, avg. samples / sec: 3949.69
+Iteration:   2620, Loss function: 3.742, Average Loss: 4.190, avg. samples / sec: 3934.15
+
+:::MLPv0.5.0 ssd 1554228049.220905542 (train.py:553) train_epoch: 27
+Iteration:   2640, Loss function: 3.692, Average Loss: 4.186, avg. samples / sec: 3952.01
+Iteration:   2660, Loss function: 4.002, Average Loss: 4.185, avg. samples / sec: 3967.26
+Iteration:   2680, Loss function: 4.000, Average Loss: 4.182, avg. samples / sec: 3955.15
+Iteration:   2700, Loss function: 3.977, Average Loss: 4.180, avg. samples / sec: 3962.87
+Iteration:   2720, Loss function: 4.022, Average Loss: 4.176, avg. samples / sec: 3934.95
+
+:::MLPv0.5.0 ssd 1554228079.039603710 (train.py:553) train_epoch: 28
+Iteration:   2740, Loss function: 4.072, Average Loss: 4.171, avg. samples / sec: 3962.46
+Iteration:   2760, Loss function: 3.976, Average Loss: 4.173, avg. samples / sec: 3949.49
+Iteration:   2780, Loss function: 3.865, Average Loss: 4.169, avg. samples / sec: 3960.84
+Iteration:   2800, Loss function: 3.909, Average Loss: 4.165, avg. samples / sec: 3928.51
+Iteration:   2820, Loss function: 4.071, Average Loss: 4.160, avg. samples / sec: 3963.25
+
+:::MLPv0.5.0 ssd 1554228108.896078825 (train.py:553) train_epoch: 29
+Iteration:   2840, Loss function: 3.985, Average Loss: 4.157, avg. samples / sec: 3913.12
+Iteration:   2860, Loss function: 4.058, Average Loss: 4.154, avg. samples / sec: 3953.12
+Iteration:   2880, Loss function: 3.939, Average Loss: 4.149, avg. samples / sec: 3959.81
+Iteration:   2900, Loss function: 3.943, Average Loss: 4.145, avg. samples / sec: 3964.32
+
+:::MLPv0.5.0 ssd 1554228139.064833641 (train.py:553) train_epoch: 30
+Iteration:   2920, Loss function: 3.955, Average Loss: 4.141, avg. samples / sec: 3961.14
+Iteration:   2940, Loss function: 3.920, Average Loss: 4.138, avg. samples / sec: 3964.20
+Iteration:   2960, Loss function: 3.971, Average Loss: 4.134, avg. samples / sec: 3967.07
+Iteration:   2980, Loss function: 4.076, Average Loss: 4.131, avg. samples / sec: 3958.78
+Iteration:   3000, Loss function: 4.183, Average Loss: 4.128, avg. samples / sec: 3954.06
+
+:::MLPv0.5.0 ssd 1554228168.853337049 (train.py:553) train_epoch: 31
+Iteration:   3020, Loss function: 3.823, Average Loss: 4.125, avg. samples / sec: 3946.05
+Iteration:   3040, Loss function: 3.949, Average Loss: 4.121, avg. samples / sec: 3955.51
+Iteration:   3060, Loss function: 4.019, Average Loss: 4.117, avg. samples / sec: 3951.74
+Iteration:   3080, Loss function: 3.793, Average Loss: 4.112, avg. samples / sec: 3950.29
+Iteration:   3100, Loss function: 3.764, Average Loss: 4.108, avg. samples / sec: 3948.05
+
+:::MLPv0.5.0 ssd 1554228198.734802246 (train.py:553) train_epoch: 32
+Iteration:   3120, Loss function: 3.846, Average Loss: 4.106, avg. samples / sec: 3930.55
+Iteration:   3140, Loss function: 4.086, Average Loss: 4.103, avg. samples / sec: 3979.11
+
+
+
+
+
+
+
+
+
+:::MLPv0.5.0 ssd 1554228212.524631262 (train.py:217) nms_threshold: 0.5
+
+:::MLPv0.5.0 ssd 1554228212.525522947 (train.py:219) nms_max_detections: 200
+
+:::MLPv0.5.0 ssd 1554228212.526290894 (train.py:220) eval_start: 32
+Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3No object detected in idx: 153
+Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Predicting Ended, total time: 33.43 s
+Loading and preparing results...
+Loading and preparing results...
+Loading and preparing results...
+Loading and preparing results...
+Loading and preparing results...
+Loading and preparing results...
+Converting ndarray to lists...
+Converting ndarray to lists...
+Converting ndarray to lists...
+Converting ndarray to lists...
+Converting ndarray to lists...
+Converting ndarray to lists...
+(204287, 7)
+(204287, 7)
+Loading and preparing results...
+(204287, 7)
+(204287, 7)
+(204287, 7)
+Loading and preparing results...
+(204287, 7)
+0/204287
+0/204287
+0/204287
+Converting ndarray to lists...
+0/204287
+0/204287
+0/204287
+Converting ndarray to lists...
+(204287, 7)
+(204287, 7)
+0/204287
+0/204287
+DONE (t=1.37s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=1.60s)
+creating index...
+DONE (t=1.60s)
+creating index...
+DONE (t=1.60s)
+creating index...
+DONE (t=1.61s)
+creating index...
+DONE (t=1.62s)
+creating index...
+DONE (t=1.62s)
+creating index...
+DONE (t=1.64s)
+creating index...
+index created!
+index created!
+index created!
+index created!
+index created!
+index created!
+index created!
+DONE (t=3.16s).
+Accumulating evaluation results...
+DONE (t=0.93s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.129
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.252
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.122
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.031
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.138
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.208
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.152
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.218
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.227
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.051
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.239
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.371
+Current AP: 0.12925 AP goal: 0.21200
+
+:::MLPv0.5.0 ssd 1554228251.653539896 (train.py:330) eval_size: 4952
+
+:::MLPv0.5.0 ssd 1554228251.654442310 (train.py:333) eval_accuracy: {"epoch": 32, "value": 0.1292508890899259}
+
+:::MLPv0.5.0 ssd 1554228251.655194521 (train.py:336) eval_iteration_accuracy: {"epoch": 32, "value": 0.1292508890899259}
+
+:::MLPv0.5.0 ssd 1554228251.655946493 (train.py:337) eval_target: 0.212
+
+:::MLPv0.5.0 ssd 1554228251.656713724 (train.py:338) eval_stop: 32
+Iteration:   3160, Loss function: 3.916, Average Loss: 4.102, avg. samples / sec: 528.86
+Iteration:   3180, Loss function: 3.934, Average Loss: 4.098, avg. samples / sec: 3970.07
+Iteration:   3200, Loss function: 4.043, Average Loss: 4.095, avg. samples / sec: 3983.31
+
+:::MLPv0.5.0 ssd 1554228268.607619524 (train.py:553) train_epoch: 33
+Iteration:   3220, Loss function: 3.900, Average Loss: 4.093, avg. samples / sec: 3968.87
+Iteration:   3240, Loss function: 4.030, Average Loss: 4.087, avg. samples / sec: 1079.23
+Iteration:   3260, Loss function: 3.895, Average Loss: 4.084, avg. samples / sec: 3984.48
+Iteration:   3280, Loss function: 3.952, Average Loss: 4.079, avg. samples / sec: 3973.84
+Iteration:   3300, Loss function: 3.747, Average Loss: 4.075, avg. samples / sec: 3954.81
+
+:::MLPv0.5.0 ssd 1554228314.732921600 (train.py:553) train_epoch: 34
+Iteration:   3320, Loss function: 3.918, Average Loss: 4.073, avg. samples / sec: 3962.36
+Iteration:   3340, Loss function: 4.160, Average Loss: 4.070, avg. samples / sec: 3979.32
+Iteration:   3360, Loss function: 4.053, Average Loss: 4.068, avg. samples / sec: 3954.09
+Iteration:   3380, Loss function: 3.676, Average Loss: 4.065, avg. samples / sec: 3958.81
+Iteration:   3400, Loss function: 3.935, Average Loss: 4.059, avg. samples / sec: 3969.12
+
+:::MLPv0.5.0 ssd 1554228344.467423916 (train.py:553) train_epoch: 35
+Iteration:   3420, Loss function: 3.833, Average Loss: 4.054, avg. samples / sec: 3982.94
+Iteration:   3440, Loss function: 3.966, Average Loss: 4.054, avg. samples / sec: 3973.94
+Iteration:   3460, Loss function: 4.097, Average Loss: 4.052, avg. samples / sec: 3959.17
+Iteration:   3480, Loss function: 3.829, Average Loss: 4.049, avg. samples / sec: 3974.19
+Iteration:   3500, Loss function: 3.938, Average Loss: 4.046, avg. samples / sec: 3973.45
+
+:::MLPv0.5.0 ssd 1554228374.157264471 (train.py:553) train_epoch: 36
+Iteration:   3520, Loss function: 3.943, Average Loss: 4.043, avg. samples / sec: 3980.88
+Iteration:   3540, Loss function: 3.878, Average Loss: 4.040, avg. samples / sec: 3961.67
+Iteration:   3560, Loss function: 3.791, Average Loss: 4.036, avg. samples / sec: 3952.99
+Iteration:   3580, Loss function: 3.763, Average Loss: 4.032, avg. samples / sec: 3964.95
+
+:::MLPv0.5.0 ssd 1554228404.223258018 (train.py:553) train_epoch: 37
+Iteration:   3600, Loss function: 3.638, Average Loss: 4.027, avg. samples / sec: 3958.83
+Iteration:   3620, Loss function: 4.224, Average Loss: 4.026, avg. samples / sec: 3946.64
+Iteration:   3640, Loss function: 3.685, Average Loss: 4.024, avg. samples / sec: 3962.81
+Iteration:   3660, Loss function: 3.790, Average Loss: 4.019, avg. samples / sec: 3946.38
+Iteration:   3680, Loss function: 4.037, Average Loss: 4.019, avg. samples / sec: 3956.31
+
+:::MLPv0.5.0 ssd 1554228434.102199793 (train.py:553) train_epoch: 38
+Iteration:   3700, Loss function: 3.926, Average Loss: 4.016, avg. samples / sec: 3932.72
+Iteration:   3720, Loss function: 3.902, Average Loss: 4.013, avg. samples / sec: 3952.98
+Iteration:   3740, Loss function: 4.077, Average Loss: 4.011, avg. samples / sec: 3972.95
+Iteration:   3760, Loss function: 3.912, Average Loss: 4.009, avg. samples / sec: 3957.11
+Iteration:   3780, Loss function: 3.755, Average Loss: 4.005, avg. samples / sec: 3968.48
+
+:::MLPv0.5.0 ssd 1554228463.849517822 (train.py:553) train_epoch: 39
+Iteration:   3800, Loss function: 3.769, Average Loss: 4.002, avg. samples / sec: 3969.66
+Iteration:   3820, Loss function: 3.651, Average Loss: 4.000, avg. samples / sec: 3976.30
+Iteration:   3840, Loss function: 3.855, Average Loss: 3.996, avg. samples / sec: 3955.25
+Iteration:   3860, Loss function: 3.648, Average Loss: 3.991, avg. samples / sec: 3941.08
+Iteration:   3880, Loss function: 3.920, Average Loss: 3.987, avg. samples / sec: 3952.12
+
+:::MLPv0.5.0 ssd 1554228493.974869967 (train.py:553) train_epoch: 40
+Iteration:   3900, Loss function: 3.986, Average Loss: 3.984, avg. samples / sec: 3943.36
+Iteration:   3920, Loss function: 3.603, Average Loss: 3.982, avg. samples / sec: 3953.72
+Iteration:   3940, Loss function: 3.609, Average Loss: 3.978, avg. samples / sec: 3977.06
+Iteration:   3960, Loss function: 3.702, Average Loss: 3.972, avg. samples / sec: 3959.55
+Iteration:   3980, Loss function: 3.653, Average Loss: 3.972, avg. samples / sec: 3942.09
+
+:::MLPv0.5.0 ssd 1554228523.814654112 (train.py:553) train_epoch: 41
+Iteration:   4000, Loss function: 3.874, Average Loss: 3.969, avg. samples / sec: 3941.35
+Iteration:   4020, Loss function: 3.748, Average Loss: 3.963, avg. samples / sec: 3964.55
+Iteration:   4040, Loss function: 3.718, Average Loss: 3.959, avg. samples / sec: 3964.76
+Iteration:   4060, Loss function: 3.646, Average Loss: 3.955, avg. samples / sec: 3942.62
+Iteration:   4080, Loss function: 3.852, Average Loss: 3.953, avg. samples / sec: 3924.61
+
+:::MLPv0.5.0 ssd 1554228553.678174496 (train.py:553) train_epoch: 42
+Iteration:   4100, Loss function: 3.707, Average Loss: 3.951, avg. samples / sec: 3958.30
+Iteration:   4120, Loss function: 4.254, Average Loss: 3.947, avg. samples / sec: 3970.64
+Iteration:   4140, Loss function: 3.690, Average Loss: 3.944, avg. samples / sec: 3962.49
+Iteration:   4160, Loss function: 3.485, Average Loss: 3.943, avg. samples / sec: 3945.64
+Iteration:   4180, Loss function: 3.986, Average Loss: 3.940, avg. samples / sec: 3963.84
+
+:::MLPv0.5.0 ssd 1554228583.457760096 (train.py:553) train_epoch: 43
+Iteration:   4200, Loss function: 3.916, Average Loss: 3.936, avg. samples / sec: 3977.97
+lr decay step #1
+
+:::MLPv0.5.0 ssd 1554228591.731457472 (train.py:578) opt_learning_rate: 0.009500000000000001
+
+
+
+
+
+
+
+
+
+:::MLPv0.5.0 ssd 1554228592.028244495 (train.py:217) nms_threshold: 0.5
+
+:::MLPv0.5.0 ssd 1554228592.028877497 (train.py:219) nms_max_detections: 200
+
+:::MLPv0.5.0 ssd 1554228592.029415131 (train.py:220) eval_start: 43
+Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Predicting Ended, total time: 35.60 s
+Loading and preparing results...
+Loading and preparing results...
+Loading and preparing results...
+Loading and preparing results...
+Converting ndarray to lists...
+Converting ndarray to lists...
+Converting ndarray to lists...
+Loading and preparing results...
+Converting ndarray to lists...
+(329060, 7)
+Loading and preparing results...
+Loading and preparing results...
+(329060, 7)
+(329060, 7)
+(329060, 7)
+Converting ndarray to lists...
+0/329060
+0/329060
+0/329060
+0/329060
+Converting ndarray to lists...
+Converting ndarray to lists...
+Loading and preparing results...
+(329060, 7)
+(329060, 7)
+(329060, 7)
+Converting ndarray to lists...
+0/329060
+0/329060
+0/329060
+(329060, 7)
+0/329060
+DONE (t=2.11s)
+creating index...
+DONE (t=2.13s)
+creating index...
+DONE (t=2.13s)
+creating index...
+DONE (t=2.14s)
+creating index...
+DONE (t=2.15s)
+creating index...
+DONE (t=2.16s)
+creating index...
+DONE (t=2.16s)
+creating index...
+DONE (t=2.21s)
+creating index...
+index created!
+index created!
+index created!
+index created!
+index created!
+index created!
+index created!
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=3.72s).
+Accumulating evaluation results...
+DONE (t=1.21s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.157
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.296
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.151
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.043
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.168
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.247
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.174
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.253
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.265
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.071
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.285
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.410
+Current AP: 0.15701 AP goal: 0.21200
+
+:::MLPv0.5.0 ssd 1554228634.989213943 (train.py:330) eval_size: 4952
+
+:::MLPv0.5.0 ssd 1554228634.990151882 (train.py:333) eval_accuracy: {"epoch": 43, "value": 0.15701470688463237}
+
+:::MLPv0.5.0 ssd 1554228634.990907431 (train.py:336) eval_iteration_accuracy: {"epoch": 43, "value": 0.15701470688463237}
+
+:::MLPv0.5.0 ssd 1554228634.991735220 (train.py:337) eval_target: 0.212
+
+:::MLPv0.5.0 ssd 1554228634.992474794 (train.py:338) eval_stop: 43
+Iteration:   4220, Loss function: 3.456, Average Loss: 3.933, avg. samples / sec: 491.39
+Iteration:   4240, Loss function: 3.328, Average Loss: 3.924, avg. samples / sec: 2596.30
+Iteration:   4260, Loss function: 3.139, Average Loss: 3.911, avg. samples / sec: 3993.77
+Iteration:   4280, Loss function: 3.160, Average Loss: 3.899, avg. samples / sec: 3964.63
+
+:::MLPv0.5.0 ssd 1554228660.043815136 (train.py:553) train_epoch: 44
+Iteration:   4300, Loss function: 3.375, Average Loss: 3.886, avg. samples / sec: 3993.72
+Iteration:   4320, Loss function: 3.347, Average Loss: 3.874, avg. samples / sec: 3987.79
+Iteration:   4340, Loss function: 3.329, Average Loss: 3.861, avg. samples / sec: 3978.35
+Iteration:   4360, Loss function: 3.001, Average Loss: 3.848, avg. samples / sec: 3971.95
+
+:::MLPv0.5.0 ssd 1554228689.665720224 (train.py:553) train_epoch: 45
+Iteration:   4380, Loss function: 3.411, Average Loss: 3.835, avg. samples / sec: 3977.74
+Iteration:   4400, Loss function: 3.121, Average Loss: 3.821, avg. samples / sec: 3990.95
+Iteration:   4420, Loss function: 3.089, Average Loss: 3.810, avg. samples / sec: 3953.50
+Iteration:   4440, Loss function: 3.308, Average Loss: 3.797, avg. samples / sec: 3965.25
+Iteration:   4460, Loss function: 3.288, Average Loss: 3.783, avg. samples / sec: 3962.82
+
+:::MLPv0.5.0 ssd 1554228719.394455910 (train.py:553) train_epoch: 46
+Iteration:   4480, Loss function: 3.054, Average Loss: 3.771, avg. samples / sec: 3958.15
+Iteration:   4500, Loss function: 2.971, Average Loss: 3.758, avg. samples / sec: 3976.05
+Iteration:   4520, Loss function: 3.085, Average Loss: 3.746, avg. samples / sec: 3979.02
+Iteration:   4540, Loss function: 3.095, Average Loss: 3.735, avg. samples / sec: 3945.94
+Iteration:   4560, Loss function: 3.179, Average Loss: 3.722, avg. samples / sec: 3965.69
+
+:::MLPv0.5.0 ssd 1554228749.124475718 (train.py:553) train_epoch: 47
+Iteration:   4580, Loss function: 2.915, Average Loss: 3.710, avg. samples / sec: 3978.32
+Iteration:   4600, Loss function: 2.979, Average Loss: 3.697, avg. samples / sec: 3968.27
+Iteration:   4620, Loss function: 3.114, Average Loss: 3.685, avg. samples / sec: 3962.22
+Iteration:   4640, Loss function: 2.992, Average Loss: 3.672, avg. samples / sec: 3956.46
+Iteration:   4660, Loss function: 2.939, Average Loss: 3.661, avg. samples / sec: 3953.66
+
+:::MLPv0.5.0 ssd 1554228779.205697298 (train.py:553) train_epoch: 48
+Iteration:   4680, Loss function: 3.139, Average Loss: 3.649, avg. samples / sec: 3968.13
+Iteration:   4700, Loss function: 3.168, Average Loss: 3.637, avg. samples / sec: 3958.73
+Iteration:   4720, Loss function: 3.056, Average Loss: 3.627, avg. samples / sec: 3941.98
+
+
+
+
+
+
+
+
+
+:::MLPv0.5.0 ssd 1554228799.806953907 (train.py:217) nms_threshold: 0.5
+
+:::MLPv0.5.0 ssd 1554228799.807882071 (train.py:219) nms_max_detections: 200
+
+:::MLPv0.5.0 ssd 1554228799.808701277 (train.py:220) eval_start: 48
+Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 0/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 1/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Parsing batch: 2/3Predicting Ended, total time: 40.65 s
+Loading and preparing results...
+Loading and preparing results...
+Loading and preparing results...
+Loading and preparing results...
+Loading and preparing results...
+Converting ndarray to lists...
+Converting ndarray to lists...
+Converting ndarray to lists...
+Converting ndarray to lists...
+(311278, 7)
+Loading and preparing results...
+Loading and preparing results...
+Converting ndarray to lists...
+(311278, 7)
+(311278, 7)
+(311278, 7)
+0/311278
+(311278, 7)
+Converting ndarray to lists...
+0/311278
+Converting ndarray to lists...
+0/311278
+0/311278
+(311278, 7)
+0/311278
+(311278, 7)
+0/311278
+Loading and preparing results...
+0/311278
+Converting ndarray to lists...
+(311278, 7)
+0/311278
+DONE (t=1.89s)
+creating index...
+DONE (t=1.97s)
+creating index...
+DONE (t=2.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=2.09s)
+creating index...
+DONE (t=2.10s)
+creating index...
+index created!
+DONE (t=2.11s)
+creating index...
+index created!
+index created!
+index created!
+DONE (t=2.24s)
+creating index...
+index created!
+DONE (t=2.26s)
+creating index...
+index created!
+index created!
+DONE (t=3.65s).
+Accumulating evaluation results...
+DONE (t=1.11s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.216
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.373
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.217
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.059
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.226
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.347
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.213
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.310
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.325
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.099
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.348
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.510
+Current AP: 0.21607 AP goal: 0.21200
+
+:::MLPv0.5.0 ssd 1554228847.709508419 (train.py:330) eval_size: 4952
+
+:::MLPv0.5.0 ssd 1554228847.710447550 (train.py:333) eval_accuracy: {"epoch": 48, "value": 0.21606615699810508}
+
+:::MLPv0.5.0 ssd 1554228847.711197615 (train.py:336) eval_iteration_accuracy: {"epoch": 48, "value": 0.21606615699810508}
+
+:::MLPv0.5.0 ssd 1554228847.711963654 (train.py:337) eval_target: 0.212
+
+:::MLPv0.5.0 ssd 1554228847.712699652 (train.py:338) eval_stop: 48
+
+:::MLPv0.5.0 ssd 1554228849.345118761 (train.py:706) run_stop: {"success": true}
+
+:::MLPv0.5.0 ssd 1554228849.345850229 (train.py:707) run_final
++ ret_code=0
++ set +x
+ENDING TIMING RUN AT 2019-04-02 06:14:14 PM
+RESULT,OBJECT_DETECTION,,1686,nvidia,2019-04-02 05:46:08 PM
