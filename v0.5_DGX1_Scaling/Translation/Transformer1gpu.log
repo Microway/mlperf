@@ -1,0 +1,618 @@
+Clearing caches
+:::MLPv0.5.0 transformer 1559677483.766701937 (<string>:1) run_clear_caches
+Launching on node dgx1
++ pids+=($!)
++ set +x
+++ eval echo
++++ echo
++ docker exec -e DGXSYSTEM=DGX1 -e MULTI_NODE= -e SEED=3746 -e SLURM_JOB_ID=190604154427 -e SLURM_NTASKS_PER_NODE= -e MODE=TRAIN cont_190604154427 ./run_and_time.sh
++ SEED=3746
++ MAX_TOKENS=5120
++ DATASET_DIR=/data
++ MODE=TRAIN
++ case "$MODE" in
++ source run_training.sh
+Run vars: id 190604154427 gpus 8 mparams 
++++ date +%s
+++ START=1559677484
++++ date '+%Y-%m-%d %r'
+STARTING TIMING RUN AT 2019-06-04 07:44:44 PM
+++ START_FMT='2019-06-04 07:44:44 PM'
+++ echo 'STARTING TIMING RUN AT 2019-06-04 07:44:44 PM'
+++ python -m torch.distributed.launch --nproc_per_node 1 train.py /data --seed 3746 --arch transformer_wmt_en_de_big_t2t --share-all-embeddings --optimizer adam --adam-betas '(0.9, 0.997)' --adam-eps 1e-9 --clip-norm 0.0 --lr-scheduler inverse_sqrt --warmup-init-lr 0.0 --warmup-updates 3000 --lr 6.4e-4 --min-lr 0.0 --dropout 0.1 --weight-decay 0.0 --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-tokens 5120 --max-epoch 30 --target-bleu 25.0 --ignore-case --no-save --update-freq 1 --fp16 --distributed-init-method env://
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 1, RANK: 0
+| distributed init done!
+| initialized host dgx1 as rank 0 and device id 0
+:::MLPv0.5.0 transformer 1559677486.386053085 (/workspace/translation/train.py:34) run_clear_caches
+:::MLPv0.5.0 transformer 1559677486.386390686 (/workspace/translation/train.py:40) run_start
+Namespace(adam_betas='(0.9, 0.997)', adam_eps=1e-09, adaptive_softmax_cutoff=None, arch='transformer_wmt_en_de_big_t2t', attention_dropout=0.1, beam=4, clip_norm=0.0, cpu=False, criterion='label_smoothed_cross_entropy', data='/data', decoder_attention_heads=16, decoder_embed_dim=1024, decoder_embed_path=None, decoder_ffn_embed_dim=4096, decoder_layers=6, decoder_learned_pos=False, decoder_normalize_before=True, device_id=0, distributed_backend='nccl', distributed_init_method='env://', distributed_port=-1, distributed_rank=0, distributed_world_size=1, dropout=0.1, enable_parallel_backward_allred_opt=False, enable_parallel_backward_allred_opt_correctness_check=False, encoder_attention_heads=16, encoder_embed_dim=1024, encoder_embed_path=None, encoder_ffn_embed_dim=4096, encoder_layers=6, encoder_learned_pos=False, encoder_normalize_before=True, fp16=True, fuse_dropout_add=False, fuse_relu_dropout=False, gen_subset='test', ignore_case=True, keep_interval_updates=-1, label_smoothing=0.1, left_pad_source='True', left_pad_target='False', lenpen=1, local_rank=0, log_format=None, log_interval=1000, log_translations=False, lr=[0.00064], lr_scheduler='inverse_sqrt', lr_shrink=0.1, max_epoch=30, max_len_a=0, max_len_b=200, max_sentences=None, max_sentences_valid=None, max_source_positions=1024, max_target_positions=1024, max_tokens=5120, max_update=0, min_len=1, min_loss_scale=0.0001, min_lr=0.0, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_epoch_checkpoints=False, no_progress_bar=False, no_save=True, no_token_positional_embeddings=False, num_shards=1, online_eval=False, optimizer='adam', pad_sequence=1, parallel_backward_allred_opt_threshold=0, path=None, prefix_size=0, print_alignment=False, profile=None, quiet=False, raw_text=False, relu_dropout=0.1, remove_bpe=None, replace_unk=None, restore_file='checkpoint_last.pt', sampling=False, sampling_temperature=1, sampling_topk=-1, save_dir='checkpoints', save_interval=1, save_interval_updates=0, score_reference=False, seed=3746, sentence_avg=False, shard_id=0, share_all_embeddings=True, share_decoder_input_output_embed=False, skip_invalid_size_inputs_valid_test=False, source_lang=None, target_bleu=25.0, target_lang=None, task='translation', train_subset='train', unkpen=0, unnormalized=False, update_freq=[1], valid_subset='valid', validate_interval=1, warmup_init_lr=0.0, warmup_updates=3000, weight_decay=0.0)
+:::MLPv0.5.0 transformer 1559677486.386784792 (/workspace/translation/train.py:44) opt_name: "adam"
+:::MLPv0.5.0 transformer 1559677486.387092829 (/workspace/translation/train.py:45) opt_learning_rate: [0.00064]
+:::MLPv0.5.0 transformer 1559677486.387429714 (/workspace/translation/train.py:46) opt_hp_Adam_beta1: 0.9
+:::MLPv0.5.0 transformer 1559677486.387734175 (/workspace/translation/train.py:47) opt_hp_Adam_beta2: 0.997
+:::MLPv0.5.0 transformer 1559677486.387996912 (/workspace/translation/train.py:48) opt_hp_Adam_epsilon: 1e-09
+:::MLPv0.5.0 transformer 1559677487.439457655 (/workspace/translation/train.py:53) run_set_random_seed: 3746
+| [en] dictionary: 33712 types
+| [de] dictionary: 33712 types
+:::MLPv0.5.0 transformer 1559677487.510375977 (/workspace/translation/train.py:61) model_hp_sequence_beam_search: {"alpha": 1, "beam_size": 4, "extra_decode_length": 200, "vocab_size": 33712}
+| /data train 4575637 examples
+| Sentences are being padded to multiples of: 1
+| /data valid 3000 examples
+| Sentences are being padded to multiples of: 1
+:::MLPv0.5.0 transformer 1559677488.929542303 (/workspace/translation/fairseq/models/transformer.py:96) input_max_length: 1024
+:::MLPv0.5.0 transformer 1559677488.965600014 (/workspace/translation/fairseq/models/transformer.py:119) model_hp_embedding_shared_weights: {"hidden_size": 1024, "vocab_size": 33712}
+:::MLPv0.5.0 transformer 1559677491.513930082 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677491.514687300 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677491.526778698 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677491.566777945 (/workspace/translation/fairseq/models/transformer.py:419) model_hp_relu_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677491.610465765 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677491.688397646 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677491.722269535 (/workspace/translation/fairseq/models/transformer.py:428) model_hp_ffn_filter_dense: {"filter_size": 4096, "activation": "relu", "use_bias": true}
+:::MLPv0.5.0 transformer 1559677491.722745895 (/workspace/translation/fairseq/models/transformer.py:430) model_hp_ffn_output_dense: {"hidden_size": 1024, "use_bias": true}
+:::MLPv0.5.0 transformer 1559677491.723221540 (/workspace/translation/fairseq/models/transformer.py:431) model_hp_layer_postprocess_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677491.723688841 (/workspace/translation/fairseq/models/transformer.py:432) model_hp_norm: 1024
+:::MLPv0.5.0 transformer 1559677491.724225998 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677491.724723339 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677491.733922482 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677491.765697002 (/workspace/translation/fairseq/models/transformer.py:419) model_hp_relu_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677491.799392939 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677491.860458851 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677491.886914253 (/workspace/translation/fairseq/models/transformer.py:428) model_hp_ffn_filter_dense: {"filter_size": 4096, "activation": "relu", "use_bias": true}
+:::MLPv0.5.0 transformer 1559677491.887390137 (/workspace/translation/fairseq/models/transformer.py:430) model_hp_ffn_output_dense: {"hidden_size": 1024, "use_bias": true}
+:::MLPv0.5.0 transformer 1559677491.887851238 (/workspace/translation/fairseq/models/transformer.py:431) model_hp_layer_postprocess_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677491.888306618 (/workspace/translation/fairseq/models/transformer.py:432) model_hp_norm: 1024
+:::MLPv0.5.0 transformer 1559677491.888834715 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677491.889326811 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677491.898296595 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677491.930129766 (/workspace/translation/fairseq/models/transformer.py:419) model_hp_relu_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677491.965745687 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.025462866 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.051848650 (/workspace/translation/fairseq/models/transformer.py:428) model_hp_ffn_filter_dense: {"filter_size": 4096, "activation": "relu", "use_bias": true}
+:::MLPv0.5.0 transformer 1559677492.052340031 (/workspace/translation/fairseq/models/transformer.py:430) model_hp_ffn_output_dense: {"hidden_size": 1024, "use_bias": true}
+:::MLPv0.5.0 transformer 1559677492.052814484 (/workspace/translation/fairseq/models/transformer.py:431) model_hp_layer_postprocess_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.053279638 (/workspace/translation/fairseq/models/transformer.py:432) model_hp_norm: 1024
+:::MLPv0.5.0 transformer 1559677492.053836346 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677492.054337025 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.063279152 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.095724344 (/workspace/translation/fairseq/models/transformer.py:419) model_hp_relu_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.129707336 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.189325571 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.215839386 (/workspace/translation/fairseq/models/transformer.py:428) model_hp_ffn_filter_dense: {"filter_size": 4096, "activation": "relu", "use_bias": true}
+:::MLPv0.5.0 transformer 1559677492.216312408 (/workspace/translation/fairseq/models/transformer.py:430) model_hp_ffn_output_dense: {"hidden_size": 1024, "use_bias": true}
+:::MLPv0.5.0 transformer 1559677492.216776609 (/workspace/translation/fairseq/models/transformer.py:431) model_hp_layer_postprocess_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.217234135 (/workspace/translation/fairseq/models/transformer.py:432) model_hp_norm: 1024
+:::MLPv0.5.0 transformer 1559677492.217805386 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677492.218322754 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.227291346 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.259023428 (/workspace/translation/fairseq/models/transformer.py:419) model_hp_relu_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.292662859 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.352216244 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.378571033 (/workspace/translation/fairseq/models/transformer.py:428) model_hp_ffn_filter_dense: {"filter_size": 4096, "activation": "relu", "use_bias": true}
+:::MLPv0.5.0 transformer 1559677492.379044294 (/workspace/translation/fairseq/models/transformer.py:430) model_hp_ffn_output_dense: {"hidden_size": 1024, "use_bias": true}
+:::MLPv0.5.0 transformer 1559677492.379507542 (/workspace/translation/fairseq/models/transformer.py:431) model_hp_layer_postprocess_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.379964590 (/workspace/translation/fairseq/models/transformer.py:432) model_hp_norm: 1024
+:::MLPv0.5.0 transformer 1559677492.380496502 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677492.380996466 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.389963150 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.421814680 (/workspace/translation/fairseq/models/transformer.py:419) model_hp_relu_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.455546856 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.514921665 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.563131332 (/workspace/translation/fairseq/models/transformer.py:428) model_hp_ffn_filter_dense: {"filter_size": 4096, "activation": "relu", "use_bias": true}
+:::MLPv0.5.0 transformer 1559677492.563622236 (/workspace/translation/fairseq/models/transformer.py:430) model_hp_ffn_output_dense: {"hidden_size": 1024, "use_bias": true}
+:::MLPv0.5.0 transformer 1559677492.564091682 (/workspace/translation/fairseq/models/transformer.py:431) model_hp_layer_postprocess_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.564553261 (/workspace/translation/fairseq/models/transformer.py:432) model_hp_norm: 1024
+:::MLPv0.5.0 transformer 1559677492.564965963 (/workspace/translation/fairseq/models/transformer.py:214) model_hp_hidden_layers: 6
+:::MLPv0.5.0 transformer 1559677492.567445040 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677492.568115473 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.579708576 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.619139910 (/workspace/translation/fairseq/models/transformer.py:484) model_hp_relu_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.619936466 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677492.620581627 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.632265806 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.717202663 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.788247347 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.814663649 (/workspace/translation/fairseq/models/transformer.py:508) model_hp_ffn_filter_dense: {"filter_size": 4096, "activation": "relu", "use_bias": true}
+:::MLPv0.5.0 transformer 1559677492.815148115 (/workspace/translation/fairseq/models/transformer.py:510) model_hp_ffn_output_dense: {"hidden_size": 1024, "use_bias": true}
+:::MLPv0.5.0 transformer 1559677492.815617800 (/workspace/translation/fairseq/models/transformer.py:511) model_hp_layer_postprocess_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.816080809 (/workspace/translation/fairseq/models/transformer.py:512) model_hp_norm: 1024
+:::MLPv0.5.0 transformer 1559677492.816618681 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677492.817120314 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.826150179 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.857980251 (/workspace/translation/fairseq/models/transformer.py:484) model_hp_relu_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.858609438 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677492.859129190 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677492.868118525 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.933190107 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677492.992799759 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.019454002 (/workspace/translation/fairseq/models/transformer.py:508) model_hp_ffn_filter_dense: {"filter_size": 4096, "activation": "relu", "use_bias": true}
+:::MLPv0.5.0 transformer 1559677493.019939899 (/workspace/translation/fairseq/models/transformer.py:510) model_hp_ffn_output_dense: {"hidden_size": 1024, "use_bias": true}
+:::MLPv0.5.0 transformer 1559677493.020409584 (/workspace/translation/fairseq/models/transformer.py:511) model_hp_layer_postprocess_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.020871401 (/workspace/translation/fairseq/models/transformer.py:512) model_hp_norm: 1024
+:::MLPv0.5.0 transformer 1559677493.021401882 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677493.021914959 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.030979872 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.063081264 (/workspace/translation/fairseq/models/transformer.py:484) model_hp_relu_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.063713312 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677493.064221859 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.073178291 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.138331652 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.197865963 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.224184752 (/workspace/translation/fairseq/models/transformer.py:508) model_hp_ffn_filter_dense: {"filter_size": 4096, "activation": "relu", "use_bias": true}
+:::MLPv0.5.0 transformer 1559677493.224667072 (/workspace/translation/fairseq/models/transformer.py:510) model_hp_ffn_output_dense: {"hidden_size": 1024, "use_bias": true}
+:::MLPv0.5.0 transformer 1559677493.225175619 (/workspace/translation/fairseq/models/transformer.py:511) model_hp_layer_postprocess_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.225717783 (/workspace/translation/fairseq/models/transformer.py:512) model_hp_norm: 1024
+:::MLPv0.5.0 transformer 1559677493.226257324 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677493.226770878 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.235774279 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.267432928 (/workspace/translation/fairseq/models/transformer.py:484) model_hp_relu_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.268070459 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677493.268581390 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.277752876 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.342643023 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.402003527 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.428355932 (/workspace/translation/fairseq/models/transformer.py:508) model_hp_ffn_filter_dense: {"filter_size": 4096, "activation": "relu", "use_bias": true}
+:::MLPv0.5.0 transformer 1559677493.428840399 (/workspace/translation/fairseq/models/transformer.py:510) model_hp_ffn_output_dense: {"hidden_size": 1024, "use_bias": true}
+:::MLPv0.5.0 transformer 1559677493.429310322 (/workspace/translation/fairseq/models/transformer.py:511) model_hp_layer_postprocess_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.429782867 (/workspace/translation/fairseq/models/transformer.py:512) model_hp_norm: 1024
+:::MLPv0.5.0 transformer 1559677493.430316210 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677493.430818081 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.439821005 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.471636772 (/workspace/translation/fairseq/models/transformer.py:484) model_hp_relu_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.472270489 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677493.472779512 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.481715918 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.546902180 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.606498480 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.632812738 (/workspace/translation/fairseq/models/transformer.py:508) model_hp_ffn_filter_dense: {"filter_size": 4096, "activation": "relu", "use_bias": true}
+:::MLPv0.5.0 transformer 1559677493.633296490 (/workspace/translation/fairseq/models/transformer.py:510) model_hp_ffn_output_dense: {"hidden_size": 1024, "use_bias": true}
+:::MLPv0.5.0 transformer 1559677493.633778095 (/workspace/translation/fairseq/models/transformer.py:511) model_hp_layer_postprocess_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.634243011 (/workspace/translation/fairseq/models/transformer.py:512) model_hp_norm: 1024
+:::MLPv0.5.0 transformer 1559677493.634776831 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677493.635280848 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.644407749 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.676107168 (/workspace/translation/fairseq/models/transformer.py:484) model_hp_relu_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.676744461 (/workspace/translation/fairseq/modules/multihead_attention.py:158) model_hp_attention_dense: {"num_heads": 16, "hidden_size": 1024, "use_bias": false}
+:::MLPv0.5.0 transformer 1559677493.677255392 (/workspace/translation/fairseq/modules/multihead_attention.py:162) model_hp_attention_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.686225414 (/workspace/translation/fairseq/modules/multihead_attention.py:188) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.751417398 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.810651541 (/workspace/translation/fairseq/models/transformer.py:593) model_hp_initializer_gain: 1
+:::MLPv0.5.0 transformer 1559677493.837101936 (/workspace/translation/fairseq/models/transformer.py:508) model_hp_ffn_filter_dense: {"filter_size": 4096, "activation": "relu", "use_bias": true}
+:::MLPv0.5.0 transformer 1559677493.837610245 (/workspace/translation/fairseq/models/transformer.py:510) model_hp_ffn_output_dense: {"hidden_size": 1024, "use_bias": true}
+:::MLPv0.5.0 transformer 1559677493.838081598 (/workspace/translation/fairseq/models/transformer.py:511) model_hp_layer_postprocess_dropout: 0.1
+:::MLPv0.5.0 transformer 1559677493.838544369 (/workspace/translation/fairseq/models/transformer.py:512) model_hp_norm: 1024
+:::MLPv0.5.0 transformer 1559677493.838961124 (/workspace/translation/fairseq/models/transformer.py:302) model_hp_hidden_layers: 6
+| model transformer_wmt_en_de_big_t2t, criterion LabelSmoothedCrossEntropyCriterion
+| num. model params: 210808832
+| training on 1 GPUs
+| max tokens per GPU = 5120 and max sentences per GPU = None
+:::MLPv0.5.0 transformer 1559677496.622132301 (/workspace/translation/train.py:88) input_batch_size: 5120
+:::MLPv0.5.0 transformer 1559677496.622540951 (/workspace/translation/train.py:89) input_order
+:::MLPv0.5.0 transformer 1559677497.193174362 (/workspace/translation/fairseq/optim/lr_scheduler/inverse_square_root_schedule.py:42) opt_learning_rate_warmup_steps: 3000
+:::MLPv0.5.0 transformer 1559677497.193647146 (/workspace/translation/train.py:114) train_loop
+:::MLPv0.5.0 transformer 1559677497.193934679 (/workspace/translation/train.py:116) train_epoch: 0
+generated batches in  1.2578566074371338 s
+got epoch iterator 1.2581627368927002
+| WARNING: overflow detected, setting loss scale to: 64.0
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 001:   1000 / 31488 loss=11.018, nll_loss=10.365, ppl=1318.91, wps=34691, ups=7.5, wpb=4529, bsz=146, num_updates=999, lr=0.00021312, gnorm=218284.568, clip=100%, oom=0, loss_scale=32.000, wall=133
+| epoch 001:   2000 / 31488 loss=9.982, nll_loss=9.154, ppl=569.61, wps=34609, ups=7.6, wpb=4519, bsz=146, num_updates=1999, lr=0.000426453, gnorm=178967.413, clip=100%, oom=0, loss_scale=32.000, wall=263
+| WARNING: overflow detected, setting loss scale to: 32.0
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 001:   3000 / 31488 loss=9.294, nll_loss=8.350, ppl=326.31, wps=34685, ups=7.6, wpb=4518, bsz=145, num_updates=2997, lr=0.00063936, gnorm=166471.528, clip=100%, oom=0, loss_scale=16.000, wall=392
+| epoch 001:   4000 / 31488 loss=8.785, nll_loss=7.758, ppl=216.48, wps=34669, ups=7.7, wpb=4507, bsz=145, num_updates=3997, lr=0.000554464, gnorm=141865.358, clip=100%, oom=0, loss_scale=16.000, wall=522
+| epoch 001:   5000 / 31488 loss=8.396, nll_loss=7.306, ppl=158.28, wps=34748, ups=7.7, wpb=4512, bsz=145, num_updates=4997, lr=0.000495891, gnorm=129220.024, clip=100%, oom=0, loss_scale=32.000, wall=651
+| epoch 001:   6000 / 31488 loss=8.083, nll_loss=6.944, ppl=123.09, wps=34769, ups=7.7, wpb=4514, bsz=146, num_updates=5997, lr=0.000452662, gnorm=132854.571, clip=100%, oom=0, loss_scale=32.000, wall=781
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 001:   7000 / 31488 loss=7.838, nll_loss=6.661, ppl=101.16, wps=34772, ups=7.7, wpb=4513, bsz=145, num_updates=6996, lr=0.000419098, gnorm=137522.280, clip=100%, oom=0, loss_scale=32.000, wall=910
+| epoch 001:   8000 / 31488 loss=7.648, nll_loss=6.443, ppl=86.97, wps=34784, ups=7.7, wpb=4515, bsz=145, num_updates=7996, lr=0.000392016, gnorm=139915.551, clip=100%, oom=0, loss_scale=32.000, wall=1040
+| epoch 001:   9000 / 31488 loss=7.481, nll_loss=6.250, ppl=76.12, wps=34818, ups=7.7, wpb=4518, bsz=145, num_updates=8996, lr=0.000369586, gnorm=141460.855, clip=100%, oom=0, loss_scale=64.000, wall=1170
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 001:  10000 / 31488 loss=7.345, nll_loss=6.094, ppl=68.30, wps=34842, ups=7.7, wpb=4519, bsz=144, num_updates=9995, lr=0.00035063, gnorm=148588.235, clip=100%, oom=0, loss_scale=32.000, wall=1299
+| epoch 001:  11000 / 31488 loss=7.222, nll_loss=5.953, ppl=61.95, wps=34856, ups=7.7, wpb=4519, bsz=145, num_updates=10995, lr=0.000334305, gnorm=148078.573, clip=100%, oom=0, loss_scale=32.000, wall=1428
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 001:  12000 / 31488 loss=7.115, nll_loss=5.831, ppl=56.91, wps=34853, ups=7.7, wpb=4517, bsz=145, num_updates=11994, lr=0.00032008, gnorm=142706.838, clip=100%, oom=0, loss_scale=16.000, wall=1556
+| epoch 001:  13000 / 31488 loss=7.017, nll_loss=5.718, ppl=52.65, wps=34856, ups=7.7, wpb=4518, bsz=145, num_updates=12994, lr=0.000307517, gnorm=137032.864, clip=100%, oom=0, loss_scale=16.000, wall=1686
+| epoch 001:  14000 / 31488 loss=6.930, nll_loss=5.619, ppl=49.15, wps=34859, ups=7.7, wpb=4518, bsz=145, num_updates=13994, lr=0.000296326, gnorm=135838.143, clip=100%, oom=0, loss_scale=32.000, wall=1816
+| epoch 001:  15000 / 31488 loss=6.848, nll_loss=5.526, ppl=46.06, wps=34856, ups=7.7, wpb=4519, bsz=145, num_updates=14994, lr=0.000286274, gnorm=135336.137, clip=100%, oom=0, loss_scale=32.000, wall=1946
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 001:  16000 / 31488 loss=6.773, nll_loss=5.441, ppl=43.43, wps=34868, ups=7.7, wpb=4522, bsz=145, num_updates=15993, lr=0.000277189, gnorm=140705.389, clip=100%, oom=0, loss_scale=32.000, wall=2076
+| epoch 001:  17000 / 31488 loss=6.706, nll_loss=5.364, ppl=41.18, wps=34869, ups=7.7, wpb=4522, bsz=145, num_updates=16993, lr=0.000268909, gnorm=139391.735, clip=100%, oom=0, loss_scale=32.000, wall=2206
+| epoch 001:  18000 / 31488 loss=6.644, nll_loss=5.294, ppl=39.23, wps=34861, ups=7.7, wpb=4523, bsz=145, num_updates=17993, lr=0.00026133, gnorm=138036.895, clip=100%, oom=0, loss_scale=64.000, wall=2336
+| epoch 001:  19000 / 31488 loss=6.585, nll_loss=5.227, ppl=37.45, wps=34837, ups=7.7, wpb=4521, bsz=145, num_updates=18993, lr=0.000254357, gnorm=142251.434, clip=100%, oom=0, loss_scale=64.000, wall=2467
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 001:  20000 / 31488 loss=6.530, nll_loss=5.164, ppl=35.85, wps=34839, ups=7.7, wpb=4521, bsz=145, num_updates=19992, lr=0.000247921, gnorm=140607.086, clip=100%, oom=0, loss_scale=32.000, wall=2597
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 001:  21000 / 31488 loss=6.477, nll_loss=5.104, ppl=34.40, wps=34836, ups=7.7, wpb=4522, bsz=145, num_updates=20991, lr=0.000241949, gnorm=137188.093, clip=100%, oom=0, loss_scale=16.000, wall=2727
+| epoch 001:  22000 / 31488 loss=6.431, nll_loss=5.052, ppl=33.17, wps=34840, ups=7.7, wpb=4523, bsz=145, num_updates=21991, lr=0.000236384, gnorm=133185.616, clip=100%, oom=0, loss_scale=16.000, wall=2857
+| epoch 001:  23000 / 31488 loss=6.382, nll_loss=4.997, ppl=31.94, wps=34833, ups=7.7, wpb=4524, bsz=145, num_updates=22991, lr=0.000231186, gnorm=130742.554, clip=100%, oom=0, loss_scale=32.000, wall=2988
+| epoch 001:  24000 / 31488 loss=6.339, nll_loss=4.948, ppl=30.87, wps=34828, ups=7.7, wpb=4523, bsz=145, num_updates=23991, lr=0.000226317, gnorm=129042.823, clip=100%, oom=0, loss_scale=32.000, wall=3118
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 001:  25000 / 31488 loss=6.298, nll_loss=4.902, ppl=29.90, wps=34818, ups=7.7, wpb=4523, bsz=145, num_updates=24990, lr=0.000221747, gnorm=127477.033, clip=100%, oom=0, loss_scale=32.000, wall=3249
+| epoch 001:  26000 / 31488 loss=6.258, nll_loss=4.856, ppl=28.96, wps=34804, ups=7.7, wpb=4522, bsz=145, num_updates=25990, lr=0.000217439, gnorm=125815.947, clip=100%, oom=0, loss_scale=32.000, wall=3379
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 001:  27000 / 31488 loss=6.221, nll_loss=4.816, ppl=28.16, wps=34801, ups=7.7, wpb=4522, bsz=145, num_updates=26989, lr=0.000213377, gnorm=124746.956, clip=100%, oom=0, loss_scale=32.000, wall=3509
+| epoch 001:  28000 / 31488 loss=6.187, nll_loss=4.777, ppl=27.42, wps=34794, ups=7.7, wpb=4521, bsz=145, num_updates=27989, lr=0.00020953, gnorm=123192.055, clip=100%, oom=0, loss_scale=32.000, wall=3639
+| epoch 001:  29000 / 31488 loss=6.151, nll_loss=4.737, ppl=26.66, wps=34781, ups=7.7, wpb=4520, bsz=145, num_updates=28989, lr=0.000205885, gnorm=122826.389, clip=100%, oom=0, loss_scale=64.000, wall=3770
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 001:  30000 / 31488 loss=6.119, nll_loss=4.700, ppl=26.00, wps=34772, ups=7.7, wpb=4519, bsz=145, num_updates=29988, lr=0.000202426, gnorm=122596.938, clip=100%, oom=0, loss_scale=32.000, wall=3899
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 001:  31000 / 31488 loss=6.087, nll_loss=4.664, ppl=25.35, wps=34770, ups=7.7, wpb=4519, bsz=145, num_updates=30987, lr=0.000199136, gnorm=119948.831, clip=100%, oom=0, loss_scale=16.000, wall=4029
+| epoch 001 | loss 6.072 | nll_loss 4.647 | ppl 25.05 | wps 34771 | ups 7.7 | wpb 4519 | bsz 145 | num_updates 31474 | lr 0.00019759 | gnorm 118667.896 | clip 100% | oom 0 | loss_scale 16.000 | wall 4093
+epoch time  4090.6684947013855
+generated batches in  0.0006804466247558594 s
+| epoch 001 | valid on 'valid' subset | valid_loss 4.76824 | valid_nll_loss 3.11267 | valid_ppl 8.65 | num_updates 31474
+:::MLPv0.5.0 transformer 1559681590.354134321 (/workspace/translation/train.py:149) eval_start: 1
+| /data test 3003 examples
+| Sentences are being padded to multiples of: 1
+generated batches in  0.0005118846893310547 s
+| Translated 3003 sentences (85125 tokens) in 23.4s (128.10 sentences/s, 3631.09 tokens/s)
+| Generate test with beam=4: BLEU4 = 19.75, 52.5/25.2/14.0/8.2 (BP=1.000, ratio=1.037, syslen=66918, reflen=64512)
+| Eval completed in: 40.94s
+:::MLPv0.5.0 transformer 1559681631.297277451 (/workspace/translation/train.py:152) eval_accuracy: {"epoch": 1, "value": 19.748284281310806}
+:::MLPv0.5.0 transformer 1559681631.297931433 (/workspace/translation/train.py:153) eval_target: 25.0
+:::MLPv0.5.0 transformer 1559681631.298750401 (/workspace/translation/train.py:154) eval_stop: 1
+validation and scoring  42.178043603897095
+:::MLPv0.5.0 transformer 1559681631.299606323 (/workspace/translation/train.py:116) train_epoch: 1
+generated batches in  1.4628322124481201 s
+got epoch iterator 1.5747034549713135
+| epoch 002:   1000 / 31488 loss=5.090, nll_loss=3.542, ppl=11.65, wps=34657, ups=5.7, wpb=4515, bsz=147, num_updates=32475, lr=0.000194521, gnorm=116642.616, clip=100%, oom=0, loss_scale=32.000, wall=4267
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 002:   2000 / 31488 loss=5.110, nll_loss=3.566, ppl=11.84, wps=34769, ups=6.6, wpb=4518, bsz=144, num_updates=33474, lr=0.000191596, gnorm=115031.801, clip=100%, oom=0, loss_scale=16.000, wall=4396
+| epoch 002:   3000 / 31488 loss=5.084, nll_loss=3.536, ppl=11.60, wps=34624, ups=6.9, wpb=4507, bsz=144, num_updates=34474, lr=0.000188797, gnorm=112732.626, clip=100%, oom=0, loss_scale=16.000, wall=4527
+| epoch 002:   4000 / 31488 loss=5.074, nll_loss=3.526, ppl=11.52, wps=34606, ups=7.1, wpb=4503, bsz=145, num_updates=35474, lr=0.000186117, gnorm=110831.969, clip=100%, oom=0, loss_scale=32.000, wall=4657
+| epoch 002:   5000 / 31488 loss=5.072, nll_loss=3.523, ppl=11.50, wps=34622, ups=7.2, wpb=4505, bsz=145, num_updates=36474, lr=0.000183548, gnorm=109730.860, clip=100%, oom=0, loss_scale=32.000, wall=4787
+| epoch 002:   6000 / 31488 loss=5.061, nll_loss=3.511, ppl=11.40, wps=34645, ups=7.3, wpb=4510, bsz=145, num_updates=37474, lr=0.000181082, gnorm=109175.446, clip=100%, oom=0, loss_scale=64.000, wall=4917
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 002:   7000 / 31488 loss=5.053, nll_loss=3.502, ppl=11.33, wps=34659, ups=7.3, wpb=4514, bsz=145, num_updates=38473, lr=0.000178716, gnorm=108772.976, clip=100%, oom=0, loss_scale=32.000, wall=5048
+| epoch 002:   8000 / 31488 loss=5.042, nll_loss=3.490, ppl=11.24, wps=34673, ups=7.4, wpb=4516, bsz=145, num_updates=39473, lr=0.000176437, gnorm=107768.967, clip=100%, oom=0, loss_scale=32.000, wall=5178
+| epoch 002:   9000 / 31488 loss=5.033, nll_loss=3.481, ppl=11.17, wps=34668, ups=7.4, wpb=4516, bsz=145, num_updates=40473, lr=0.000174244, gnorm=107920.056, clip=100%, oom=0, loss_scale=64.000, wall=5309
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 002:  10000 / 31488 loss=5.025, nll_loss=3.472, ppl=11.09, wps=34673, ups=7.4, wpb=4519, bsz=145, num_updates=41472, lr=0.000172133, gnorm=108526.082, clip=100%, oom=0, loss_scale=32.000, wall=5439
+| epoch 002:  11000 / 31488 loss=5.017, nll_loss=3.463, ppl=11.03, wps=34664, ups=7.4, wpb=4518, bsz=145, num_updates=42472, lr=0.000170094, gnorm=107552.268, clip=100%, oom=0, loss_scale=32.000, wall=5570
+| epoch 002:  12000 / 31488 loss=5.012, nll_loss=3.458, ppl=10.99, wps=34691, ups=7.5, wpb=4522, bsz=145, num_updates=43472, lr=0.000168126, gnorm=106678.737, clip=100%, oom=0, loss_scale=64.000, wall=5700
+| epoch 002:  13000 / 31488 loss=5.007, nll_loss=3.452, ppl=10.94, wps=34700, ups=7.5, wpb=4521, bsz=145, num_updates=44472, lr=0.000166225, gnorm=107275.042, clip=100%, oom=0, loss_scale=64.000, wall=5830
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 002:  14000 / 31488 loss=5.000, nll_loss=3.445, ppl=10.89, wps=34730, ups=7.5, wpb=4525, bsz=145, num_updates=45471, lr=0.000164389, gnorm=107679.417, clip=100%, oom=0, loss_scale=32.000, wall=5960
+| epoch 002:  15000 / 31488 loss=4.993, nll_loss=3.437, ppl=10.83, wps=34730, ups=7.5, wpb=4522, bsz=145, num_updates=46471, lr=0.000162611, gnorm=106779.495, clip=100%, oom=0, loss_scale=32.000, wall=6089
+| epoch 002:  16000 / 31488 loss=4.989, nll_loss=3.432, ppl=10.79, wps=34739, ups=7.5, wpb=4522, bsz=145, num_updates=47471, lr=0.000160889, gnorm=106013.878, clip=100%, oom=0, loss_scale=64.000, wall=6219
+| epoch 002:  17000 / 31488 loss=4.983, nll_loss=3.427, ppl=10.75, wps=34757, ups=7.5, wpb=4523, bsz=145, num_updates=48471, lr=0.000159221, gnorm=106500.168, clip=100%, oom=0, loss_scale=64.000, wall=6348
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 002:  18000 / 31488 loss=4.978, nll_loss=3.421, ppl=10.71, wps=34765, ups=7.5, wpb=4524, bsz=145, num_updates=49470, lr=0.000157605, gnorm=106620.791, clip=100%, oom=0, loss_scale=32.000, wall=6478
+| epoch 002:  19000 / 31488 loss=4.974, nll_loss=3.417, ppl=10.68, wps=34750, ups=7.6, wpb=4521, bsz=145, num_updates=50470, lr=0.000156036, gnorm=105780.625, clip=100%, oom=0, loss_scale=32.000, wall=6607
+| epoch 002:  20000 / 31488 loss=4.970, nll_loss=3.412, ppl=10.65, wps=34751, ups=7.6, wpb=4520, bsz=145, num_updates=51470, lr=0.000154512, gnorm=105291.996, clip=100%, oom=0, loss_scale=64.000, wall=6737
+| epoch 002:  21000 / 31488 loss=4.962, nll_loss=3.403, ppl=10.58, wps=34750, ups=7.6, wpb=4521, bsz=145, num_updates=52470, lr=0.000153033, gnorm=105719.874, clip=100%, oom=0, loss_scale=64.000, wall=6868
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 002:  22000 / 31488 loss=4.958, nll_loss=3.399, ppl=10.55, wps=34763, ups=7.6, wpb=4522, bsz=145, num_updates=53469, lr=0.000151597, gnorm=105760.497, clip=100%, oom=0, loss_scale=32.000, wall=6998
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 002:  23000 / 31488 loss=4.954, nll_loss=3.395, ppl=10.52, wps=34757, ups=7.6, wpb=4521, bsz=145, num_updates=54468, lr=0.0001502, gnorm=104649.388, clip=100%, oom=0, loss_scale=16.000, wall=7127
+| epoch 002:  24000 / 31488 loss=4.950, nll_loss=3.391, ppl=10.49, wps=34749, ups=7.6, wpb=4519, bsz=146, num_updates=55468, lr=0.00014884, gnorm=103327.086, clip=100%, oom=0, loss_scale=16.000, wall=7257
+| epoch 002:  25000 / 31488 loss=4.945, nll_loss=3.384, ppl=10.44, wps=34752, ups=7.6, wpb=4520, bsz=146, num_updates=56468, lr=0.000147516, gnorm=102371.312, clip=100%, oom=0, loss_scale=32.000, wall=7387
+| epoch 002:  26000 / 31488 loss=4.941, nll_loss=3.381, ppl=10.42, wps=34751, ups=7.6, wpb=4520, bsz=146, num_updates=57468, lr=0.000146227, gnorm=101686.262, clip=100%, oom=0, loss_scale=32.000, wall=7517
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 002:  27000 / 31488 loss=4.936, nll_loss=3.375, ppl=10.37, wps=34738, ups=7.6, wpb=4518, bsz=146, num_updates=58467, lr=0.000144972, gnorm=101225.487, clip=100%, oom=0, loss_scale=32.000, wall=7647
+| epoch 002:  28000 / 31488 loss=4.932, nll_loss=3.371, ppl=10.34, wps=34743, ups=7.6, wpb=4519, bsz=145, num_updates=59467, lr=0.000143748, gnorm=100575.173, clip=100%, oom=0, loss_scale=32.000, wall=7778
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 002:  29000 / 31488 loss=4.924, nll_loss=3.362, ppl=10.28, wps=34730, ups=7.6, wpb=4519, bsz=145, num_updates=60466, lr=0.000142556, gnorm=99729.720, clip=100%, oom=0, loss_scale=16.000, wall=7908
+| epoch 002:  30000 / 31488 loss=4.920, nll_loss=3.358, ppl=10.25, wps=34738, ups=7.6, wpb=4519, bsz=145, num_updates=61466, lr=0.000141391, gnorm=98614.160, clip=100%, oom=0, loss_scale=16.000, wall=8038
+| epoch 002:  31000 / 31488 loss=4.917, nll_loss=3.354, ppl=10.23, wps=34748, ups=7.6, wpb=4519, bsz=145, num_updates=62466, lr=0.000140255, gnorm=97715.016, clip=100%, oom=0, loss_scale=32.000, wall=8167
+| epoch 002 | loss 4.914 | nll_loss 3.352 | ppl 10.21 | wps 34750 | ups 7.6 | wpb 4519 | bsz 145 | num_updates 62953 | lr 0.000139712 | gnorm 97422.425 | clip 100% | oom 0 | loss_scale 32.000 | wall 8230
+epoch time  4093.8162989616394
+generated batches in  0.0007550716400146484 s
+| epoch 002 | valid on 'valid' subset | valid_loss 4.42039 | valid_nll_loss 2.7485 | valid_ppl 6.72 | num_updates 62953
+:::MLPv0.5.0 transformer 1559685727.931920052 (/workspace/translation/train.py:149) eval_start: 2
+generated batches in  0.0005729198455810547 s
+| Translated 3003 sentences (87109 tokens) in 24.2s (124.13 sentences/s, 3600.69 tokens/s)
+| Generate test with beam=4: BLEU4 = 21.73, 53.7/27.3/15.8/9.6 (BP=1.000, ratio=1.056, syslen=68114, reflen=64512)
+| Eval completed in: 41.84s
+:::MLPv0.5.0 transformer 1559685769.776765108 (/workspace/translation/train.py:152) eval_accuracy: {"epoch": 2, "value": 21.731163142659327}
+:::MLPv0.5.0 transformer 1559685769.777356863 (/workspace/translation/train.py:153) eval_target: 25.0
+:::MLPv0.5.0 transformer 1559685769.777862549 (/workspace/translation/train.py:154) eval_stop: 2
+validation and scoring  43.0873064994812
+:::MLPv0.5.0 transformer 1559685769.778465748 (/workspace/translation/train.py:116) train_epoch: 2
+generated batches in  1.4445888996124268 s
+got epoch iterator 1.5562465190887451
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 003:   1000 / 31488 loss=4.708, nll_loss=3.122, ppl=8.70, wps=35006, ups=5.7, wpb=4540, bsz=147, num_updates=63953, lr=0.000138615, gnorm=96844.822, clip=100%, oom=0, loss_scale=16.000, wall=8405
+| epoch 003:   2000 / 31488 loss=4.717, nll_loss=3.133, ppl=8.77, wps=34943, ups=6.6, wpb=4524, bsz=146, num_updates=64953, lr=0.000137544, gnorm=95822.858, clip=100%, oom=0, loss_scale=16.000, wall=8534
+| epoch 003:   3000 / 31488 loss=4.718, nll_loss=3.133, ppl=8.78, wps=34873, ups=6.9, wpb=4511, bsz=144, num_updates=65953, lr=0.000136497, gnorm=94836.354, clip=100%, oom=0, loss_scale=32.000, wall=8663
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 003:   4000 / 31488 loss=4.722, nll_loss=3.138, ppl=8.80, wps=34788, ups=7.1, wpb=4503, bsz=144, num_updates=66952, lr=0.000135475, gnorm=94002.833, clip=100%, oom=0, loss_scale=16.000, wall=8792
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 003:   5000 / 31488 loss=4.722, nll_loss=3.138, ppl=8.80, wps=34757, ups=7.2, wpb=4504, bsz=144, num_updates=67951, lr=0.000134475, gnorm=93017.393, clip=100%, oom=0, loss_scale=8.000, wall=8922
+| epoch 003:   6000 / 31488 loss=4.717, nll_loss=3.133, ppl=8.77, wps=34727, ups=7.3, wpb=4508, bsz=144, num_updates=68951, lr=0.000133497, gnorm=91888.171, clip=100%, oom=0, loss_scale=8.000, wall=9053
+| epoch 003:   7000 / 31488 loss=4.718, nll_loss=3.134, ppl=8.78, wps=34723, ups=7.3, wpb=4506, bsz=144, num_updates=69951, lr=0.000132539, gnorm=90836.684, clip=100%, oom=0, loss_scale=16.000, wall=9183
+| epoch 003:   8000 / 31488 loss=4.717, nll_loss=3.133, ppl=8.77, wps=34726, ups=7.4, wpb=4504, bsz=145, num_updates=70951, lr=0.000131602, gnorm=89982.039, clip=100%, oom=0, loss_scale=16.000, wall=9312
+| epoch 003:   9000 / 31488 loss=4.711, nll_loss=3.126, ppl=8.73, wps=34768, ups=7.4, wpb=4511, bsz=145, num_updates=71951, lr=0.000130684, gnorm=89236.195, clip=100%, oom=0, loss_scale=32.000, wall=9442
+| epoch 003:  10000 / 31488 loss=4.699, nll_loss=3.112, ppl=8.65, wps=34767, ups=7.4, wpb=4514, bsz=145, num_updates=72951, lr=0.000129785, gnorm=88828.339, clip=100%, oom=0, loss_scale=32.000, wall=9573
+| epoch 003:  11000 / 31488 loss=4.701, nll_loss=3.115, ppl=8.66, wps=34790, ups=7.5, wpb=4515, bsz=145, num_updates=73951, lr=0.000128905, gnorm=88617.159, clip=100%, oom=0, loss_scale=64.000, wall=9702
+| epoch 003:  12000 / 31488 loss=4.702, nll_loss=3.117, ppl=8.67, wps=34787, ups=7.5, wpb=4513, bsz=145, num_updates=74951, lr=0.000128042, gnorm=89027.473, clip=100%, oom=0, loss_scale=64.000, wall=9831
+| epoch 003:  13000 / 31488 loss=4.702, nll_loss=3.117, ppl=8.67, wps=34801, ups=7.5, wpb=4514, bsz=145, num_updates=75951, lr=0.000127196, gnorm=89770.412, clip=100%, oom=0, loss_scale=128.000, wall=9961
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 003:  14000 / 31488 loss=4.704, nll_loss=3.118, ppl=8.68, wps=34791, ups=7.5, wpb=4512, bsz=145, num_updates=76950, lr=0.000126368, gnorm=90936.018, clip=100%, oom=0, loss_scale=64.000, wall=10090
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 003:  15000 / 31488 loss=4.704, nll_loss=3.119, ppl=8.69, wps=34784, ups=7.5, wpb=4511, bsz=145, num_updates=77949, lr=0.000125555, gnorm=91078.623, clip=100%, oom=0, loss_scale=32.000, wall=10220
+| epoch 003:  16000 / 31488 loss=4.701, nll_loss=3.116, ppl=8.67, wps=34805, ups=7.5, wpb=4514, bsz=146, num_updates=78949, lr=0.000124758, gnorm=90671.863, clip=100%, oom=0, loss_scale=32.000, wall=10349
+| epoch 003:  17000 / 31488 loss=4.699, nll_loss=3.113, ppl=8.65, wps=34808, ups=7.6, wpb=4515, bsz=145, num_updates=79949, lr=0.000123975, gnorm=90494.396, clip=100%, oom=0, loss_scale=64.000, wall=10480
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 003:  18000 / 31488 loss=4.698, nll_loss=3.113, ppl=8.65, wps=34806, ups=7.6, wpb=4515, bsz=145, num_updates=80948, lr=0.000123208, gnorm=90593.758, clip=100%, oom=0, loss_scale=32.000, wall=10609
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 003:  19000 / 31488 loss=4.700, nll_loss=3.114, ppl=8.66, wps=34799, ups=7.6, wpb=4514, bsz=145, num_updates=81947, lr=0.000122454, gnorm=89957.755, clip=100%, oom=0, loss_scale=16.000, wall=10739
+| epoch 003:  20000 / 31488 loss=4.699, nll_loss=3.114, ppl=8.66, wps=34819, ups=7.6, wpb=4517, bsz=145, num_updates=82947, lr=0.000121714, gnorm=89231.182, clip=100%, oom=0, loss_scale=16.000, wall=10868
+| epoch 003:  21000 / 31488 loss=4.696, nll_loss=3.110, ppl=8.63, wps=34803, ups=7.6, wpb=4516, bsz=145, num_updates=83947, lr=0.000120987, gnorm=88755.301, clip=100%, oom=0, loss_scale=32.000, wall=10999
+| epoch 003:  22000 / 31488 loss=4.696, nll_loss=3.110, ppl=8.64, wps=34790, ups=7.6, wpb=4514, bsz=145, num_updates=84947, lr=0.000120273, gnorm=88403.770, clip=100%, oom=0, loss_scale=32.000, wall=11129
+| epoch 003:  23000 / 31488 loss=4.693, nll_loss=3.108, ppl=8.62, wps=34805, ups=7.6, wpb=4516, bsz=145, num_updates=85947, lr=0.000119571, gnorm=88532.630, clip=100%, oom=0, loss_scale=64.000, wall=11259
+| epoch 003:  24000 / 31488 loss=4.691, nll_loss=3.106, ppl=8.61, wps=34818, ups=7.6, wpb=4518, bsz=145, num_updates=86947, lr=0.000118881, gnorm=88866.946, clip=100%, oom=0, loss_scale=64.000, wall=11389
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 003:  25000 / 31488 loss=4.690, nll_loss=3.104, ppl=8.60, wps=34808, ups=7.6, wpb=4518, bsz=145, num_updates=87946, lr=0.000118204, gnorm=89202.026, clip=100%, oom=0, loss_scale=64.000, wall=11519
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 003:  26000 / 31488 loss=4.689, nll_loss=3.103, ppl=8.59, wps=34803, ups=7.6, wpb=4518, bsz=145, num_updates=88945, lr=0.000117538, gnorm=89245.907, clip=100%, oom=0, loss_scale=32.000, wall=11649
+| epoch 003:  27000 / 31488 loss=4.687, nll_loss=3.102, ppl=8.58, wps=34808, ups=7.6, wpb=4519, bsz=145, num_updates=89945, lr=0.000116883, gnorm=88900.326, clip=100%, oom=0, loss_scale=32.000, wall=11779
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 003:  28000 / 31488 loss=4.684, nll_loss=3.098, ppl=8.56, wps=34801, ups=7.6, wpb=4518, bsz=145, num_updates=90944, lr=0.000116239, gnorm=88767.788, clip=100%, oom=0, loss_scale=32.000, wall=11909
+| epoch 003:  29000 / 31488 loss=4.682, nll_loss=3.096, ppl=8.55, wps=34811, ups=7.6, wpb=4520, bsz=145, num_updates=91944, lr=0.000115606, gnorm=88435.762, clip=100%, oom=0, loss_scale=32.000, wall=12039
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 003:  30000 / 31488 loss=4.681, nll_loss=3.095, ppl=8.54, wps=34814, ups=7.6, wpb=4520, bsz=145, num_updates=92943, lr=0.000114983, gnorm=88038.601, clip=100%, oom=0, loss_scale=16.000, wall=12169
+| epoch 003:  31000 / 31488 loss=4.680, nll_loss=3.094, ppl=8.54, wps=34809, ups=7.6, wpb=4519, bsz=145, num_updates=93943, lr=0.000114369, gnorm=87413.571, clip=100%, oom=0, loss_scale=16.000, wall=12298
+| WARNING: overflow detected, setting loss scale to: 8.0
+| epoch 003 | loss 4.680 | nll_loss 3.093 | ppl 8.53 | wps 34811 | ups 7.6 | wpb 4519 | bsz 145 | num_updates 94429 | lr 0.000114074 | gnorm 87045.577 | clip 100% | oom 0 | loss_scale 8.000 | wall 12361
+epoch time  4086.2345147132874
+generated batches in  0.0007250308990478516 s
+| epoch 003 | valid on 'valid' subset | valid_loss 4.28832 | valid_nll_loss 2.59369 | valid_ppl 6.04 | num_updates 94429
+:::MLPv0.5.0 transformer 1559689858.801526785 (/workspace/translation/train.py:149) eval_start: 3
+generated batches in  0.0005156993865966797 s
+| Translated 3003 sentences (86655 tokens) in 25.5s (117.76 sentences/s, 3398.21 tokens/s)
+| Generate test with beam=4: BLEU4 = 23.13, 55.3/28.7/17.0/10.6 (BP=1.000, ratio=1.047, syslen=67536, reflen=64512)
+| Eval completed in: 48.87s
+:::MLPv0.5.0 transformer 1559689907.679317474 (/workspace/translation/train.py:152) eval_accuracy: {"epoch": 3, "value": 23.128310492543175}
+:::MLPv0.5.0 transformer 1559689907.680044174 (/workspace/translation/train.py:153) eval_target: 25.0
+:::MLPv0.5.0 transformer 1559689907.680619240 (/workspace/translation/train.py:154) eval_stop: 3
+validation and scoring  50.11150908470154
+:::MLPv0.5.0 transformer 1559689907.681410313 (/workspace/translation/train.py:116) train_epoch: 3
+generated batches in  1.2960963249206543 s
+got epoch iterator 1.4085495471954346
+| epoch 004:   1000 / 31488 loss=4.625, nll_loss=3.032, ppl=8.18, wps=34610, ups=5.5, wpb=4488, bsz=144, num_updates=95430, lr=0.000113474, gnorm=86283.671, clip=100%, oom=0, loss_scale=8.000, wall=12542
+| epoch 004:   2000 / 31488 loss=4.601, nll_loss=3.005, ppl=8.03, wps=34770, ups=6.4, wpb=4505, bsz=142, num_updates=96430, lr=0.000112885, gnorm=85605.316, clip=100%, oom=0, loss_scale=16.000, wall=12672
+| epoch 004:   3000 / 31488 loss=4.603, nll_loss=3.007, ppl=8.04, wps=34639, ups=6.8, wpb=4493, bsz=141, num_updates=97430, lr=0.000112304, gnorm=85025.140, clip=100%, oom=0, loss_scale=16.000, wall=12802
+| epoch 004:   4000 / 31488 loss=4.595, nll_loss=2.999, ppl=7.99, wps=34563, ups=7.0, wpb=4492, bsz=142, num_updates=98430, lr=0.000111732, gnorm=84582.289, clip=100%, oom=0, loss_scale=32.000, wall=12933
+| epoch 004:   5000 / 31488 loss=4.594, nll_loss=2.997, ppl=7.98, wps=34573, ups=7.1, wpb=4499, bsz=143, num_updates=99430, lr=0.000111169, gnorm=84313.467, clip=100%, oom=0, loss_scale=32.000, wall=13063
+| epoch 004:   6000 / 31488 loss=4.596, nll_loss=2.999, ppl=8.00, wps=34625, ups=7.2, wpb=4508, bsz=143, num_updates=100430, lr=0.000110614, gnorm=84301.128, clip=100%, oom=0, loss_scale=64.000, wall=13194
+| epoch 004:   7000 / 31488 loss=4.598, nll_loss=3.002, ppl=8.01, wps=34571, ups=7.3, wpb=4497, bsz=143, num_updates=101430, lr=0.000110067, gnorm=84604.992, clip=100%, oom=0, loss_scale=64.000, wall=13323
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 004:   8000 / 31488 loss=4.594, nll_loss=2.998, ppl=7.99, wps=34596, ups=7.3, wpb=4502, bsz=143, num_updates=102429, lr=0.000109529, gnorm=84925.542, clip=100%, oom=0, loss_scale=64.000, wall=13454
+| epoch 004:   9000 / 31488 loss=4.594, nll_loss=2.997, ppl=7.99, wps=34608, ups=7.4, wpb=4501, bsz=142, num_updates=103429, lr=0.000108998, gnorm=85225.118, clip=100%, oom=0, loss_scale=64.000, wall=13583
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 004:  10000 / 31488 loss=4.589, nll_loss=2.992, ppl=7.95, wps=34609, ups=7.4, wpb=4503, bsz=143, num_updates=104428, lr=0.000108476, gnorm=85145.737, clip=100%, oom=0, loss_scale=32.000, wall=13714
+| epoch 004:  11000 / 31488 loss=4.583, nll_loss=2.985, ppl=7.92, wps=34622, ups=7.4, wpb=4507, bsz=143, num_updates=105428, lr=0.00010796, gnorm=84883.260, clip=100%, oom=0, loss_scale=32.000, wall=13844
+| epoch 004:  12000 / 31488 loss=4.582, nll_loss=2.984, ppl=7.91, wps=34611, ups=7.4, wpb=4507, bsz=144, num_updates=106428, lr=0.000107452, gnorm=84994.577, clip=100%, oom=0, loss_scale=64.000, wall=13975
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 004:  13000 / 31488 loss=4.579, nll_loss=2.981, ppl=7.89, wps=34607, ups=7.5, wpb=4508, bsz=144, num_updates=107427, lr=0.000106951, gnorm=84742.481, clip=100%, oom=0, loss_scale=32.000, wall=14106
+| epoch 004:  14000 / 31488 loss=4.577, nll_loss=2.979, ppl=7.89, wps=34628, ups=7.5, wpb=4512, bsz=144, num_updates=108427, lr=0.000106456, gnorm=84496.499, clip=100%, oom=0, loss_scale=32.000, wall=14236
+| epoch 004:  15000 / 31488 loss=4.579, nll_loss=2.981, ppl=7.90, wps=34649, ups=7.5, wpb=4514, bsz=144, num_updates=109427, lr=0.000105969, gnorm=84772.991, clip=100%, oom=0, loss_scale=64.000, wall=14367
+| epoch 004:  16000 / 31488 loss=4.576, nll_loss=2.978, ppl=7.88, wps=34666, ups=7.5, wpb=4515, bsz=145, num_updates=110427, lr=0.000105488, gnorm=85031.353, clip=100%, oom=0, loss_scale=64.000, wall=14496
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 004:  17000 / 31488 loss=4.576, nll_loss=2.978, ppl=7.88, wps=34647, ups=7.5, wpb=4512, bsz=145, num_updates=111426, lr=0.000105014, gnorm=85777.015, clip=100%, oom=0, loss_scale=64.000, wall=14626
+| epoch 004:  18000 / 31488 loss=4.575, nll_loss=2.977, ppl=7.87, wps=34644, ups=7.5, wpb=4511, bsz=144, num_updates=112426, lr=0.000104546, gnorm=86035.949, clip=100%, oom=0, loss_scale=64.000, wall=14756
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 004:  19000 / 31488 loss=4.573, nll_loss=2.974, ppl=7.86, wps=34653, ups=7.5, wpb=4512, bsz=144, num_updates=113425, lr=0.000104085, gnorm=86313.915, clip=100%, oom=0, loss_scale=64.000, wall=14886
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 004:  20000 / 31488 loss=4.571, nll_loss=2.973, ppl=7.85, wps=34664, ups=7.5, wpb=4514, bsz=144, num_updates=114424, lr=0.000103629, gnorm=86155.028, clip=100%, oom=0, loss_scale=32.000, wall=15016
+| epoch 004:  21000 / 31488 loss=4.570, nll_loss=2.972, ppl=7.85, wps=34663, ups=7.5, wpb=4514, bsz=145, num_updates=115424, lr=0.000103179, gnorm=85902.688, clip=100%, oom=0, loss_scale=32.000, wall=15146
+| epoch 004:  22000 / 31488 loss=4.569, nll_loss=2.970, ppl=7.84, wps=34665, ups=7.5, wpb=4513, bsz=144, num_updates=116424, lr=0.000102735, gnorm=86043.126, clip=100%, oom=0, loss_scale=64.000, wall=15276
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 004:  23000 / 31488 loss=4.567, nll_loss=2.968, ppl=7.83, wps=34667, ups=7.5, wpb=4514, bsz=145, num_updates=117423, lr=0.000102297, gnorm=85823.119, clip=100%, oom=0, loss_scale=32.000, wall=15407
+| epoch 004:  24000 / 31488 loss=4.567, nll_loss=2.969, ppl=7.83, wps=34662, ups=7.6, wpb=4514, bsz=145, num_updates=118423, lr=0.000101864, gnorm=85579.096, clip=100%, oom=0, loss_scale=32.000, wall=15537
+| epoch 004:  25000 / 31488 loss=4.566, nll_loss=2.967, ppl=7.82, wps=34666, ups=7.6, wpb=4514, bsz=145, num_updates=119423, lr=0.000101437, gnorm=85789.015, clip=100%, oom=0, loss_scale=64.000, wall=15667
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 004:  26000 / 31488 loss=4.568, nll_loss=2.969, ppl=7.83, wps=34681, ups=7.6, wpb=4516, bsz=145, num_updates=120422, lr=0.000101015, gnorm=85726.512, clip=100%, oom=0, loss_scale=32.000, wall=15797
+| epoch 004:  27000 / 31488 loss=4.565, nll_loss=2.966, ppl=7.82, wps=34679, ups=7.6, wpb=4516, bsz=145, num_updates=121422, lr=0.000100599, gnorm=85486.798, clip=100%, oom=0, loss_scale=32.000, wall=15928
+| WARNING: overflow detected, setting loss scale to: 16.0
+| WARNING: overflow detected, setting loss scale to: 8.0
+| WARNING: overflow detected, setting loss scale to: 4.0
+| epoch 004:  28000 / 31488 loss=4.565, nll_loss=2.966, ppl=7.82, wps=34685, ups=7.6, wpb=4517, bsz=145, num_updates=122419, lr=0.000100188, gnorm=85015.469, clip=100%, oom=0, loss_scale=4.000, wall=16058
+| epoch 004:  29000 / 31488 loss=4.563, nll_loss=2.965, ppl=7.81, wps=34690, ups=7.6, wpb=4518, bsz=145, num_updates=123419, lr=9.97814e-05, gnorm=84384.006, clip=100%, oom=0, loss_scale=4.000, wall=16188
+| epoch 004:  30000 / 31488 loss=4.562, nll_loss=2.963, ppl=7.80, wps=34693, ups=7.6, wpb=4518, bsz=145, num_updates=124419, lr=9.93796e-05, gnorm=83779.454, clip=100%, oom=0, loss_scale=8.000, wall=16318
+| epoch 004:  31000 / 31488 loss=4.559, nll_loss=2.960, ppl=7.78, wps=34694, ups=7.6, wpb=4519, bsz=145, num_updates=125419, lr=9.89826e-05, gnorm=83222.776, clip=100%, oom=0, loss_scale=8.000, wall=16449
+| epoch 004 | loss 4.559 | nll_loss 2.960 | ppl 7.78 | wps 34700 | ups 7.6 | wpb 4519 | bsz 145 | num_updates 125906 | lr 9.8791e-05 | gnorm 82956.991 | clip 100% | oom 0 | loss_scale 8.000 | wall 16512
+epoch time  4099.4018540382385
+generated batches in  0.0008523464202880859 s
+| epoch 004 | valid on 'valid' subset | valid_loss 4.20633 | valid_nll_loss 2.49853 | valid_ppl 5.65 | num_updates 125906
+:::MLPv0.5.0 transformer 1559694009.735790730 (/workspace/translation/train.py:149) eval_start: 4
+generated batches in  0.0005486011505126953 s
+| Translated 3003 sentences (86380 tokens) in 22.4s (133.83 sentences/s, 3849.58 tokens/s)
+| Generate test with beam=4: BLEU4 = 24.00, 56.2/29.7/17.8/11.2 (BP=1.000, ratio=1.038, syslen=66943, reflen=64512)
+| Eval completed in: 39.59s
+:::MLPv0.5.0 transformer 1559694049.333065987 (/workspace/translation/train.py:152) eval_accuracy: {"epoch": 4, "value": 24.00418357036703}
+:::MLPv0.5.0 transformer 1559694049.333503485 (/workspace/translation/train.py:153) eval_target: 25.0
+:::MLPv0.5.0 transformer 1559694049.333790779 (/workspace/translation/train.py:154) eval_stop: 4
+validation and scoring  40.84198331832886
+:::MLPv0.5.0 transformer 1559694049.334167480 (/workspace/translation/train.py:116) train_epoch: 4
+generated batches in  1.484180212020874 s
+got epoch iterator 1.5946202278137207
+| epoch 005:   1000 / 31488 loss=4.446, nll_loss=2.833, ppl=7.12, wps=34890, ups=5.8, wpb=4545, bsz=147, num_updates=126907, lr=9.84006e-05, gnorm=82499.300, clip=100%, oom=0, loss_scale=16.000, wall=16685
+| epoch 005:   2000 / 31488 loss=4.459, nll_loss=2.847, ppl=7.20, wps=34845, ups=6.6, wpb=4535, bsz=145, num_updates=127907, lr=9.80152e-05, gnorm=82077.730, clip=100%, oom=0, loss_scale=16.000, wall=16815
+| epoch 005:   3000 / 31488 loss=4.465, nll_loss=2.853, ppl=7.23, wps=34825, ups=6.9, wpb=4532, bsz=147, num_updates=128907, lr=9.76343e-05, gnorm=81831.440, clip=100%, oom=0, loss_scale=32.000, wall=16945
+| epoch 005:   4000 / 31488 loss=4.468, nll_loss=2.857, ppl=7.24, wps=34742, ups=7.1, wpb=4518, bsz=146, num_updates=129907, lr=9.72578e-05, gnorm=81640.105, clip=100%, oom=0, loss_scale=32.000, wall=17075
+| epoch 005:   5000 / 31488 loss=4.470, nll_loss=2.860, ppl=7.26, wps=34736, ups=7.2, wpb=4520, bsz=146, num_updates=130907, lr=9.68856e-05, gnorm=81785.290, clip=100%, oom=0, loss_scale=64.000, wall=17205
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 005:   6000 / 31488 loss=4.475, nll_loss=2.865, ppl=7.28, wps=34752, ups=7.3, wpb=4522, bsz=146, num_updates=131906, lr=9.6518e-05, gnorm=81892.031, clip=100%, oom=0, loss_scale=32.000, wall=17335
+| epoch 005:   7000 / 31488 loss=4.478, nll_loss=2.869, ppl=7.30, wps=34774, ups=7.3, wpb=4526, bsz=146, num_updates=132906, lr=9.61542e-05, gnorm=81707.040, clip=100%, oom=0, loss_scale=32.000, wall=17465
+| epoch 005:   8000 / 31488 loss=4.485, nll_loss=2.877, ppl=7.35, wps=34802, ups=7.4, wpb=4526, bsz=145, num_updates=133906, lr=9.57945e-05, gnorm=81656.416, clip=100%, oom=0, loss_scale=64.000, wall=17595
+| epoch 005:   9000 / 31488 loss=4.484, nll_loss=2.875, ppl=7.34, wps=34781, ups=7.4, wpb=4525, bsz=146, num_updates=134906, lr=9.54388e-05, gnorm=81903.431, clip=100%, oom=0, loss_scale=64.000, wall=17725
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 005:  10000 / 31488 loss=4.486, nll_loss=2.878, ppl=7.35, wps=34795, ups=7.4, wpb=4526, bsz=146, num_updates=135905, lr=9.50874e-05, gnorm=81785.086, clip=100%, oom=0, loss_scale=32.000, wall=17855
+| epoch 005:  11000 / 31488 loss=4.483, nll_loss=2.874, ppl=7.33, wps=34799, ups=7.5, wpb=4527, bsz=146, num_updates=136905, lr=9.47395e-05, gnorm=81605.713, clip=100%, oom=0, loss_scale=32.000, wall=17985
+| epoch 005:  12000 / 31488 loss=4.482, nll_loss=2.873, ppl=7.33, wps=34814, ups=7.5, wpb=4529, bsz=146, num_updates=137905, lr=9.43953e-05, gnorm=81775.547, clip=100%, oom=0, loss_scale=64.000, wall=18115
+| epoch 005:  13000 / 31488 loss=4.480, nll_loss=2.872, ppl=7.32, wps=34810, ups=7.5, wpb=4531, bsz=146, num_updates=138905, lr=9.4055e-05, gnorm=82006.827, clip=100%, oom=0, loss_scale=64.000, wall=18247
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 005:  14000 / 31488 loss=4.478, nll_loss=2.869, ppl=7.30, wps=34794, ups=7.5, wpb=4531, bsz=146, num_updates=139904, lr=9.37185e-05, gnorm=82478.194, clip=100%, oom=0, loss_scale=64.000, wall=18377
+| epoch 005:  15000 / 31488 loss=4.478, nll_loss=2.869, ppl=7.30, wps=34789, ups=7.5, wpb=4530, bsz=146, num_updates=140904, lr=9.33854e-05, gnorm=82698.307, clip=100%, oom=0, loss_scale=64.000, wall=18507
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 005:  16000 / 31488 loss=4.476, nll_loss=2.867, ppl=7.30, wps=34797, ups=7.5, wpb=4532, bsz=146, num_updates=141903, lr=9.30561e-05, gnorm=82962.841, clip=100%, oom=0, loss_scale=64.000, wall=18638
+| epoch 005:  17000 / 31488 loss=4.478, nll_loss=2.870, ppl=7.31, wps=34811, ups=7.5, wpb=4533, bsz=146, num_updates=142903, lr=9.27299e-05, gnorm=83186.690, clip=100%, oom=0, loss_scale=64.000, wall=18768
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 005:  18000 / 31488 loss=4.479, nll_loss=2.871, ppl=7.31, wps=34814, ups=7.5, wpb=4532, bsz=146, num_updates=143902, lr=9.24075e-05, gnorm=83102.429, clip=100%, oom=0, loss_scale=32.000, wall=18897
+| epoch 005:  19000 / 31488 loss=4.480, nll_loss=2.872, ppl=7.32, wps=34780, ups=7.6, wpb=4526, bsz=146, num_updates=144902, lr=9.20881e-05, gnorm=82920.903, clip=100%, oom=0, loss_scale=32.000, wall=19027
+| epoch 005:  20000 / 31488 loss=4.480, nll_loss=2.871, ppl=7.32, wps=34777, ups=7.6, wpb=4525, bsz=146, num_updates=145902, lr=9.1772e-05, gnorm=83033.798, clip=100%, oom=0, loss_scale=64.000, wall=19156
+| epoch 005:  21000 / 31488 loss=4.481, nll_loss=2.873, ppl=7.32, wps=34764, ups=7.6, wpb=4524, bsz=145, num_updates=146902, lr=9.14591e-05, gnorm=83244.607, clip=100%, oom=0, loss_scale=64.000, wall=19286
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 005:  22000 / 31488 loss=4.480, nll_loss=2.872, ppl=7.32, wps=34772, ups=7.6, wpb=4525, bsz=145, num_updates=147901, lr=9.11497e-05, gnorm=83078.485, clip=100%, oom=0, loss_scale=32.000, wall=19416
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 005:  23000 / 31488 loss=4.480, nll_loss=2.871, ppl=7.32, wps=34774, ups=7.6, wpb=4524, bsz=145, num_updates=148900, lr=9.08434e-05, gnorm=82887.410, clip=100%, oom=0, loss_scale=16.000, wall=19546
+| epoch 005:  24000 / 31488 loss=4.481, nll_loss=2.873, ppl=7.33, wps=34772, ups=7.6, wpb=4522, bsz=145, num_updates=149900, lr=9.05399e-05, gnorm=82524.213, clip=100%, oom=0, loss_scale=16.000, wall=19675
+| epoch 005:  25000 / 31488 loss=4.479, nll_loss=2.871, ppl=7.31, wps=34778, ups=7.6, wpb=4522, bsz=145, num_updates=150900, lr=9.02394e-05, gnorm=82176.162, clip=100%, oom=0, loss_scale=32.000, wall=19805
+| epoch 005:  26000 / 31488 loss=4.481, nll_loss=2.873, ppl=7.33, wps=34777, ups=7.6, wpb=4522, bsz=145, num_updates=151900, lr=8.99418e-05, gnorm=82010.136, clip=100%, oom=0, loss_scale=32.000, wall=19934
+| epoch 005:  27000 / 31488 loss=4.482, nll_loss=2.874, ppl=7.33, wps=34779, ups=7.6, wpb=4522, bsz=145, num_updates=152900, lr=8.96472e-05, gnorm=81869.291, clip=100%, oom=0, loss_scale=64.000, wall=20064
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 005:  28000 / 31488 loss=4.482, nll_loss=2.874, ppl=7.33, wps=34777, ups=7.6, wpb=4521, bsz=145, num_updates=153899, lr=8.93558e-05, gnorm=81736.216, clip=100%, oom=0, loss_scale=32.000, wall=20193
+| epoch 005:  29000 / 31488 loss=4.483, nll_loss=2.876, ppl=7.34, wps=34780, ups=7.6, wpb=4520, bsz=145, num_updates=154899, lr=8.90669e-05, gnorm=81573.143, clip=100%, oom=0, loss_scale=32.000, wall=20322
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 005:  30000 / 31488 loss=4.483, nll_loss=2.876, ppl=7.34, wps=34779, ups=7.6, wpb=4520, bsz=145, num_updates=155898, lr=8.87811e-05, gnorm=81430.689, clip=100%, oom=0, loss_scale=32.000, wall=20452
+| epoch 005:  31000 / 31488 loss=4.481, nll_loss=2.873, ppl=7.33, wps=34774, ups=7.6, wpb=4519, bsz=145, num_updates=156898, lr=8.84977e-05, gnorm=81269.713, clip=100%, oom=0, loss_scale=32.000, wall=20582
+| epoch 005 | loss 4.481 | nll_loss 2.873 | ppl 7.33 | wps 34770 | ups 7.6 | wpb 4519 | bsz 145 | num_updates 157385 | lr 8.83607e-05 | gnorm 81321.308 | clip 100% | oom 0 | loss_scale 64.000 | wall 20646
+epoch time  4091.399016857147
+generated batches in  0.0008616447448730469 s
+| epoch 005 | valid on 'valid' subset | valid_loss 4.15616 | valid_nll_loss 2.45041 | valid_ppl 5.47 | num_updates 157385
+:::MLPv0.5.0 transformer 1559698143.554963827 (/workspace/translation/train.py:149) eval_start: 5
+generated batches in  0.0005209445953369141 s
+| Translated 3003 sentences (87629 tokens) in 23.2s (129.59 sentences/s, 3781.40 tokens/s)
+| Generate test with beam=4: BLEU4 = 24.05, 56.0/29.7/17.9/11.3 (BP=1.000, ratio=1.053, syslen=67917, reflen=64512)
+| Eval completed in: 40.72s
+:::MLPv0.5.0 transformer 1559698184.281269550 (/workspace/translation/train.py:152) eval_accuracy: {"epoch": 5, "value": 24.050309816132405}
+:::MLPv0.5.0 transformer 1559698184.281985283 (/workspace/translation/train.py:153) eval_target: 25.0
+:::MLPv0.5.0 transformer 1559698184.282507181 (/workspace/translation/train.py:154) eval_stop: 5
+validation and scoring  41.954782247543335
+:::MLPv0.5.0 transformer 1559698184.283189058 (/workspace/translation/train.py:116) train_epoch: 5
+generated batches in  1.4354479312896729 s
+got epoch iterator 1.5475499629974365
+| epoch 006:   1000 / 31488 loss=4.449, nll_loss=2.837, ppl=7.15, wps=35115, ups=5.8, wpb=4545, bsz=144, num_updates=158386, lr=8.8081e-05, gnorm=81522.961, clip=100%, oom=0, loss_scale=64.000, wall=20819
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 006:   2000 / 31488 loss=4.421, nll_loss=2.806, ppl=6.99, wps=34845, ups=6.6, wpb=4522, bsz=148, num_updates=159385, lr=8.78045e-05, gnorm=81825.226, clip=100%, oom=0, loss_scale=64.000, wall=20949
+| epoch 006:   3000 / 31488 loss=4.419, nll_loss=2.803, ppl=6.98, wps=34902, ups=6.9, wpb=4532, bsz=147, num_updates=160385, lr=8.75304e-05, gnorm=82022.277, clip=100%, oom=0, loss_scale=64.000, wall=21079
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 006:   4000 / 31488 loss=4.421, nll_loss=2.805, ppl=6.99, wps=34865, ups=7.1, wpb=4525, bsz=146, num_updates=161384, lr=8.7259e-05, gnorm=82033.004, clip=100%, oom=0, loss_scale=32.000, wall=21208
+| epoch 006:   5000 / 31488 loss=4.417, nll_loss=2.800, ppl=6.97, wps=34874, ups=7.2, wpb=4529, bsz=146, num_updates=162384, lr=8.69899e-05, gnorm=81879.509, clip=100%, oom=0, loss_scale=32.000, wall=21339
+| WARNING: overflow detected, setting loss scale to: 16.0
+| epoch 006:   6000 / 31488 loss=4.414, nll_loss=2.798, ppl=6.95, wps=34861, ups=7.3, wpb=4530, bsz=146, num_updates=163383, lr=8.67236e-05, gnorm=81593.533, clip=100%, oom=0, loss_scale=16.000, wall=21469
+| epoch 006:   7000 / 31488 loss=4.413, nll_loss=2.797, ppl=6.95, wps=34812, ups=7.3, wpb=4528, bsz=146, num_updates=164383, lr=8.64594e-05, gnorm=81271.466, clip=100%, oom=0, loss_scale=16.000, wall=21600
+| epoch 006:   8000 / 31488 loss=4.411, nll_loss=2.794, ppl=6.94, wps=34828, ups=7.4, wpb=4529, bsz=146, num_updates=165383, lr=8.61976e-05, gnorm=81082.654, clip=100%, oom=0, loss_scale=32.000, wall=21729
+| epoch 006:   9000 / 31488 loss=4.410, nll_loss=2.793, ppl=6.93, wps=34808, ups=7.4, wpb=4527, bsz=146, num_updates=166383, lr=8.59382e-05, gnorm=80936.471, clip=100%, oom=0, loss_scale=32.000, wall=21860
+| epoch 006:  10000 / 31488 loss=4.416, nll_loss=2.800, ppl=6.96, wps=34813, ups=7.4, wpb=4527, bsz=146, num_updates=167383, lr=8.56811e-05, gnorm=81057.760, clip=100%, oom=0, loss_scale=64.000, wall=21989
+| epoch 006:  11000 / 31488 loss=4.416, nll_loss=2.800, ppl=6.97, wps=34774, ups=7.5, wpb=4524, bsz=146, num_updates=168383, lr=8.54263e-05, gnorm=81258.478, clip=100%, oom=0, loss_scale=64.000, wall=22120
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 006:  12000 / 31488 loss=4.419, nll_loss=2.803, ppl=6.98, wps=34739, ups=7.5, wpb=4520, bsz=146, num_updates=169382, lr=8.5174e-05, gnorm=81609.832, clip=100%, oom=0, loss_scale=64.000, wall=22250
+| epoch 006:  13000 / 31488 loss=4.417, nll_loss=2.801, ppl=6.97, wps=34733, ups=7.5, wpb=4521, bsz=146, num_updates=170382, lr=8.49237e-05, gnorm=81795.575, clip=100%, oom=0, loss_scale=64.000, wall=22381
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 006:  14000 / 31488 loss=4.415, nll_loss=2.799, ppl=6.96, wps=34749, ups=7.5, wpb=4523, bsz=146, num_updates=171381, lr=8.46758e-05, gnorm=81992.493, clip=100%, oom=0, loss_scale=64.000, wall=22511
+| epoch 006:  15000 / 31488 loss=4.415, nll_loss=2.800, ppl=6.96, wps=34774, ups=7.5, wpb=4526, bsz=146, num_updates=172381, lr=8.44298e-05, gnorm=82179.662, clip=100%, oom=0, loss_scale=64.000, wall=22641
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 006:  16000 / 31488 loss=4.414, nll_loss=2.798, ppl=6.95, wps=34779, ups=7.5, wpb=4525, bsz=146, num_updates=173380, lr=8.41862e-05, gnorm=82403.504, clip=100%, oom=0, loss_scale=64.000, wall=22770
+| epoch 006:  17000 / 31488 loss=4.416, nll_loss=2.801, ppl=6.97, wps=34758, ups=7.5, wpb=4521, bsz=146, num_updates=174380, lr=8.39445e-05, gnorm=82580.786, clip=100%, oom=0, loss_scale=64.000, wall=22900
+| epoch 006:  18000 / 31488 loss=4.417, nll_loss=2.802, ppl=6.97, wps=34761, ups=7.5, wpb=4523, bsz=145, num_updates=175380, lr=8.37048e-05, gnorm=83043.339, clip=100%, oom=0, loss_scale=128.000, wall=23031
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 006:  19000 / 31488 loss=4.419, nll_loss=2.804, ppl=6.98, wps=34761, ups=7.6, wpb=4524, bsz=145, num_updates=176379, lr=8.34675e-05, gnorm=83249.250, clip=100%, oom=0, loss_scale=64.000, wall=23161
+| epoch 006:  20000 / 31488 loss=4.421, nll_loss=2.806, ppl=6.99, wps=34763, ups=7.6, wpb=4523, bsz=145, num_updates=177379, lr=8.32318e-05, gnorm=83424.059, clip=100%, oom=0, loss_scale=64.000, wall=23291
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 006:  21000 / 31488 loss=4.422, nll_loss=2.808, ppl=7.00, wps=34749, ups=7.6, wpb=4521, bsz=145, num_updates=178378, lr=8.29984e-05, gnorm=83612.062, clip=100%, oom=0, loss_scale=64.000, wall=23420
+| epoch 006:  22000 / 31488 loss=4.422, nll_loss=2.807, ppl=7.00, wps=34739, ups=7.6, wpb=4518, bsz=145, num_updates=179378, lr=8.27668e-05, gnorm=83782.561, clip=100%, oom=0, loss_scale=64.000, wall=23550
+| WARNING: overflow detected, setting loss scale to: 64.0
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 006:  23000 / 31488 loss=4.422, nll_loss=2.807, ppl=7.00, wps=34734, ups=7.6, wpb=4518, bsz=145, num_updates=180376, lr=8.25375e-05, gnorm=83854.234, clip=100%, oom=0, loss_scale=32.000, wall=23680
+| epoch 006:  24000 / 31488 loss=4.423, nll_loss=2.809, ppl=7.01, wps=34732, ups=7.6, wpb=4518, bsz=145, num_updates=181376, lr=8.23096e-05, gnorm=83706.803, clip=100%, oom=0, loss_scale=32.000, wall=23810
+| epoch 006:  25000 / 31488 loss=4.425, nll_loss=2.811, ppl=7.02, wps=34732, ups=7.6, wpb=4516, bsz=145, num_updates=182376, lr=8.20837e-05, gnorm=83699.177, clip=100%, oom=0, loss_scale=64.000, wall=23939
+| epoch 006:  26000 / 31488 loss=4.425, nll_loss=2.811, ppl=7.02, wps=34729, ups=7.6, wpb=4516, bsz=145, num_updates=183376, lr=8.18596e-05, gnorm=83862.784, clip=100%, oom=0, loss_scale=64.000, wall=24069
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 006:  27000 / 31488 loss=4.424, nll_loss=2.810, ppl=7.01, wps=34726, ups=7.6, wpb=4517, bsz=145, num_updates=184375, lr=8.16375e-05, gnorm=84072.610, clip=100%, oom=0, loss_scale=64.000, wall=24200
+| epoch 006:  28000 / 31488 loss=4.424, nll_loss=2.810, ppl=7.01, wps=34720, ups=7.6, wpb=4517, bsz=145, num_updates=185375, lr=8.1417e-05, gnorm=84233.813, clip=100%, oom=0, loss_scale=64.000, wall=24330
+| WARNING: overflow detected, setting loss scale to: 64.0
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 006:  29000 / 31488 loss=4.423, nll_loss=2.809, ppl=7.01, wps=34715, ups=7.6, wpb=4518, bsz=145, num_updates=186373, lr=8.11987e-05, gnorm=84477.623, clip=100%, oom=0, loss_scale=32.000, wall=24462
+| epoch 006:  30000 / 31488 loss=4.422, nll_loss=2.808, ppl=7.00, wps=34726, ups=7.6, wpb=4519, bsz=145, num_updates=187373, lr=8.09817e-05, gnorm=84329.098, clip=100%, oom=0, loss_scale=32.000, wall=24592
+| epoch 006:  31000 / 31488 loss=4.423, nll_loss=2.809, ppl=7.01, wps=34734, ups=7.6, wpb=4519, bsz=145, num_updates=188373, lr=8.07665e-05, gnorm=84198.305, clip=100%, oom=0, loss_scale=64.000, wall=24721
+| epoch 006 | loss 4.424 | nll_loss 2.810 | ppl 7.01 | wps 34733 | ups 7.6 | wpb 4519 | bsz 145 | num_updates 188860 | lr 8.06623e-05 | gnorm 84273.633 | clip 100% | oom 0 | loss_scale 64.000 | wall 24784
+epoch time  4095.142089366913
+generated batches in  0.000690460205078125 s
+| epoch 006 | valid on 'valid' subset | valid_loss 4.12053 | valid_nll_loss 2.40975 | valid_ppl 5.31 | num_updates 188860
+:::MLPv0.5.0 transformer 1559702282.204235792 (/workspace/translation/train.py:149) eval_start: 6
+generated batches in  0.0005414485931396484 s
+| Translated 3003 sentences (86950 tokens) in 22.5s (133.39 sentences/s, 3862.27 tokens/s)
+| Generate test with beam=4: BLEU4 = 24.63, 56.4/30.2/18.4/11.8 (BP=1.000, ratio=1.045, syslen=67401, reflen=64512)
+| Eval completed in: 39.60s
+:::MLPv0.5.0 transformer 1559702321.808647633 (/workspace/translation/train.py:152) eval_accuracy: {"epoch": 6, "value": 24.6330345953171}
+:::MLPv0.5.0 transformer 1559702321.809276581 (/workspace/translation/train.py:153) eval_target: 25.0
+:::MLPv0.5.0 transformer 1559702321.809838533 (/workspace/translation/train.py:154) eval_stop: 6
+validation and scoring  40.83706760406494
+:::MLPv0.5.0 transformer 1559702321.810493231 (/workspace/translation/train.py:116) train_epoch: 6
+generated batches in  1.293914556503296 s
+got epoch iterator 1.3720083236694336
+| epoch 007:   1000 / 31488 loss=4.367, nll_loss=2.744, ppl=6.70, wps=34601, ups=5.8, wpb=4487, bsz=142, num_updates=189861, lr=8.04494e-05, gnorm=84422.398, clip=100%, oom=0, loss_scale=64.000, wall=24956
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 007:   2000 / 31488 loss=4.358, nll_loss=2.734, ppl=6.65, wps=34588, ups=6.6, wpb=4488, bsz=146, num_updates=190860, lr=8.02386e-05, gnorm=84601.692, clip=100%, oom=0, loss_scale=64.000, wall=25086
+| epoch 007:   3000 / 31488 loss=4.358, nll_loss=2.735, ppl=6.66, wps=34757, ups=6.9, wpb=4511, bsz=146, num_updates=191860, lr=8.00292e-05, gnorm=84754.254, clip=100%, oom=0, loss_scale=64.000, wall=25216
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 007:   4000 / 31488 loss=4.366, nll_loss=2.744, ppl=6.70, wps=34759, ups=7.1, wpb=4515, bsz=146, num_updates=192859, lr=7.98216e-05, gnorm=84741.086, clip=100%, oom=0, loss_scale=32.000, wall=25346
+| epoch 007:   5000 / 31488 loss=4.371, nll_loss=2.750, ppl=6.73, wps=34753, ups=7.2, wpb=4509, bsz=145, num_updates=193859, lr=7.96155e-05, gnorm=84597.630, clip=100%, oom=0, loss_scale=32.000, wall=25475
+| epoch 007:   6000 / 31488 loss=4.366, nll_loss=2.744, ppl=6.70, wps=34801, ups=7.3, wpb=4520, bsz=146, num_updates=194859, lr=7.94109e-05, gnorm=84623.974, clip=100%, oom=0, loss_scale=64.000, wall=25606
+| epoch 007:   7000 / 31488 loss=4.372, nll_loss=2.751, ppl=6.73, wps=34820, ups=7.4, wpb=4521, bsz=146, num_updates=195859, lr=7.9208e-05, gnorm=84783.386, clip=100%, oom=0, loss_scale=64.000, wall=25735
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 007:   8000 / 31488 loss=4.374, nll_loss=2.753, ppl=6.74, wps=34818, ups=7.4, wpb=4521, bsz=146, num_updates=196858, lr=7.90067e-05, gnorm=84653.901, clip=100%, oom=0, loss_scale=32.000, wall=25865
+| epoch 007:   9000 / 31488 loss=4.369, nll_loss=2.748, ppl=6.72, wps=34775, ups=7.4, wpb=4517, bsz=146, num_updates=197858, lr=7.88068e-05, gnorm=84514.729, clip=100%, oom=0, loss_scale=32.000, wall=25995
+| epoch 007:  10000 / 31488 loss=4.371, nll_loss=2.749, ppl=6.72, wps=34784, ups=7.5, wpb=4519, bsz=146, num_updates=198858, lr=7.86084e-05, gnorm=84657.694, clip=100%, oom=0, loss_scale=64.000, wall=26125
+| epoch 007:  11000 / 31488 loss=4.374, nll_loss=2.753, ppl=6.74, wps=34779, ups=7.5, wpb=4518, bsz=146, num_updates=199858, lr=7.84115e-05, gnorm=84805.913, clip=100%, oom=0, loss_scale=64.000, wall=26255
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 007:  12000 / 31488 loss=4.376, nll_loss=2.756, ppl=6.76, wps=34777, ups=7.5, wpb=4520, bsz=145, num_updates=200857, lr=7.82163e-05, gnorm=84998.168, clip=100%, oom=0, loss_scale=64.000, wall=26386
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 007:  13000 / 31488 loss=4.375, nll_loss=2.754, ppl=6.75, wps=34776, ups=7.5, wpb=4522, bsz=145, num_updates=201856, lr=7.80225e-05, gnorm=85130.089, clip=100%, oom=0, loss_scale=32.000, wall=26517
+| epoch 007:  14000 / 31488 loss=4.376, nll_loss=2.756, ppl=6.75, wps=34753, ups=7.5, wpb=4520, bsz=145, num_updates=202856, lr=7.78299e-05, gnorm=84996.390, clip=100%, oom=0, loss_scale=32.000, wall=26647
+| epoch 007:  15000 / 31488 loss=4.377, nll_loss=2.757, ppl=6.76, wps=34762, ups=7.5, wpb=4520, bsz=146, num_updates=203856, lr=7.76388e-05, gnorm=84872.517, clip=100%, oom=0, loss_scale=64.000, wall=26777
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 007:  16000 / 31488 loss=4.375, nll_loss=2.755, ppl=6.75, wps=34742, ups=7.5, wpb=4519, bsz=145, num_updates=204855, lr=7.74493e-05, gnorm=84763.492, clip=100%, oom=0, loss_scale=32.000, wall=26907
+| epoch 007:  17000 / 31488 loss=4.376, nll_loss=2.756, ppl=6.76, wps=34737, ups=7.5, wpb=4518, bsz=146, num_updates=205855, lr=7.72609e-05, gnorm=84627.859, clip=100%, oom=0, loss_scale=32.000, wall=27037
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 007:  18000 / 31488 loss=4.380, nll_loss=2.760, ppl=6.77, wps=34735, ups=7.6, wpb=4517, bsz=146, num_updates=206854, lr=7.70741e-05, gnorm=84625.141, clip=100%, oom=0, loss_scale=32.000, wall=27167
+| epoch 007:  19000 / 31488 loss=4.377, nll_loss=2.757, ppl=6.76, wps=34728, ups=7.6, wpb=4518, bsz=146, num_updates=207854, lr=7.68885e-05, gnorm=84495.199, clip=100%, oom=0, loss_scale=32.000, wall=27298
+| epoch 007:  20000 / 31488 loss=4.378, nll_loss=2.758, ppl=6.76, wps=34735, ups=7.6, wpb=4518, bsz=145, num_updates=208854, lr=7.67042e-05, gnorm=84486.471, clip=100%, oom=0, loss_scale=64.000, wall=27427
+| epoch 007:  21000 / 31488 loss=4.378, nll_loss=2.758, ppl=6.76, wps=34733, ups=7.6, wpb=4518, bsz=146, num_updates=209854, lr=7.65212e-05, gnorm=84629.408, clip=100%, oom=0, loss_scale=64.000, wall=27557
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 007:  22000 / 31488 loss=4.377, nll_loss=2.758, ppl=6.76, wps=34743, ups=7.6, wpb=4520, bsz=145, num_updates=210853, lr=7.63397e-05, gnorm=84825.864, clip=100%, oom=0, loss_scale=64.000, wall=27688
+| epoch 007:  23000 / 31488 loss=4.377, nll_loss=2.757, ppl=6.76, wps=34747, ups=7.6, wpb=4521, bsz=145, num_updates=211853, lr=7.61594e-05, gnorm=84964.115, clip=100%, oom=0, loss_scale=64.000, wall=27818
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 007:  24000 / 31488 loss=4.376, nll_loss=2.756, ppl=6.75, wps=34751, ups=7.6, wpb=4522, bsz=145, num_updates=212852, lr=7.59804e-05, gnorm=85140.880, clip=100%, oom=0, loss_scale=64.000, wall=27949
+| epoch 007:  25000 / 31488 loss=4.376, nll_loss=2.756, ppl=6.76, wps=34748, ups=7.6, wpb=4521, bsz=145, num_updates=213852, lr=7.58026e-05, gnorm=85278.696, clip=100%, oom=0, loss_scale=64.000, wall=28079
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 007:  26000 / 31488 loss=4.378, nll_loss=2.758, ppl=6.77, wps=34740, ups=7.6, wpb=4520, bsz=145, num_updates=214851, lr=7.56261e-05, gnorm=85488.244, clip=100%, oom=0, loss_scale=64.000, wall=28208
+| epoch 007:  27000 / 31488 loss=4.378, nll_loss=2.758, ppl=6.77, wps=34742, ups=7.6, wpb=4520, bsz=145, num_updates=215851, lr=7.54508e-05, gnorm=85622.167, clip=100%, oom=0, loss_scale=64.000, wall=28339
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 007:  28000 / 31488 loss=4.376, nll_loss=2.757, ppl=6.76, wps=34740, ups=7.6, wpb=4521, bsz=145, num_updates=216850, lr=7.52768e-05, gnorm=85762.687, clip=100%, oom=0, loss_scale=64.000, wall=28469
+| epoch 007:  29000 / 31488 loss=4.378, nll_loss=2.758, ppl=6.77, wps=34735, ups=7.6, wpb=4520, bsz=145, num_updates=217850, lr=7.51038e-05, gnorm=85896.611, clip=100%, oom=0, loss_scale=64.000, wall=28599
+| WARNING: overflow detected, setting loss scale to: 64.0
+| epoch 007:  30000 / 31488 loss=4.379, nll_loss=2.759, ppl=6.77, wps=34742, ups=7.6, wpb=4521, bsz=145, num_updates=218849, lr=7.49322e-05, gnorm=86033.181, clip=100%, oom=0, loss_scale=64.000, wall=28729
+| epoch 007:  31000 / 31488 loss=4.380, nll_loss=2.760, ppl=6.78, wps=34734, ups=7.6, wpb=4519, bsz=145, num_updates=219849, lr=7.47616e-05, gnorm=86161.745, clip=100%, oom=0, loss_scale=64.000, wall=28859
+| WARNING: overflow detected, setting loss scale to: 32.0
+| epoch 007 | loss 4.380 | nll_loss 2.761 | ppl 6.78 | wps 34729 | ups 7.6 | wpb 4519 | bsz 145 | num_updates 220335 | lr 7.46791e-05 | gnorm 86143.611 | clip 100% | oom 0 | loss_scale 32.000 | wall 28922
+epoch time  4095.5735750198364
+generated batches in  0.0007030963897705078 s
+| epoch 007 | valid on 'valid' subset | valid_loss 4.09164 | valid_nll_loss 2.37771 | valid_ppl 5.20 | num_updates 220335
+:::MLPv0.5.0 transformer 1559706420.022752047 (/workspace/translation/train.py:149) eval_start: 7
+generated batches in  0.0005638599395751953 s
+| Translated 3003 sentences (86482 tokens) in 24.0s (124.91 sentences/s, 3597.33 tokens/s)
+| Generate test with beam=4: BLEU4 = 25.23, 56.9/30.8/19.0/12.2 (BP=1.000, ratio=1.032, syslen=66586, reflen=64512)
+| Eval completed in: 41.19s
+:::MLPv0.5.0 transformer 1559706461.220081329 (/workspace/translation/train.py:152) eval_accuracy: {"epoch": 7, "value": 25.234420711805868}
+:::MLPv0.5.0 transformer 1559706461.220524788 (/workspace/translation/train.py:153) eval_target: 25.0
+:::MLPv0.5.0 transformer 1559706461.220801592 (/workspace/translation/train.py:154) eval_stop: 7
+validation and scoring  42.46467971801758
+:::MLPv0.5.0 transformer 1559706461.221146107 (/workspace/translation/train.py:167) run_stop
+:::MLPv0.5.0 transformer 1559706461.221418858 (/workspace/translation/train.py:168) run_final
+| done training in 28964.0 seconds
++++ date +%s
+++ END=1559706462
++++ date '+%Y-%m-%d %r'
+ENDING TIMING RUN AT 2019-06-05 03:47:42 AM
+RESULT,transformer,3746,28978,,2019-06-04 07:44:44 PM
+++ END_FMT='2019-06-05 03:47:42 AM'
+++ echo 'ENDING TIMING RUN AT 2019-06-05 03:47:42 AM'
+++ RESULT=28978
+++ RESULT_NAME=transformer
+++ echo 'RESULT,transformer,3746,28978,,2019-06-04 07:44:44 PM'
++ set +x
