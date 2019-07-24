@@ -1,0 +1,832 @@
+Clearing caches
+ - Clearing cache on dgx1
+:::MLPv0.5.0 resnet 1560281080.031395674 (<string>:1) run_clear_caches
+
+Launching user script on master node:
++ DGXSYSTEM=DGX1
++ [[ -f config_DGX1.sh ]]
++ source config_DGX1.sh
+++ BATCHSIZE=1664
+++ KVSTORE=device
+++ LR=0.6
+++ WARMUP_EPOCHS=5
+++ EVAL_OFFSET=2
+++ DALI_PREFETCH_QUEUE=2
+++ DALI_NVJPEG_MEMPADDING=64
+++ DGXNNODES=1
+++ DGXSYSTEM=DGX1
+++ WALLTIME=12:00:00
+++ DGXNGPU=1
+++ DGXSOCKETCORES=20
+++ DGXHT=2
+++ DGXIBDEVICES=
+++ date +%s
++ start=1560281080
+++ date '+%Y-%m-%d %r'
++ start_fmt='2019-06-11 07:24:40 PM'
++ echo 'STARTING TIMING RUN AT 2019-06-11 07:24:40 PM'
+STARTING TIMING RUN AT 2019-06-11 07:24:40 PM
++ SLURM_NTASKS_PER_NODE=1
++ BATCHSIZE=1664
++ KVSTORE=device
++ LR=0.6
++ WARMUP_EPOCHS=5
++ EVAL_OFFSET=2
++ DALI_PREFETCH_QUEUE=2
++ DALI_NVJPEG_MEMPADDING=64
++ DATAROOT=/data
++ echo 'running benchmark'
++ export NGPUS=4
++ NGPUS=4
+running benchmark
+++ seq 0 3
+++ tr '\n' ,
+++ sed 's/,$//'
++ GPUS=0,1,2,3
++ PARAMS=(--gpus "${GPUS}" --batch-size "${BATCHSIZE}" --kv-store "${KVSTORE}" --lr "${LR}" --lr-step-epochs "30,60,80" --warmup-epochs "${WARMUP_EPOCHS}" --eval-period "4" --eval-offset "${EVAL_OFFSET}" --optimizer "sgd" --network "resnet-v1b-fl" --num-layers "50" --num-epochs "100" --accuracy-threshold "0.749" --dtype "float16" --use-dali --disp-batches "760" --image-shape "4,224,224" --fuse-bn-relu "1" --fuse-bn-add-relu "1" --min-random-area "0.05" --max-random-area "1.0" --conv-algo "1" --force-tensor-core "1" --input-layout "NHWC" --conv-layout "NHWC" --batchnorm-layout "NHWC" --pooling-layout "NHWC" --batchnorm-mom "0.9" --batchnorm-eps "1e-5" --data-train "${DATAROOT}/train.rec" --data-train-idx "${DATAROOT}/train.idx" --data-val "${DATAROOT}/val.rec" --data-val-idx "${DATAROOT}/val.idx" --dali-prefetch-queue "${DALI_PREFETCH_QUEUE}" --dali-nvjpeg-memory-padding "${DALI_NVJPEG_MEMPADDING}")
++ [[ device == \h\o\r\o\v\o\d ]]
++ python train_imagenet.py --gpus 0,1,2,3 --batch-size 1664 --kv-store device --lr 0.6 --lr-step-epochs 30,60,80 --warmup-epochs 5 --eval-period 4 --eval-offset 2 --optimizer sgd --network resnet-v1b-fl --num-layers 50 --num-epochs 100 --accuracy-threshold 0.749 --dtype float16 --use-dali --disp-batches 760 --image-shape 4,224,224 --fuse-bn-relu 1 --fuse-bn-add-relu 1 --min-random-area 0.05 --max-random-area 1.0 --conv-algo 1 --force-tensor-core 1 --input-layout NHWC --conv-layout NHWC --batchnorm-layout NHWC --pooling-layout NHWC --batchnorm-mom 0.9 --batchnorm-eps 1e-5 --data-train /data/train.rec --data-train-idx /data/train.idx --data-val /data/val.rec --data-val-idx /data/val.idx --dali-prefetch-queue 2 --dali-nvjpeg-memory-padding 64
+--------------------------------------------------------------------------
+[[17482,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: dgx1
+
+Another transport will be used instead, although this may result in
+lower performance.
+
+NOTE: You can disable this warning by setting the MCA parameter
+btl_base_warn_component_unused to 0.
+--------------------------------------------------------------------------
+:::MLPv0.5.0 resnet 1560281082.363842010 (/workspace/image_classification/mlperf_log_utils.py:49) eval_offset: 2
+:::MLPv0.5.0 resnet 1560281082.364420414 (/workspace/image_classification/mlperf_log_utils.py:49) run_start
+:::MLPv0.5.0 resnet 1560281082.365082264 (/workspace/image_classification/mlperf_log_utils.py:49) run_set_random_seed: 7151
+:::MLPv0.5.0 resnet 1560281082.366609097 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_initial_shape: [4, 224, 224]
+:::MLPv0.5.0 resnet 1560281082.367583513 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "[4, 224, 224] -> (64, 112.0, 112.0)"
+:::MLPv0.5.0 resnet 1560281082.368248463 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 64, "stride": 2}
+:::MLPv0.5.0 resnet 1560281082.369038105 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [64, 112.0, 112.0]}
+:::MLPv0.5.0 resnet 1560281082.369838715 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_initial_max_pool: "(64, 112.0, 112.0) -> (64, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.370478153 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.371059179 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.371627808 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (64, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.372321844 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(64, 56.0, 56.0) -> (64, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.372917414 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 64, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.373600483 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [64, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.374152660 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.374830961 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(64, 56.0, 56.0) -> (64, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.375412464 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 64, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.376065969 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [64, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.376592398 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.377236605 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(64, 56.0, 56.0) -> (256, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.377828836 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.378494978 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.379181147 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(64, 56.0, 56.0) -> (256, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.379698038 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.380368710 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.380890608 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_projection_shortcut: "(64, 56.0, 56.0) -> (256, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.381406546 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.381927490 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (256, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.382383108 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.382866144 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.383574009 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.384068251 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.384565115 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (256, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.385198593 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 56.0, 56.0) -> (64, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.385723829 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 64, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.386357069 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [64, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.386841297 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.387460709 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(64, 56.0, 56.0) -> (64, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.387970209 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 64, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.388600826 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [64, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.389099121 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.389750242 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(64, 56.0, 56.0) -> (256, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.390265226 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.390901327 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.391399622 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.391892433 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (256, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.392346621 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.392815828 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.393423080 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.393977642 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.394475937 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (256, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.395126820 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 56.0, 56.0) -> (64, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.395619631 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 64, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.396235704 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [64, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.396709442 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.397324800 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(64, 56.0, 56.0) -> (64, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.397892714 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 64, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.398529768 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [64, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.399016857 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.399640322 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(64, 56.0, 56.0) -> (256, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.400142670 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.400761843 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.401280403 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.401832342 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (256, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.402289391 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.402771711 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.403399944 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.403876066 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.404347658 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (256, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.404956341 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 56.0, 56.0) -> (128, 56.0, 56.0)"
+:::MLPv0.5.0 resnet 1560281082.405447721 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 128, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.406117678 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [128, 56.0, 56.0]}
+:::MLPv0.5.0 resnet 1560281082.406615257 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.407241583 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(128, 56.0, 56.0) -> (128, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.407734156 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 128, "stride": [2, 2]}
+:::MLPv0.5.0 resnet 1560281082.408354282 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [128, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.408852339 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.409486532 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(128, 28.0, 28.0) -> (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.410006046 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 512, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.410630465 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.411257744 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 56.0, 56.0) -> (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.411773205 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 512, "stride": [2, 2]}
+:::MLPv0.5.0 resnet 1560281082.412393332 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.412900925 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_projection_shortcut: "(256, 56.0, 56.0) -> (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.413412333 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.413961887 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.414394379 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.414853096 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.415465593 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.415954590 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.416446447 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.417099953 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(512, 28.0, 28.0) -> (128, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.417600393 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 128, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.418211460 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [128, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.418685198 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.419298172 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(128, 28.0, 28.0) -> (128, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.419786930 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 128, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.420444250 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [128, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.420936584 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.421581984 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(128, 28.0, 28.0) -> (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.422088146 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 512, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.422707558 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.423215151 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.423691750 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.424120188 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.424617290 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.425232172 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.425769329 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.426259279 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.426890373 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(512, 28.0, 28.0) -> (128, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.427403450 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 128, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.428035021 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [128, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.428530455 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.429187775 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(128, 28.0, 28.0) -> (128, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.429693699 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 128, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.430308104 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [128, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.430782318 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.431399822 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(128, 28.0, 28.0) -> (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.431905985 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 512, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.432524920 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.433026791 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.433505297 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.433956146 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.434441328 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.435067892 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.435558319 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.436028242 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.436671972 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(512, 28.0, 28.0) -> (128, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.437203407 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 128, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.437829018 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [128, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.438307285 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.438928127 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(128, 28.0, 28.0) -> (128, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.439423800 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 128, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.440035582 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [128, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.440547466 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.441172361 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(128, 28.0, 28.0) -> (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.441676855 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 512, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.442291260 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.442813635 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.443315983 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.443770409 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.444252968 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.444880962 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.445369959 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.445987701 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (512, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.446621418 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(512, 28.0, 28.0) -> (256, 28.0, 28.0)"
+:::MLPv0.5.0 resnet 1560281082.447122097 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.447732210 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 28.0, 28.0]}
+:::MLPv0.5.0 resnet 1560281082.448215008 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.448848248 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 28.0, 28.0) -> (256, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.449363947 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": [2, 2]}
+:::MLPv0.5.0 resnet 1560281082.450042725 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.450544596 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.451170206 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 14.0, 14.0) -> (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.451661825 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 1024, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.452270746 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.452905655 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(512, 28.0, 28.0) -> (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.453422308 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 1024, "stride": [2, 2]}
+:::MLPv0.5.0 resnet 1560281082.454049826 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.454559803 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_projection_shortcut: "(512, 28.0, 28.0) -> (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.455076218 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.455569267 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.455997944 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.456500053 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.457150221 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.457695246 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.458172083 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.458783865 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(1024, 14.0, 14.0) -> (256, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.459275246 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.459886789 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.460372448 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.461006165 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 14.0, 14.0) -> (256, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.461520195 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.462160826 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.462655306 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.463277340 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 14.0, 14.0) -> (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.463767052 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 1024, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.464382410 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.464901686 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.465386629 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.465888262 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.466397524 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.467031002 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.467522860 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.467998028 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.468617916 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(1024, 14.0, 14.0) -> (256, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.469133377 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.469776869 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.470272779 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.470910788 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 14.0, 14.0) -> (256, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.471423864 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.472055197 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.472552061 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.473176718 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 14.0, 14.0) -> (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.473678112 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 1024, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.474289179 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.474810362 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.475296497 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.475723028 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.476199150 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.476825476 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.477308035 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.477791071 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.478412867 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(1024, 14.0, 14.0) -> (256, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.478925705 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.479553223 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.480050087 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.480687141 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 14.0, 14.0) -> (256, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.481222868 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.481892109 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.482367277 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.482988358 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 14.0, 14.0) -> (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.483478785 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 1024, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.484078407 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.484616995 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.485116959 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.485572338 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.486035824 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.486656427 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.487148285 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.487638235 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.488266468 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(1024, 14.0, 14.0) -> (256, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.488777161 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.489396811 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.489931583 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.490586281 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 14.0, 14.0) -> (256, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.491099596 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.491724491 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.492194891 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.492808819 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 14.0, 14.0) -> (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.493301153 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 1024, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.493910789 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.494454384 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.494954348 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.495393515 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.495851517 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.496459246 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.496934891 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.497407198 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.498027325 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(1024, 14.0, 14.0) -> (256, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.498561859 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.499195814 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.499684811 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.500311613 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 14.0, 14.0) -> (256, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.500826120 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 256, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.501444101 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [256, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.501976013 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.502637625 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(256, 14.0, 14.0) -> (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.503152370 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 1024, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.503766775 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.504280806 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [1024, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.504782438 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.505222082 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.505693674 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.506316185 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.506811142 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.507305861 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (1024, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.507933140 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(1024, 14.0, 14.0) -> (512, 14.0, 14.0)"
+:::MLPv0.5.0 resnet 1560281082.508422375 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 512, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.509034157 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 14.0, 14.0]}
+:::MLPv0.5.0 resnet 1560281082.509507656 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.510134459 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(512, 14.0, 14.0) -> (512, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.510665178 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 512, "stride": [2, 2]}
+:::MLPv0.5.0 resnet 1560281082.511284113 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 7.0, 7.0]}
+:::MLPv0.5.0 resnet 1560281082.511756420 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.512378931 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(512, 7.0, 7.0) -> (2048, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.512888908 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 2048, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.513502598 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [2048, 7.0, 7.0]}
+:::MLPv0.5.0 resnet 1560281082.514121771 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(1024, 14.0, 14.0) -> (2048, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.514653683 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 2048, "stride": [2, 2]}
+:::MLPv0.5.0 resnet 1560281082.515294790 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [2048, 7.0, 7.0]}
+:::MLPv0.5.0 resnet 1560281082.515780926 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_projection_shortcut: "(1024, 14.0, 14.0) -> (2048, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.516271830 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [2048, 7.0, 7.0]}
+:::MLPv0.5.0 resnet 1560281082.516747236 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (2048, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.517174721 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.517648458 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.518288136 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.518784285 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.519291401 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (2048, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.519902706 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(2048, 7.0, 7.0) -> (512, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.520395756 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 512, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.521011829 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 7.0, 7.0]}
+:::MLPv0.5.0 resnet 1560281082.521486759 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.522121668 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(512, 7.0, 7.0) -> (512, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.522653580 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 512, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.523283005 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 7.0, 7.0]}
+:::MLPv0.5.0 resnet 1560281082.523772955 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.524405718 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(512, 7.0, 7.0) -> (2048, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.524916649 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 2048, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.525581837 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [2048, 7.0, 7.0]}
+:::MLPv0.5.0 resnet 1560281082.526142597 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [2048, 7.0, 7.0]}
+:::MLPv0.5.0 resnet 1560281082.526622534 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (2048, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.527050972 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.527509689 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.528118610 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_begin_block: {"block_type": "bottleneck_block"}
+:::MLPv0.5.0 resnet 1560281082.528630495 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_block_type: "bottleneck_block"
+:::MLPv0.5.0 resnet 1560281082.529124022 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_resnet_topology: " Block Input: (2048, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.529754162 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(2048, 7.0, 7.0) -> (512, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.530262709 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 512, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.530895233 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 7.0, 7.0]}
+:::MLPv0.5.0 resnet 1560281082.531375647 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.531989336 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(512, 7.0, 7.0) -> (512, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.532492399 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 512, "stride": [1, 1]}
+:::MLPv0.5.0 resnet 1560281082.533121109 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [512, 7.0, 7.0]}
+:::MLPv0.5.0 resnet 1560281082.533639908 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.534281254 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: "(512, 7.0, 7.0) -> (2048, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.534793615 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_conv2d_fixed_padding: {"use_bias": false, "initializer": "truncated_normal", "filters": 2048, "stride": 1}
+:::MLPv0.5.0 resnet 1560281082.535413504 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [2048, 7.0, 7.0]}
+:::MLPv0.5.0 resnet 1560281082.535928011 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_batch_norm: {"center": true, "epsilon": 1e-05, "momentum": 0.9, "training": true, "scale": true, "shape": [2048, 7.0, 7.0]}
+:::MLPv0.5.0 resnet 1560281082.536422491 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_end_block: " Block Output: (2048, 7.0, 7.0)"
+:::MLPv0.5.0 resnet 1560281082.536875010 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_shorcut_add
+:::MLPv0.5.0 resnet 1560281082.537356377 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_relu
+:::MLPv0.5.0 resnet 1560281082.538242579 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_dense: 1000
+:::MLPv0.5.0 resnet 1560281082.538691998 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_final_shape: 1000
+:::MLPv0.5.0 resnet 1560281082.539217234 (/workspace/image_classification/mlperf_log_utils.py:49) model_hp_loss_fn: "categorical_cross_entropy"
+2019-06-11 19:24:42,539 Node[0] start with arguments Namespace(accuracy_threshold=0.749, batch_size=1664, batchnorm_eps=1e-05, batchnorm_layout='NHWC', batchnorm_mom=0.9, bn_gamma_init0=False, conv_algo=1, conv_layout='NHWC', custom_bn_off=0, dali_nvjpeg_memory_padding=64, dali_prefetch_queue=2, dali_threads=3, data_train='/data/train.rec', data_train_idx='/data/train.idx', data_val='/data/val.rec', data_val_idx='/data/val.idx', disp_batches=760, dtype='float16', epoch_size=0, eval_offset=2, eval_period=4, force_tensor_core=1, fuse_bn_add_relu=1, fuse_bn_relu=1, gpus='0,1,2,3', image_shape='4,224,224', initializer='default', input_layout='NHWC', kv_store='device', log='', logging_dir='logs', lr=0.6, lr_factor=0.1, lr_step_epochs='30,60,80', macrobatch_size=0, max_random_area=1.0, max_random_aspect_ratio=1.3333333333333333, min_random_area=0.05, min_random_aspect_ratio=0.75, model_prefix=None, mom=0.9, network='resnet-v1b-fl', num_classes=1000, num_epochs=100, num_examples=1281167, num_layers=50, optimizer='sgd', pooling_layout='NHWC', profile_server_suffix='', profile_worker_suffix='', resize=256, save_period=1, seed=7151, separ_val=False, top_k=0, use_dali=True, verbose=0, warmup_epochs=5, warmup_strategy='linear', wd=0.0001)
+2019-06-11 19:24:42,541 Node[0] :::MLPv0.5.0 resnet 1560281082.541188955 (/workspace/image_classification/mlperf_log_utils.py:49) input_batch_size: 416
+:::MLPv0.5.0 resnet 1560281082.541188955 (/workspace/image_classification/mlperf_log_utils.py:49) input_batch_size: 416
+2019-06-11 19:24:42,541 Node[0] :::MLPv0.5.0 resnet 1560281082.541819334 (/workspace/image_classification/mlperf_log_utils.py:49) input_order
+:::MLPv0.5.0 resnet 1560281082.541819334 (/workspace/image_classification/mlperf_log_utils.py:49) input_order
+2019-06-11 19:24:42,542 Node[0] :::MLPv0.5.0 resnet 1560281082.542803526 (/workspace/image_classification/mlperf_log_utils.py:49) input_crop_uses_bboxes: false
+:::MLPv0.5.0 resnet 1560281082.542803526 (/workspace/image_classification/mlperf_log_utils.py:49) input_crop_uses_bboxes: false
+2019-06-11 19:24:42,543 Node[0] :::MLPv0.5.0 resnet 1560281082.543420553 (/workspace/image_classification/mlperf_log_utils.py:49) input_distorted_crop_aspect_ratio_range: [0.75, 1.3333333333333333]
+:::MLPv0.5.0 resnet 1560281082.543420553 (/workspace/image_classification/mlperf_log_utils.py:49) input_distorted_crop_aspect_ratio_range: [0.75, 1.3333333333333333]
+:::MLPv0.5.0 resnet 1560281082.544018745 (/workspace/image_classification/mlperf_log_utils.py:49) input_distorted_crop_area_range: [0.05, 1.0]
+2019-06-11 19:24:42,544 Node[0] :::MLPv0.5.0 resnet 1560281082.544018745 (/workspace/image_classification/mlperf_log_utils.py:49) input_distorted_crop_area_range: [0.05, 1.0]
+2019-06-11 19:24:42,544 Node[0] :::MLPv0.5.0 resnet 1560281082.544609070 (/workspace/image_classification/mlperf_log_utils.py:49) input_mean_subtraction: [123.675, 116.28, 103.53]
+:::MLPv0.5.0 resnet 1560281082.544609070 (/workspace/image_classification/mlperf_log_utils.py:49) input_mean_subtraction: [123.675, 116.28, 103.53]
+:::MLPv0.5.0 resnet 1560281082.545144081 (/workspace/image_classification/mlperf_log_utils.py:49) input_random_flip
+2019-06-11 19:24:42,545 Node[0] :::MLPv0.5.0 resnet 1560281082.545144081 (/workspace/image_classification/mlperf_log_utils.py:49) input_random_flip
+2019-06-11 19:24:42,546 Node[0] :::MLPv0.5.0 resnet 1560281082.546874285 (/workspace/image_classification/mlperf_log_utils.py:49) input_mean_subtraction: [123.675, 116.28, 103.53]
+:::MLPv0.5.0 resnet 1560281082.546874285 (/workspace/image_classification/mlperf_log_utils.py:49) input_mean_subtraction: [123.675, 116.28, 103.53]
+:::MLPv0.5.0 resnet 1560281082.547538280 (/workspace/image_classification/mlperf_log_utils.py:49) input_resize_aspect_preserving
+2019-06-11 19:24:42,547 Node[0] :::MLPv0.5.0 resnet 1560281082.547538280 (/workspace/image_classification/mlperf_log_utils.py:49) input_resize_aspect_preserving
+:::MLPv0.5.0 resnet 1560281082.548176527 (/workspace/image_classification/mlperf_log_utils.py:49) input_central_crop
+2019-06-11 19:24:42,548 Node[0] :::MLPv0.5.0 resnet 1560281082.548176527 (/workspace/image_classification/mlperf_log_utils.py:49) input_central_crop
+:::MLPv0.5.0 resnet 1560281083.284792423 (/workspace/image_classification/mlperf_log_utils.py:49) input_size: 1281167
+2019-06-11 19:24:43,284 Node[0] :::MLPv0.5.0 resnet 1560281083.284792423 (/workspace/image_classification/mlperf_log_utils.py:49) input_size: 1281167
+2019-06-11 19:24:43,285 Node[0] :::MLPv0.5.0 resnet 1560281083.285689354 (/workspace/image_classification/mlperf_log_utils.py:49) preproc_num_train_examples: 1281167
+:::MLPv0.5.0 resnet 1560281083.285689354 (/workspace/image_classification/mlperf_log_utils.py:49) preproc_num_train_examples: 1281167
+:::MLPv0.5.0 resnet 1560281083.286459923 (/workspace/image_classification/mlperf_log_utils.py:49) eval_size: 50000
+2019-06-11 19:24:43,286 Node[0] :::MLPv0.5.0 resnet 1560281083.286459923 (/workspace/image_classification/mlperf_log_utils.py:49) eval_size: 50000
+2019-06-11 19:24:43,287 Node[0] :::MLPv0.5.0 resnet 1560281083.287045002 (/workspace/image_classification/mlperf_log_utils.py:49) preproc_num_eval_examples: 50000
+:::MLPv0.5.0 resnet 1560281083.287045002 (/workspace/image_classification/mlperf_log_utils.py:49) preproc_num_eval_examples: 50000
+:::MLPv0.5.0 resnet 1560281100.022327423 (/workspace/image_classification/mlperf_log_utils.py:49) opt_name: "sgd"
+2019-06-11 19:25:00,022 Node[0] :::MLPv0.5.0 resnet 1560281100.022327423 (/workspace/image_classification/mlperf_log_utils.py:49) opt_name: "sgd"
+:::MLPv0.5.0 resnet 1560281100.024825811 (/workspace/image_classification/mlperf_log_utils.py:49) opt_learning_rate: 0.6
+2019-06-11 19:25:00,024 Node[0] :::MLPv0.5.0 resnet 1560281100.024825811 (/workspace/image_classification/mlperf_log_utils.py:49) opt_learning_rate: 0.6
+2019-06-11 19:25:00,025 Node[0] :::MLPv0.5.0 resnet 1560281100.025331020 (/workspace/image_classification/mlperf_log_utils.py:49) opt_momentum: 0.9
+:::MLPv0.5.0 resnet 1560281100.025331020 (/workspace/image_classification/mlperf_log_utils.py:49) opt_momentum: 0.9
+2019-06-11 19:25:00,025 Node[0] :::MLPv0.5.0 resnet 1560281100.025870085 (/workspace/image_classification/mlperf_log_utils.py:49) model_l2_regularization: 0.0001
+:::MLPv0.5.0 resnet 1560281100.025870085 (/workspace/image_classification/mlperf_log_utils.py:49) model_l2_regularization: 0.0001
+:::MLPv0.5.0 resnet 1560281100.026439428 (/workspace/image_classification/mlperf_log_utils.py:49) model_exclude_bn_from_l2: true
+2019-06-11 19:25:00,026 Node[0] :::MLPv0.5.0 resnet 1560281100.026439428 (/workspace/image_classification/mlperf_log_utils.py:49) model_exclude_bn_from_l2: true
+2019-06-11 19:25:00,027 Node[0] :::MLPv0.5.0 resnet 1560281100.027276993 (/workspace/image_classification/mlperf_log_utils.py:49) eval_target: 0.749
+:::MLPv0.5.0 resnet 1560281100.027276993 (/workspace/image_classification/mlperf_log_utils.py:49) eval_target: 0.749
+2019-06-11 19:25:01,063 Node[0] :::MLPv0.5.0 resnet 1560281101.063381910 (/workspace/image_classification/mlperf_log_utils.py:49) train_loop
+:::MLPv0.5.0 resnet 1560281101.063381910 (/workspace/image_classification/mlperf_log_utils.py:49) train_loop
+2019-06-11 19:25:01,064 Node[0] :::MLPv0.5.0 resnet 1560281101.064021587 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 0
+:::MLPv0.5.0 resnet 1560281101.064021587 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 0
+[19:25:01] src/kvstore/././comm.h:743: only 6 out of 12 GPU pairs are enabled direct access. It may affect the performance. You can set MXNET_ENABLE_GPU_P2P=0 to turn it off
+[19:25:01] src/kvstore/././comm.h:752: .vv.
+[19:25:01] src/kvstore/././comm.h:752: v.v.
+[19:25:01] src/kvstore/././comm.h:752: vv..
+[19:25:01] src/kvstore/././comm.h:752: ....
+2019-06-11 19:46:35,532 Node[0] Epoch[0] Batch [760]	Speed: 978.29 samples/sec	accuracy=0.031121
+2019-06-11 19:46:44,804 Node[0] Epoch[0] Time cost=1303.740
+2019-06-11 19:46:45,074 Node[0] :::MLPv0.5.0 resnet 1560282405.074716091 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 1
+:::MLPv0.5.0 resnet 1560282405.074716091 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 1
+2019-06-11 19:50:51,155 Node[0] Epoch[1] Batch [760]	Speed: 5150.24 samples/sec	accuracy=0.150613
+2019-06-11 19:50:54,054 Node[0] Epoch[1] Time cost=248.979
+2019-06-11 19:50:54,302 Node[0] :::MLPv0.5.0 resnet 1560282654.302738905 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 2
+:::MLPv0.5.0 resnet 1560282654.302738905 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 2
+2019-06-11 19:55:00,523 Node[0] Epoch[2] Batch [760]	Speed: 5147.03 samples/sec	accuracy=0.258950
+2019-06-11 19:55:03,433 Node[0] Epoch[2] Time cost=249.131
+:::MLPv0.5.0 resnet 1560282903.646290541 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 19:55:03,646 Node[0] :::MLPv0.5.0 resnet 1560282903.646290541 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 19:55:03,646 Node[0] DALI iterator does not support resetting while epoch is not finished. Ignoring...
+2019-06-11 19:56:00,816 Node[0] Epoch[2] Validation-accuracy=0.294960
+2019-06-11 19:56:00,816 Node[0] Epoch[2] Validation-correct-count=14748.000000
+2019-06-11 19:56:00,816 Node[0] Epoch[2] Validation-total-count=50000.000000
+2019-06-11 19:56:00,818 Node[0] :::MLPv0.5.0 resnet 1560282960.818809986 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.29496, "epoch": 2}
+:::MLPv0.5.0 resnet 1560282960.818809986 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.29496, "epoch": 2}
+:::MLPv0.5.0 resnet 1560282960.819349766 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 19:56:00,819 Node[0] :::MLPv0.5.0 resnet 1560282960.819349766 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 19:56:00,819 Node[0] :::MLPv0.5.0 resnet 1560282960.819869041 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 3
+:::MLPv0.5.0 resnet 1560282960.819869041 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 3
+2019-06-11 20:00:06,577 Node[0] Epoch[3] Batch [760]	Speed: 5149.00 samples/sec	accuracy=0.334157
+2019-06-11 20:00:09,502 Node[0] Epoch[3] Time cost=248.683
+2019-06-11 20:00:09,720 Node[0] :::MLPv0.5.0 resnet 1560283209.719975233 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 4
+:::MLPv0.5.0 resnet 1560283209.719975233 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 4
+2019-06-11 20:04:15,718 Node[0] Epoch[4] Batch [760]	Speed: 5152.00 samples/sec	accuracy=0.374330
+2019-06-11 20:04:18,586 Node[0] Epoch[4] Time cost=248.867
+:::MLPv0.5.0 resnet 1560283458.818594217 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 5
+2019-06-11 20:04:18,818 Node[0] :::MLPv0.5.0 resnet 1560283458.818594217 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 5
+2019-06-11 20:08:24,270 Node[0] Epoch[5] Batch [760]	Speed: 5161.55 samples/sec	accuracy=0.402313
+2019-06-11 20:08:27,135 Node[0] Epoch[5] Time cost=248.317
+:::MLPv0.5.0 resnet 1560283707.370906591 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 6
+2019-06-11 20:08:27,370 Node[0] :::MLPv0.5.0 resnet 1560283707.370906591 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 6
+2019-06-11 20:12:32,996 Node[0] Epoch[6] Batch [760]	Speed: 5159.59 samples/sec	accuracy=0.426476
+2019-06-11 20:12:35,894 Node[0] Epoch[6] Time cost=248.523
+2019-06-11 20:12:36,122 Node[0] :::MLPv0.5.0 resnet 1560283956.122773409 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+:::MLPv0.5.0 resnet 1560283956.122773409 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 20:12:46,650 Node[0] Epoch[6] Validation-accuracy=0.441400
+2019-06-11 20:12:46,651 Node[0] Epoch[6] Validation-correct-count=22070.000000
+2019-06-11 20:12:46,651 Node[0] Epoch[6] Validation-total-count=50000.000000
+2019-06-11 20:12:46,652 Node[0] :::MLPv0.5.0 resnet 1560283966.652122974 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.4414, "epoch": 6}
+:::MLPv0.5.0 resnet 1560283966.652122974 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.4414, "epoch": 6}
+2019-06-11 20:12:46,652 Node[0] :::MLPv0.5.0 resnet 1560283966.652619600 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560283966.652619600 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560283966.653094292 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 7
+2019-06-11 20:12:46,653 Node[0] :::MLPv0.5.0 resnet 1560283966.653094292 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 7
+2019-06-11 20:16:52,117 Node[0] Epoch[7] Batch [760]	Speed: 5155.60 samples/sec	accuracy=0.442982
+2019-06-11 20:16:55,004 Node[0] Epoch[7] Time cost=248.351
+:::MLPv0.5.0 resnet 1560284215.244272709 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 8
+2019-06-11 20:16:55,244 Node[0] :::MLPv0.5.0 resnet 1560284215.244272709 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 8
+2019-06-11 20:21:00,890 Node[0] Epoch[8] Batch [760]	Speed: 5158.90 samples/sec	accuracy=0.455797
+2019-06-11 20:21:03,808 Node[0] Epoch[8] Time cost=248.564
+:::MLPv0.5.0 resnet 1560284464.034148693 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 9
+2019-06-11 20:21:04,034 Node[0] :::MLPv0.5.0 resnet 1560284464.034148693 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 9
+2019-06-11 20:25:09,463 Node[0] Epoch[9] Batch [760]	Speed: 5162.85 samples/sec	accuracy=0.466099
+2019-06-11 20:25:12,365 Node[0] Epoch[9] Time cost=248.332
+:::MLPv0.5.0 resnet 1560284712.602347136 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 10
+2019-06-11 20:25:12,602 Node[0] :::MLPv0.5.0 resnet 1560284712.602347136 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 10
+2019-06-11 20:29:18,143 Node[0] Epoch[10] Batch [760]	Speed: 5161.33 samples/sec	accuracy=0.473910
+2019-06-11 20:29:21,005 Node[0] Epoch[10] Time cost=248.403
+:::MLPv0.5.0 resnet 1560284961.252795219 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 20:29:21,252 Node[0] :::MLPv0.5.0 resnet 1560284961.252795219 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 20:29:31,811 Node[0] Epoch[10] Validation-accuracy=0.474020
+2019-06-11 20:29:31,811 Node[0] Epoch[10] Validation-correct-count=23701.000000
+2019-06-11 20:29:31,811 Node[0] Epoch[10] Validation-total-count=50000.000000
+2019-06-11 20:29:31,812 Node[0] :::MLPv0.5.0 resnet 1560284971.812610865 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.47402, "epoch": 10}
+:::MLPv0.5.0 resnet 1560284971.812610865 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.47402, "epoch": 10}
+:::MLPv0.5.0 resnet 1560284971.813116074 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 20:29:31,813 Node[0] :::MLPv0.5.0 resnet 1560284971.813116074 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560284971.813597441 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 11
+2019-06-11 20:29:31,813 Node[0] :::MLPv0.5.0 resnet 1560284971.813597441 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 11
+2019-06-11 20:33:37,174 Node[0] Epoch[11] Batch [760]	Speed: 5157.50 samples/sec	accuracy=0.480211
+2019-06-11 20:33:40,062 Node[0] Epoch[11] Time cost=248.249
+:::MLPv0.5.0 resnet 1560285220.285312414 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 12
+2019-06-11 20:33:40,285 Node[0] :::MLPv0.5.0 resnet 1560285220.285312414 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 12
+2019-06-11 20:37:45,933 Node[0] Epoch[12] Batch [760]	Speed: 5158.91 samples/sec	accuracy=0.485522
+2019-06-11 20:37:48,833 Node[0] Epoch[12] Time cost=248.548
+:::MLPv0.5.0 resnet 1560285469.079480171 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 13
+2019-06-11 20:37:49,079 Node[0] :::MLPv0.5.0 resnet 1560285469.079480171 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 13
+2019-06-11 20:41:54,457 Node[0] Epoch[13] Batch [760]	Speed: 5163.96 samples/sec	accuracy=0.489427
+2019-06-11 20:41:57,346 Node[0] Epoch[13] Time cost=248.267
+2019-06-11 20:41:57,586 Node[0] :::MLPv0.5.0 resnet 1560285717.586051702 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 14
+:::MLPv0.5.0 resnet 1560285717.586051702 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 14
+2019-06-11 20:46:03,040 Node[0] Epoch[14] Batch [760]	Speed: 5163.43 samples/sec	accuracy=0.493415
+2019-06-11 20:46:05,594 Node[0] Epoch[14] Time cost=248.008
+:::MLPv0.5.0 resnet 1560285965.795922518 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 20:46:05,795 Node[0] :::MLPv0.5.0 resnet 1560285965.795922518 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 20:46:16,313 Node[0] Epoch[14] Validation-accuracy=0.497160
+2019-06-11 20:46:16,313 Node[0] Epoch[14] Validation-correct-count=24858.000000
+2019-06-11 20:46:16,314 Node[0] Epoch[14] Validation-total-count=50000.000000
+:::MLPv0.5.0 resnet 1560285976.314924002 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.49716, "epoch": 14}
+2019-06-11 20:46:16,314 Node[0] :::MLPv0.5.0 resnet 1560285976.314924002 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.49716, "epoch": 14}
+2019-06-11 20:46:16,315 Node[0] :::MLPv0.5.0 resnet 1560285976.315579891 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560285976.315579891 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560285976.316063404 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 15
+2019-06-11 20:46:16,316 Node[0] :::MLPv0.5.0 resnet 1560285976.316063404 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 15
+2019-06-11 20:50:21,341 Node[0] Epoch[15] Batch [760]	Speed: 5164.57 samples/sec	accuracy=0.497271
+2019-06-11 20:50:24,241 Node[0] Epoch[15] Time cost=247.925
+2019-06-11 20:50:24,464 Node[0] :::MLPv0.5.0 resnet 1560286224.464531660 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 16
+:::MLPv0.5.0 resnet 1560286224.464531660 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 16
+2019-06-11 20:54:29,843 Node[0] Epoch[16] Batch [760]	Speed: 5164.77 samples/sec	accuracy=0.499040
+2019-06-11 20:54:32,717 Node[0] Epoch[16] Time cost=248.253
+:::MLPv0.5.0 resnet 1560286472.931696653 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 17
+2019-06-11 20:54:32,931 Node[0] :::MLPv0.5.0 resnet 1560286472.931696653 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 17
+2019-06-11 20:58:38,325 Node[0] Epoch[17] Batch [760]	Speed: 5165.62 samples/sec	accuracy=0.502439
+2019-06-11 20:58:41,210 Node[0] Epoch[17] Time cost=248.278
+:::MLPv0.5.0 resnet 1560286721.409300804 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 18
+2019-06-11 20:58:41,409 Node[0] :::MLPv0.5.0 resnet 1560286721.409300804 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 18
+2019-06-11 21:02:46,847 Node[0] Epoch[18] Batch [760]	Speed: 5163.62 samples/sec	accuracy=0.504969
+2019-06-11 21:02:49,714 Node[0] Epoch[18] Time cost=248.305
+2019-06-11 21:02:49,953 Node[0] :::MLPv0.5.0 resnet 1560286969.953808784 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+:::MLPv0.5.0 resnet 1560286969.953808784 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 21:03:00,330 Node[0] Epoch[18] Validation-accuracy=0.474280
+2019-06-11 21:03:00,330 Node[0] Epoch[18] Validation-correct-count=23714.000000
+2019-06-11 21:03:00,330 Node[0] Epoch[18] Validation-total-count=50000.000000
+2019-06-11 21:03:00,331 Node[0] :::MLPv0.5.0 resnet 1560286980.331818342 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.47428, "epoch": 18}
+:::MLPv0.5.0 resnet 1560286980.331818342 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.47428, "epoch": 18}
+2019-06-11 21:03:00,332 Node[0] :::MLPv0.5.0 resnet 1560286980.332406044 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560286980.332406044 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 21:03:00,333 Node[0] :::MLPv0.5.0 resnet 1560286980.333027601 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 19
+:::MLPv0.5.0 resnet 1560286980.333027601 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 19
+2019-06-11 21:07:05,633 Node[0] Epoch[19] Batch [760]	Speed: 5158.41 samples/sec	accuracy=0.506310
+2019-06-11 21:07:08,493 Node[0] Epoch[19] Time cost=248.160
+2019-06-11 21:07:08,769 Node[0] :::MLPv0.5.0 resnet 1560287228.769683123 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 20
+:::MLPv0.5.0 resnet 1560287228.769683123 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 20
+2019-06-11 21:11:14,244 Node[0] Epoch[20] Batch [760]	Speed: 5162.61 samples/sec	accuracy=0.508469
+2019-06-11 21:11:17,134 Node[0] Epoch[20] Time cost=248.365
+:::MLPv0.5.0 resnet 1560287477.406107903 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 21
+2019-06-11 21:11:17,406 Node[0] :::MLPv0.5.0 resnet 1560287477.406107903 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 21
+2019-06-11 21:15:23,003 Node[0] Epoch[21] Batch [760]	Speed: 5159.59 samples/sec	accuracy=0.509175
+2019-06-11 21:15:25,928 Node[0] Epoch[21] Time cost=248.522
+:::MLPv0.5.0 resnet 1560287726.157428741 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 22
+2019-06-11 21:15:26,157 Node[0] :::MLPv0.5.0 resnet 1560287726.157428741 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 22
+2019-06-11 21:19:31,755 Node[0] Epoch[22] Batch [760]	Speed: 5159.53 samples/sec	accuracy=0.510817
+2019-06-11 21:19:34,649 Node[0] Epoch[22] Time cost=248.492
+:::MLPv0.5.0 resnet 1560287974.864205122 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 21:19:34,864 Node[0] :::MLPv0.5.0 resnet 1560287974.864205122 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 21:19:45,559 Node[0] Epoch[22] Validation-accuracy=0.506240
+2019-06-11 21:19:45,560 Node[0] Epoch[22] Validation-correct-count=25312.000000
+2019-06-11 21:19:45,560 Node[0] Epoch[22] Validation-total-count=50000.000000
+2019-06-11 21:19:45,561 Node[0] :::MLPv0.5.0 resnet 1560287985.561456919 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.50624, "epoch": 22}
+:::MLPv0.5.0 resnet 1560287985.561456919 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.50624, "epoch": 22}
+2019-06-11 21:19:45,562 Node[0] :::MLPv0.5.0 resnet 1560287985.562052011 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560287985.562052011 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 21:19:45,562 Node[0] :::MLPv0.5.0 resnet 1560287985.562651634 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 23
+:::MLPv0.5.0 resnet 1560287985.562651634 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 23
+2019-06-11 21:23:50,790 Node[0] Epoch[23] Batch [760]	Speed: 5160.32 samples/sec	accuracy=0.511791
+2019-06-11 21:23:53,713 Node[0] Epoch[23] Time cost=248.151
+2019-06-11 21:23:53,930 Node[0] :::MLPv0.5.0 resnet 1560288233.930574656 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 24
+:::MLPv0.5.0 resnet 1560288233.930574656 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 24
+2019-06-11 21:27:59,331 Node[0] Epoch[24] Batch [760]	Speed: 5162.64 samples/sec	accuracy=0.513933
+2019-06-11 21:28:02,222 Node[0] Epoch[24] Time cost=248.292
+2019-06-11 21:28:02,417 Node[0] :::MLPv0.5.0 resnet 1560288482.417109251 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 25
+:::MLPv0.5.0 resnet 1560288482.417109251 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 25
+2019-06-11 21:32:08,013 Node[0] Epoch[25] Batch [760]	Speed: 5160.49 samples/sec	accuracy=0.515029
+2019-06-11 21:32:10,906 Node[0] Epoch[25] Time cost=248.489
+:::MLPv0.5.0 resnet 1560288731.197022915 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 26
+2019-06-11 21:32:11,197 Node[0] :::MLPv0.5.0 resnet 1560288731.197022915 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 26
+2019-06-11 21:36:16,669 Node[0] Epoch[26] Batch [760]	Speed: 5162.85 samples/sec	accuracy=0.516177
+2019-06-11 21:36:19,548 Node[0] Epoch[26] Time cost=248.351
+:::MLPv0.5.0 resnet 1560288979.773329735 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 21:36:19,773 Node[0] :::MLPv0.5.0 resnet 1560288979.773329735 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 21:36:30,404 Node[0] Epoch[26] Validation-accuracy=0.509100
+2019-06-11 21:36:30,404 Node[0] Epoch[26] Validation-correct-count=25455.000000
+2019-06-11 21:36:30,404 Node[0] Epoch[26] Validation-total-count=50000.000000
+2019-06-11 21:36:30,405 Node[0] :::MLPv0.5.0 resnet 1560288990.405642748 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.5091, "epoch": 26}
+:::MLPv0.5.0 resnet 1560288990.405642748 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.5091, "epoch": 26}
+2019-06-11 21:36:30,406 Node[0] :::MLPv0.5.0 resnet 1560288990.406173944 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560288990.406173944 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560288990.406674147 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 27
+2019-06-11 21:36:30,406 Node[0] :::MLPv0.5.0 resnet 1560288990.406674147 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 27
+2019-06-11 21:40:35,560 Node[0] Epoch[27] Batch [760]	Speed: 5162.12 samples/sec	accuracy=0.517148
+2019-06-11 21:40:38,435 Node[0] Epoch[27] Time cost=248.029
+:::MLPv0.5.0 resnet 1560289238.666554451 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 28
+2019-06-11 21:40:38,666 Node[0] :::MLPv0.5.0 resnet 1560289238.666554451 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 28
+2019-06-11 21:44:44,181 Node[0] Epoch[28] Batch [760]	Speed: 5162.80 samples/sec	accuracy=0.517502
+2019-06-11 21:44:47,068 Node[0] Epoch[28] Time cost=248.402
+:::MLPv0.5.0 resnet 1560289487.295572519 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 29
+2019-06-11 21:44:47,295 Node[0] :::MLPv0.5.0 resnet 1560289487.295572519 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 29
+2019-06-11 21:48:52,730 Node[0] Epoch[29] Batch [760]	Speed: 5163.39 samples/sec	accuracy=0.519321
+2019-06-11 21:48:55,301 Node[0] Epoch[29] Time cost=248.006
+2019-06-11 21:48:55,542 Node[0] :::MLPv0.5.0 resnet 1560289735.542398453 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 30
+:::MLPv0.5.0 resnet 1560289735.542398453 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 30
+2019-06-11 21:48:56,425 Node[0] Update[23101]: Change learning rate to 6.00000e-02
+2019-06-11 21:53:01,083 Node[0] Epoch[30] Batch [760]	Speed: 5161.27 samples/sec	accuracy=0.613218
+2019-06-11 21:53:03,952 Node[0] Epoch[30] Time cost=248.410
+:::MLPv0.5.0 resnet 1560289984.199816465 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 21:53:04,199 Node[0] :::MLPv0.5.0 resnet 1560289984.199816465 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 21:53:14,696 Node[0] Epoch[30] Validation-accuracy=0.688280
+2019-06-11 21:53:14,696 Node[0] Epoch[30] Validation-correct-count=34414.000000
+2019-06-11 21:53:14,696 Node[0] Epoch[30] Validation-total-count=50000.000000
+2019-06-11 21:53:14,697 Node[0] :::MLPv0.5.0 resnet 1560289994.697229147 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.68828, "epoch": 30}
+:::MLPv0.5.0 resnet 1560289994.697229147 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.68828, "epoch": 30}
+:::MLPv0.5.0 resnet 1560289994.697788000 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 21:53:14,697 Node[0] :::MLPv0.5.0 resnet 1560289994.697788000 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 21:53:14,698 Node[0] :::MLPv0.5.0 resnet 1560289994.698287010 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 31
+:::MLPv0.5.0 resnet 1560289994.698287010 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 31
+2019-06-11 21:57:20,053 Node[0] Epoch[31] Batch [760]	Speed: 5157.59 samples/sec	accuracy=0.645032
+2019-06-11 21:57:22,990 Node[0] Epoch[31] Time cost=248.292
+:::MLPv0.5.0 resnet 1560290243.205333471 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 32
+2019-06-11 21:57:23,205 Node[0] :::MLPv0.5.0 resnet 1560290243.205333471 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 32
+2019-06-11 22:01:28,658 Node[0] Epoch[32] Batch [760]	Speed: 5162.23 samples/sec	accuracy=0.655719
+2019-06-11 22:01:31,555 Node[0] Epoch[32] Time cost=248.349
+:::MLPv0.5.0 resnet 1560290491.803573370 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 33
+2019-06-11 22:01:31,803 Node[0] :::MLPv0.5.0 resnet 1560290491.803573370 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 33
+2019-06-11 22:05:37,432 Node[0] Epoch[33] Batch [760]	Speed: 5159.49 samples/sec	accuracy=0.662441
+2019-06-11 22:05:40,341 Node[0] Epoch[33] Time cost=248.537
+2019-06-11 22:05:40,584 Node[0] :::MLPv0.5.0 resnet 1560290740.584151268 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 34
+:::MLPv0.5.0 resnet 1560290740.584151268 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 34
+2019-06-11 22:09:46,300 Node[0] Epoch[34] Batch [760]	Speed: 5157.71 samples/sec	accuracy=0.667522
+2019-06-11 22:09:49,178 Node[0] Epoch[34] Time cost=248.594
+2019-06-11 22:09:49,412 Node[0] :::MLPv0.5.0 resnet 1560290989.412394285 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+:::MLPv0.5.0 resnet 1560290989.412394285 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 22:09:59,787 Node[0] Epoch[34] Validation-accuracy=0.707520
+2019-06-11 22:09:59,787 Node[0] Epoch[34] Validation-correct-count=35376.000000
+2019-06-11 22:09:59,787 Node[0] Epoch[34] Validation-total-count=50000.000000
+2019-06-11 22:09:59,788 Node[0] :::MLPv0.5.0 resnet 1560290999.788228273 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.70752, "epoch": 34}
+:::MLPv0.5.0 resnet 1560290999.788228273 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.70752, "epoch": 34}
+2019-06-11 22:09:59,788 Node[0] :::MLPv0.5.0 resnet 1560290999.788667679 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560290999.788667679 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560290999.789185762 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 35
+2019-06-11 22:09:59,789 Node[0] :::MLPv0.5.0 resnet 1560290999.789185762 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 35
+2019-06-11 22:14:05,100 Node[0] Epoch[35] Batch [760]	Speed: 5158.95 samples/sec	accuracy=0.670755
+2019-06-11 22:14:07,987 Node[0] Epoch[35] Time cost=248.199
+:::MLPv0.5.0 resnet 1560291248.205194473 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 36
+2019-06-11 22:14:08,205 Node[0] :::MLPv0.5.0 resnet 1560291248.205194473 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 36
+2019-06-11 22:18:13,906 Node[0] Epoch[36] Batch [760]	Speed: 5158.39 samples/sec	accuracy=0.673524
+2019-06-11 22:18:16,781 Node[0] Epoch[36] Time cost=248.576
+:::MLPv0.5.0 resnet 1560291497.025684834 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 37
+2019-06-11 22:18:17,025 Node[0] :::MLPv0.5.0 resnet 1560291497.025684834 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 37
+2019-06-11 22:22:22,716 Node[0] Epoch[37] Batch [760]	Speed: 5158.36 samples/sec	accuracy=0.675557
+2019-06-11 22:22:25,580 Node[0] Epoch[37] Time cost=248.554
+2019-06-11 22:22:25,804 Node[0] :::MLPv0.5.0 resnet 1560291745.804090977 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 38
+:::MLPv0.5.0 resnet 1560291745.804090977 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 38
+2019-06-11 22:26:31,513 Node[0] Epoch[38] Batch [760]	Speed: 5158.10 samples/sec	accuracy=0.676477
+2019-06-11 22:26:34,403 Node[0] Epoch[38] Time cost=248.599
+:::MLPv0.5.0 resnet 1560291994.648150682 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 22:26:34,648 Node[0] :::MLPv0.5.0 resnet 1560291994.648150682 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 22:26:45,144 Node[0] Epoch[38] Validation-accuracy=0.699560
+2019-06-11 22:26:45,144 Node[0] Epoch[38] Validation-correct-count=34978.000000
+2019-06-11 22:26:45,144 Node[0] Epoch[38] Validation-total-count=50000.000000
+:::MLPv0.5.0 resnet 1560292005.145643950 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.69956, "epoch": 38}
+2019-06-11 22:26:45,145 Node[0] :::MLPv0.5.0 resnet 1560292005.145643950 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.69956, "epoch": 38}
+:::MLPv0.5.0 resnet 1560292005.146149635 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 22:26:45,146 Node[0] :::MLPv0.5.0 resnet 1560292005.146149635 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560292005.146626234 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 39
+2019-06-11 22:26:45,146 Node[0] :::MLPv0.5.0 resnet 1560292005.146626234 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 39
+2019-06-11 22:30:50,230 Node[0] Epoch[39] Batch [760]	Speed: 5163.31 samples/sec	accuracy=0.677691
+2019-06-11 22:30:53,143 Node[0] Epoch[39] Time cost=247.996
+:::MLPv0.5.0 resnet 1560292253.374377251 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 40
+2019-06-11 22:30:53,374 Node[0] :::MLPv0.5.0 resnet 1560292253.374377251 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 40
+2019-06-11 22:34:59,188 Node[0] Epoch[40] Batch [760]	Speed: 5155.86 samples/sec	accuracy=0.678204
+2019-06-11 22:35:02,101 Node[0] Epoch[40] Time cost=248.727
+:::MLPv0.5.0 resnet 1560292502.352313519 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 41
+2019-06-11 22:35:02,352 Node[0] :::MLPv0.5.0 resnet 1560292502.352313519 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 41
+2019-06-11 22:39:08,186 Node[0] Epoch[41] Batch [760]	Speed: 5157.54 samples/sec	accuracy=0.679110
+2019-06-11 22:39:11,061 Node[0] Epoch[41] Time cost=248.709
+:::MLPv0.5.0 resnet 1560292751.286972284 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 42
+2019-06-11 22:39:11,287 Node[0] :::MLPv0.5.0 resnet 1560292751.286972284 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 42
+2019-06-11 22:43:16,889 Node[0] Epoch[42] Batch [760]	Speed: 5158.49 samples/sec	accuracy=0.679300
+2019-06-11 22:43:19,788 Node[0] Epoch[42] Time cost=248.502
+2019-06-11 22:43:20,033 Node[0] :::MLPv0.5.0 resnet 1560293000.033527851 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+:::MLPv0.5.0 resnet 1560293000.033527851 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 22:43:30,470 Node[0] Epoch[42] Validation-accuracy=0.702640
+2019-06-11 22:43:30,470 Node[0] Epoch[42] Validation-correct-count=35132.000000
+2019-06-11 22:43:30,470 Node[0] Epoch[42] Validation-total-count=50000.000000
+2019-06-11 22:43:30,471 Node[0] :::MLPv0.5.0 resnet 1560293010.471660852 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.70264, "epoch": 42}
+:::MLPv0.5.0 resnet 1560293010.471660852 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.70264, "epoch": 42}
+2019-06-11 22:43:30,472 Node[0] :::MLPv0.5.0 resnet 1560293010.472172976 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560293010.472172976 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 22:43:30,472 Node[0] :::MLPv0.5.0 resnet 1560293010.472657681 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 43
+:::MLPv0.5.0 resnet 1560293010.472657681 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 43
+2019-06-11 22:47:35,736 Node[0] Epoch[43] Batch [760]	Speed: 5159.51 samples/sec	accuracy=0.678656
+2019-06-11 22:47:38,610 Node[0] Epoch[43] Time cost=248.137
+:::MLPv0.5.0 resnet 1560293258.855048418 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 44
+2019-06-11 22:47:38,855 Node[0] :::MLPv0.5.0 resnet 1560293258.855048418 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 44
+2019-06-11 22:51:44,563 Node[0] Epoch[44] Batch [760]	Speed: 5157.49 samples/sec	accuracy=0.679620
+2019-06-11 22:51:47,140 Node[0] Epoch[44] Time cost=248.286
+:::MLPv0.5.0 resnet 1560293507.368175983 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 45
+2019-06-11 22:51:47,368 Node[0] :::MLPv0.5.0 resnet 1560293507.368175983 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 45
+2019-06-11 22:55:52,802 Node[0] Epoch[45] Batch [760]	Speed: 5163.68 samples/sec	accuracy=0.679830
+2019-06-11 22:55:55,721 Node[0] Epoch[45] Time cost=248.353
+2019-06-11 22:55:55,943 Node[0] :::MLPv0.5.0 resnet 1560293755.943400860 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 46
+:::MLPv0.5.0 resnet 1560293755.943400860 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 46
+2019-06-11 23:00:01,495 Node[0] Epoch[46] Batch [760]	Speed: 5160.95 samples/sec	accuracy=0.680186
+2019-06-11 23:00:04,389 Node[0] Epoch[46] Time cost=248.446
+:::MLPv0.5.0 resnet 1560294004.588890076 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 23:00:04,588 Node[0] :::MLPv0.5.0 resnet 1560294004.588890076 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 23:00:15,022 Node[0] Epoch[46] Validation-accuracy=0.690940
+2019-06-11 23:00:15,022 Node[0] Epoch[46] Validation-correct-count=34547.000000
+2019-06-11 23:00:15,022 Node[0] Epoch[46] Validation-total-count=50000.000000
+2019-06-11 23:00:15,023 Node[0] :::MLPv0.5.0 resnet 1560294015.023049593 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.69094, "epoch": 46}
+:::MLPv0.5.0 resnet 1560294015.023049593 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.69094, "epoch": 46}
+:::MLPv0.5.0 resnet 1560294015.023522854 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 23:00:15,023 Node[0] :::MLPv0.5.0 resnet 1560294015.023522854 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560294015.024000168 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 47
+2019-06-11 23:00:15,024 Node[0] :::MLPv0.5.0 resnet 1560294015.024000168 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 47
+2019-06-11 23:04:20,474 Node[0] Epoch[47] Batch [760]	Speed: 5155.58 samples/sec	accuracy=0.680668
+2019-06-11 23:04:23,370 Node[0] Epoch[47] Time cost=248.346
+:::MLPv0.5.0 resnet 1560294263.575882435 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 48
+2019-06-11 23:04:23,575 Node[0] :::MLPv0.5.0 resnet 1560294263.575882435 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 48
+2019-06-11 23:08:29,258 Node[0] Epoch[48] Batch [760]	Speed: 5159.18 samples/sec	accuracy=0.681331
+2019-06-11 23:08:32,155 Node[0] Epoch[48] Time cost=248.580
+2019-06-11 23:08:32,388 Node[0] :::MLPv0.5.0 resnet 1560294512.388966084 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 49
+:::MLPv0.5.0 resnet 1560294512.388966084 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 49
+2019-06-11 23:12:38,044 Node[0] Epoch[49] Batch [760]	Speed: 5158.74 samples/sec	accuracy=0.681322
+2019-06-11 23:12:40,955 Node[0] Epoch[49] Time cost=248.567
+:::MLPv0.5.0 resnet 1560294761.185703754 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 50
+2019-06-11 23:12:41,185 Node[0] :::MLPv0.5.0 resnet 1560294761.185703754 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 50
+2019-06-11 23:16:46,826 Node[0] Epoch[50] Batch [760]	Speed: 5158.51 samples/sec	accuracy=0.681268
+2019-06-11 23:16:49,724 Node[0] Epoch[50] Time cost=248.539
+:::MLPv0.5.0 resnet 1560295009.962523222 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 23:16:49,962 Node[0] :::MLPv0.5.0 resnet 1560295009.962523222 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 23:17:00,373 Node[0] Epoch[50] Validation-accuracy=0.702440
+2019-06-11 23:17:00,373 Node[0] Epoch[50] Validation-correct-count=35122.000000
+2019-06-11 23:17:00,373 Node[0] Epoch[50] Validation-total-count=50000.000000
+2019-06-11 23:17:00,374 Node[0] :::MLPv0.5.0 resnet 1560295020.374614716 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.70244, "epoch": 50}
+:::MLPv0.5.0 resnet 1560295020.374614716 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.70244, "epoch": 50}
+:::MLPv0.5.0 resnet 1560295020.375092506 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 23:17:00,375 Node[0] :::MLPv0.5.0 resnet 1560295020.375092506 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560295020.375568390 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 51
+2019-06-11 23:17:00,375 Node[0] :::MLPv0.5.0 resnet 1560295020.375568390 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 51
+2019-06-11 23:21:05,655 Node[0] Epoch[51] Batch [760]	Speed: 5158.74 samples/sec	accuracy=0.682277
+2019-06-11 23:21:08,573 Node[0] Epoch[51] Time cost=248.197
+:::MLPv0.5.0 resnet 1560295268.845184803 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 52
+2019-06-11 23:21:08,845 Node[0] :::MLPv0.5.0 resnet 1560295268.845184803 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 52
+2019-06-11 23:25:14,420 Node[0] Epoch[52] Batch [760]	Speed: 5160.00 samples/sec	accuracy=0.682632
+2019-06-11 23:25:17,325 Node[0] Epoch[52] Time cost=248.480
+:::MLPv0.5.0 resnet 1560295517.548545837 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 53
+2019-06-11 23:25:17,548 Node[0] :::MLPv0.5.0 resnet 1560295517.548545837 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 53
+2019-06-11 23:29:23,172 Node[0] Epoch[53] Batch [760]	Speed: 5159.88 samples/sec	accuracy=0.683159
+2019-06-11 23:29:26,090 Node[0] Epoch[53] Time cost=248.541
+:::MLPv0.5.0 resnet 1560295766.316248894 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 54
+2019-06-11 23:29:26,316 Node[0] :::MLPv0.5.0 resnet 1560295766.316248894 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 54
+2019-06-11 23:33:31,903 Node[0] Epoch[54] Batch [760]	Speed: 5160.34 samples/sec	accuracy=0.684088
+2019-06-11 23:33:34,827 Node[0] Epoch[54] Time cost=248.511
+2019-06-11 23:33:35,049 Node[0] :::MLPv0.5.0 resnet 1560296015.049614429 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+:::MLPv0.5.0 resnet 1560296015.049614429 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 23:33:45,543 Node[0] Epoch[54] Validation-accuracy=0.678440
+2019-06-11 23:33:45,543 Node[0] Epoch[54] Validation-correct-count=33922.000000
+2019-06-11 23:33:45,543 Node[0] Epoch[54] Validation-total-count=50000.000000
+:::MLPv0.5.0 resnet 1560296025.544698238 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.67844, "epoch": 54}
+2019-06-11 23:33:45,544 Node[0] :::MLPv0.5.0 resnet 1560296025.544698238 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.67844, "epoch": 54}
+:::MLPv0.5.0 resnet 1560296025.545208693 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 23:33:45,545 Node[0] :::MLPv0.5.0 resnet 1560296025.545208693 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 23:33:45,545 Node[0] :::MLPv0.5.0 resnet 1560296025.545730352 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 55
+:::MLPv0.5.0 resnet 1560296025.545730352 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 55
+2019-06-11 23:37:50,968 Node[0] Epoch[55] Batch [760]	Speed: 5156.20 samples/sec	accuracy=0.685295
+2019-06-11 23:37:53,881 Node[0] Epoch[55] Time cost=248.336
+:::MLPv0.5.0 resnet 1560296274.134889841 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 56
+2019-06-11 23:37:54,134 Node[0] :::MLPv0.5.0 resnet 1560296274.134889841 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 56
+2019-06-11 23:41:59,923 Node[0] Epoch[56] Batch [760]	Speed: 5155.08 samples/sec	accuracy=0.684285
+2019-06-11 23:42:02,833 Node[0] Epoch[56] Time cost=248.698
+:::MLPv0.5.0 resnet 1560296523.068952560 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 57
+2019-06-11 23:42:03,068 Node[0] :::MLPv0.5.0 resnet 1560296523.068952560 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 57
+2019-06-11 23:46:08,793 Node[0] Epoch[57] Batch [760]	Speed: 5157.58 samples/sec	accuracy=0.685679
+2019-06-11 23:46:11,694 Node[0] Epoch[57] Time cost=248.625
+2019-06-11 23:46:11,928 Node[0] :::MLPv0.5.0 resnet 1560296771.928659439 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 58
+:::MLPv0.5.0 resnet 1560296771.928659439 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 58
+2019-06-11 23:50:17,746 Node[0] Epoch[58] Batch [760]	Speed: 5155.09 samples/sec	accuracy=0.685670
+2019-06-11 23:50:20,314 Node[0] Epoch[58] Time cost=248.386
+:::MLPv0.5.0 resnet 1560297020.575460434 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 23:50:20,575 Node[0] :::MLPv0.5.0 resnet 1560297020.575460434 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-11 23:50:31,046 Node[0] Epoch[58] Validation-accuracy=0.685820
+2019-06-11 23:50:31,046 Node[0] Epoch[58] Validation-correct-count=34291.000000
+2019-06-11 23:50:31,046 Node[0] Epoch[58] Validation-total-count=50000.000000
+2019-06-11 23:50:31,047 Node[0] :::MLPv0.5.0 resnet 1560297031.047488928 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.68582, "epoch": 58}
+:::MLPv0.5.0 resnet 1560297031.047488928 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.68582, "epoch": 58}
+:::MLPv0.5.0 resnet 1560297031.048010349 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-11 23:50:31,048 Node[0] :::MLPv0.5.0 resnet 1560297031.048010349 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560297031.048511028 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 59
+2019-06-11 23:50:31,048 Node[0] :::MLPv0.5.0 resnet 1560297031.048511028 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 59
+2019-06-11 23:54:36,283 Node[0] Epoch[59] Batch [760]	Speed: 5160.42 samples/sec	accuracy=0.686388
+2019-06-11 23:54:39,162 Node[0] Epoch[59] Time cost=248.113
+:::MLPv0.5.0 resnet 1560297279.365441084 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 60
+2019-06-11 23:54:39,365 Node[0] :::MLPv0.5.0 resnet 1560297279.365441084 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 60
+2019-06-11 23:54:40,939 Node[0] Update[46201]: Change learning rate to 6.00000e-03
+2019-06-11 23:58:45,187 Node[0] Epoch[60] Batch [760]	Speed: 5156.82 samples/sec	accuracy=0.724595
+2019-06-11 23:58:48,062 Node[0] Epoch[60] Time cost=248.697
+:::MLPv0.5.0 resnet 1560297528.284960032 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 61
+2019-06-11 23:58:48,284 Node[0] :::MLPv0.5.0 resnet 1560297528.284960032 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 61
+2019-06-12 00:02:53,966 Node[0] Epoch[61] Batch [760]	Speed: 5158.05 samples/sec	accuracy=0.739410
+2019-06-12 00:02:56,888 Node[0] Epoch[61] Time cost=248.603
+:::MLPv0.5.0 resnet 1560297777.115373373 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 62
+2019-06-12 00:02:57,115 Node[0] :::MLPv0.5.0 resnet 1560297777.115373373 (/workspace/image_classification/mlperf_log_utils.py:49) train_epoch: 62
+2019-06-12 00:07:02,758 Node[0] Epoch[62] Batch [760]	Speed: 5159.78 samples/sec	accuracy=0.744661
+2019-06-12 00:07:05,631 Node[0] Epoch[62] Time cost=248.516
+:::MLPv0.5.0 resnet 1560298025.884892702 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-12 00:07:05,884 Node[0] :::MLPv0.5.0 resnet 1560298025.884892702 (/workspace/image_classification/mlperf_log_utils.py:49) eval_start
+2019-06-12 00:07:16,437 Node[0] Epoch[62] Validation-accuracy=0.752960
+2019-06-12 00:07:16,437 Node[0] Epoch[62] Validation-correct-count=37648.000000
+2019-06-12 00:07:16,437 Node[0] Epoch[62] Validation-total-count=50000.000000
+2019-06-12 00:07:16,438 Node[0] :::MLPv0.5.0 resnet 1560298036.438467503 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.75296, "epoch": 62}
+:::MLPv0.5.0 resnet 1560298036.438467503 (/workspace/image_classification/mlperf_log_utils.py:49) eval_accuracy: {"value": 0.75296, "epoch": 62}
+2019-06-12 00:07:16,439 Node[0] :::MLPv0.5.0 resnet 1560298036.439044952 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+:::MLPv0.5.0 resnet 1560298036.439044952 (/workspace/image_classification/mlperf_log_utils.py:49) eval_stop
+2019-06-12 00:07:16,439 Node[0] :::MLPv0.5.0 resnet 1560298036.439635515 (/workspace/image_classification/mlperf_log_utils.py:49) run_stop
+:::MLPv0.5.0 resnet 1560298036.439635515 (/workspace/image_classification/mlperf_log_utils.py:49) run_stop
+2019-06-12 00:07:16,510 Node[0] Saved checkpoint to "MLPerf-RN50v15-0062.params"
+2019-06-12 00:07:16,511 Node[0] :::MLPv0.5.0 resnet 1560298036.511462212 (/workspace/image_classification/mlperf_log_utils.py:49) run_final
+:::MLPv0.5.0 resnet 1560298036.511462212 (/workspace/image_classification/mlperf_log_utils.py:49) run_final
++ ret_code=0
++ set +x
+ENDING TIMING RUN AT 2019-06-12 12:07:24 AM
+RESULT,IMAGE_CLASSIFICATION,,16964,,2019-06-11 07:24:40 PM
